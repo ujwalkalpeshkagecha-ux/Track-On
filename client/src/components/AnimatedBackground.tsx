@@ -34,23 +34,23 @@ export function AnimatedBackground() {
     const isDark = theme === "dark";
 
     // Palette:
-    // Dark mode: Beige background (#f5f0e6) with Sky Blue (#38bdf8), subtle Cream (#fdfbf7), and deep Navy (#0a192f)
-    // Light mode: Navy background (#0a192f) with Sky Blue (#38bdf8) and Off-White (#f8fafc)
+    // Dark mode: Strictly Espresso Brown + Warm Beige (No third color!)
+    // Light mode: Subtle, dull, soft muted slate-navy tones (zero eye strain)
     const colors = isDark
       ? [
-          "56, 189, 248",   // Sky Blue
-          "10, 25, 47",     // Navy
-          "180, 160, 140",  // Muted Beige
+          "238, 223, 203", // Warm Beige
+          "223, 199, 167", // Golden Beige
+          "42, 28, 18",    // Deep Espresso Brown
         ]
       : [
-          "56, 189, 248",   // Sky Blue
-          "248, 250, 252",  // Off-white
-          "14, 165, 233",   // Vivid Sky Blue
+          "85, 119, 150",  // Subtle Slate Blue
+          "130, 155, 175", // Dull Slate
+          "210, 225, 240", // Soft Off-White
         ];
 
     for (let i = 0; i < particleCount; i++) {
       const col = colors[Math.floor(Math.random() * colors.length)];
-      const baseA = Math.random() * 0.25 + 0.08;
+      const baseA = Math.random() * 0.22 + 0.06;
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -87,15 +87,15 @@ export function AnimatedBackground() {
       );
 
       if (isDark) {
-        // Dark Mode: Beige background
-        bgGrad.addColorStop(0, "#faf6ef");
-        bgGrad.addColorStop(0.5, "#f5f0e6");
-        bgGrad.addColorStop(1, "#ebdcc9");
+        // Dark Mode: Rich Warm Espresso Brown
+        bgGrad.addColorStop(0, "#251a12");
+        bgGrad.addColorStop(0.5, "#1a120b");
+        bgGrad.addColorStop(1, "#120a06");
       } else {
-        // Light Mode: Navy Blue background
-        bgGrad.addColorStop(0, "#0e2444");
-        bgGrad.addColorStop(0.5, "#0a192f");
-        bgGrad.addColorStop(1, "#061020");
+        // Light Mode: Subtle, dull, eye-friendly Navy-Slate
+        bgGrad.addColorStop(0, "#1a2533");
+        bgGrad.addColorStop(0.5, "#17212d");
+        bgGrad.addColorStop(1, "#101822");
       }
 
       ctx.fillStyle = bgGrad;
@@ -124,13 +124,13 @@ export function AnimatedBackground() {
 
         const grad = ctx.createLinearGradient(0, baseY - 60, width, baseY + 120);
         if (isDark) {
-          grad.addColorStop(0, "rgba(56, 189, 248, 0.02)");
-          grad.addColorStop(0.5, "rgba(253, 251, 247, 0.03)");
-          grad.addColorStop(1, "rgba(245, 240, 230, 0)");
+          grad.addColorStop(0, "rgba(238, 223, 203, 0.025)");
+          grad.addColorStop(0.5, "rgba(223, 199, 167, 0.015)");
+          grad.addColorStop(1, "rgba(26, 18, 11, 0)");
         } else {
-          grad.addColorStop(0, "rgba(56, 189, 248, 0.04)");
-          grad.addColorStop(0.5, "rgba(14, 165, 233, 0.025)");
-          grad.addColorStop(1, "rgba(10, 25, 47, 0)");
+          grad.addColorStop(0, "rgba(85, 119, 150, 0.025)");
+          grad.addColorStop(0.5, "rgba(130, 155, 175, 0.015)");
+          grad.addColorStop(1, "rgba(23, 33, 45, 0)");
         }
 
         ctx.fillStyle = grad;
@@ -147,8 +147,8 @@ export function AnimatedBackground() {
           else ctx.lineTo(x, y);
         }
         ctx.strokeStyle = isDark
-          ? "rgba(56, 189, 248, 0.06)"
-          : "rgba(56, 189, 248, 0.1)";
+          ? "rgba(238, 223, 203, 0.05)"
+          : "rgba(85, 119, 150, 0.06)";
         ctx.lineWidth = 1;
         ctx.stroke();
       }
@@ -172,8 +172,8 @@ export function AnimatedBackground() {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${p.color}, ${Math.max(0.04, p.alpha)})`;
-        ctx.shadowColor = `rgba(${p.color}, 0.6)`;
-        ctx.shadowBlur = 6;
+        ctx.shadowColor = `rgba(${p.color}, 0.4)`;
+        ctx.shadowBlur = 4;
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -183,11 +183,13 @@ export function AnimatedBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < 120) {
-            const lineAlpha = (1 - dist / 120) * 0.07;
+            const lineAlpha = (1 - dist / 120) * 0.06;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(56, 189, 248, ${lineAlpha})`;
+            ctx.strokeStyle = isDark
+              ? `rgba(238, 223, 203, ${lineAlpha})`
+              : `rgba(85, 119, 150, ${lineAlpha})`;
             ctx.lineWidth = 0.6;
             ctx.stroke();
           }
@@ -198,8 +200,8 @@ export function AnimatedBackground() {
       // 4. Digital Grid Telemetry Overlay
       ctx.save();
       ctx.strokeStyle = isDark
-        ? "rgba(10, 25, 47, 0.03)"
-        : "rgba(56, 189, 248, 0.03)";
+        ? "rgba(238, 223, 203, 0.015)"
+        : "rgba(85, 119, 150, 0.02)";
       ctx.lineWidth = 1;
       const gridSize = 64;
       const offsetX = (time * 10) % gridSize;
