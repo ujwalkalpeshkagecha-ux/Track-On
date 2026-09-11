@@ -38,11 +38,11 @@ export function OrbitalReadinessScene({ score = 50 }: OrbitalReadinessSceneProps
     topLight.position.set(4, 8, 6);
     scene.add(topLight);
 
-    const backLight = new THREE.DirectionalLight(0x78a880, 2.0);
+    const backLight = new THREE.DirectionalLight(0xcca052, 2.0);
     backLight.position.set(-4, -6, -4);
     scene.add(backLight);
 
-    const pointLight = new THREE.PointLight(0x50845c, 2.5, 20);
+    const pointLight = new THREE.PointLight(0xcca052, 2.5, 20);
     pointLight.position.set(2, 3, 4);
     scene.add(pointLight);
 
@@ -64,7 +64,7 @@ export function OrbitalReadinessScene({ score = 50 }: OrbitalReadinessSceneProps
       specularColor: new THREE.Color(0xffffff),
       clearcoat: 0.6,
       clearcoatRoughness: 0.15,
-      attenuationColor: new THREE.Color(0xdce8dd),
+      attenuationColor: new THREE.Color(0xe8dcc0),
       attenuationDistance: 2.5,
     });
     const capsuleMesh = new THREE.Mesh(capsuleGeo, capsuleMat);
@@ -82,8 +82,8 @@ export function OrbitalReadinessScene({ score = 50 }: OrbitalReadinessSceneProps
 
     // 2. Primary Green Orbital Ring
     const greenRingMat = new THREE.MeshStandardMaterial({
-      color: 0x50845c,
-      emissive: 0x3d6e47,
+      color: 0xcca052,
+      emissive: 0x8f6a29,
       emissiveIntensity: 0.35,
       roughness: 0.25,
       metalness: 0.4,
@@ -96,8 +96,8 @@ export function OrbitalReadinessScene({ score = 50 }: OrbitalReadinessSceneProps
 
     // 3. Tilted Sky Blue Orbital Ring
     const blueRingMat = new THREE.MeshStandardMaterial({
-      color: 0x4a88b5,
-      emissive: 0x31638a,
+      color: 0xb89a67,
+      emissive: 0x8f6a29,
       emissiveIntensity: 0.3,
       roughness: 0.3,
       metalness: 0.5,
@@ -127,9 +127,9 @@ export function OrbitalReadinessScene({ score = 50 }: OrbitalReadinessSceneProps
     rootGroup.add(nodesGroup);
 
     const nodeData = [
-      { r: 0.12, dist: 3.1, color: 0x50845c, speed: 0.6, ring: ring1 },
-      { r: 0.10, dist: 3.1, color: 0x6ea87a, speed: -0.4, ring: ring1 },
-      { r: 0.09, dist: 2.7, color: 0x4a88b5, speed: 0.8, ring: ring2 },
+      { r: 0.12, dist: 3.1, color: 0xcca052, speed: 0.6, ring: ring1 },
+      { r: 0.10, dist: 3.1, color: 0xdfb466, speed: -0.4, ring: ring1 },
+      { r: 0.09, dist: 2.7, color: 0xb89a67, speed: 0.8, ring: ring2 },
       { r: 0.11, dist: 3.4, color: 0xcca052, speed: -0.5, ring: ring3 },
       { r: 0.08, dist: 3.4, color: 0xdfb466, speed: 0.7, ring: ring3 },
     ];

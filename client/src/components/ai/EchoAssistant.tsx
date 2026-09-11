@@ -38,9 +38,9 @@ export function RexiMascotIcon({ size = 32, animated = false }: { size?: number;
         strokeWidth="2.5"
         strokeLinecap="round"
       />
-      <ellipse cx="36" cy="46" rx="5.5" ry="9" fill="#070e0a" />
+      <ellipse cx="36" cy="46" rx="5.5" ry="9" fill="#ece1cc" />
       <ellipse cx="38" cy="43" rx="2" ry="3.5" fill="#ffffff" />
-      <ellipse cx="64" cy="46" rx="5.5" ry="9" fill="#070e0a" />
+      <ellipse cx="64" cy="46" rx="5.5" ry="9" fill="#ece1cc" />
       <ellipse cx="66" cy="43" rx="2" ry="3.5" fill="#ffffff" />
       <ellipse cx="28" cy="56" rx="4.5" ry="2.5" fill="#84cc16" opacity="0.6" />
       <ellipse cx="72" cy="56" rx="4.5" ry="2.5" fill="#84cc16" opacity="0.6" />
@@ -472,7 +472,7 @@ Ask me **anything** using text or the 🎙️ **Voice Command** button!`,
                         className="text-[#8b9c8a] hover:text-white transition-colors"
                         title="Copy answer"
                       >
-                        {copiedId === msg.id ? <Check size={12} className="text-[#c6ff3d]" /> : <Copy size={12} />}
+                        {copiedId === msg.id ? <Check size={12} className="text-[#c9ad7e]" /> : <Copy size={12} />}
                       </button>
                     </div>
                   </div>

@@ -237,7 +237,7 @@ CREATE POLICY "Streak records own data only" ON public.streak_records FOR ALL
   };
 
   return (
-    <section className="settings-section rounded-2xl bg-[#0f172a]/60 border border-emerald-500/20 p-6 backdrop-blur-md">
+    <section className="settings-section rounded-2xl bg-[#f6efe0]/60 border border-emerald-500/20 p-6 backdrop-blur-md">
       <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-white/5">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
@@ -278,7 +278,7 @@ CREATE POLICY "Streak records own data only" ON public.streak_records FOR ALL
           <button
             type="button"
             onClick={() => setIsEditing(!isEditing)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[#c6ff3d]/10 hover:bg-[#c6ff3d]/20 text-[#c6ff3d] border border-[#c6ff3d]/30 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-[#c9ad7e]/10 hover:bg-[#c9ad7e]/20 text-[#c9ad7e] border border-[#c9ad7e]/30 transition-colors"
           >
             {isEditing ? "Close" : "Configure Keys"}
           </button>
@@ -296,7 +296,7 @@ CREATE POLICY "Streak records own data only" ON public.streak_records FOR ALL
               value={urlInput}
               onChange={(e) => setUrlInput(e.target.value)}
               placeholder="https://your-project.supabase.co"
-              className="w-full px-3 py-2 text-xs rounded-lg bg-slate-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-[#c6ff3d]"
+              className="w-full px-3 py-2 text-xs rounded-lg bg-slate-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-[#c9ad7e]"
             />
           </div>
           <div>
@@ -308,7 +308,7 @@ CREATE POLICY "Streak records own data only" ON public.streak_records FOR ALL
               value={keyInput}
               onChange={(e) => setKeyInput(e.target.value)}
               placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-              className="w-full px-3 py-2 text-xs rounded-lg bg-slate-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-[#c6ff3d]"
+              className="w-full px-3 py-2 text-xs rounded-lg bg-slate-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-[#c9ad7e]"
             />
           </div>
           <div className="flex items-center justify-between pt-2">
@@ -324,7 +324,7 @@ CREATE POLICY "Streak records own data only" ON public.streak_records FOR ALL
             <button
               type="button"
               onClick={handleSaveConfig}
-              className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-medium rounded-lg bg-[#c6ff3d] text-slate-950 hover:bg-[#d4ff66] font-semibold"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 text-xs font-medium rounded-lg bg-[#c9ad7e] text-slate-950 hover:bg-[#d4ff66] font-semibold"
             >
               Save Credentials
             </button>

@@ -25,19 +25,19 @@ export function Landing3DScene() {
     renderer.toneMappingExposure = 1.15;
     container.appendChild(renderer.domElement);
 
-    // 2. Lighting Setup
-    const ambientLight = new THREE.AmbientLight(0x1e3324, 2.5);
+    // 2. Lighting Setup (warm espresso/beige palette)
+    const ambientLight = new THREE.AmbientLight(0x2a2018, 2.5);
     scene.add(ambientLight);
 
-    const dirLight = new THREE.DirectionalLight(0xc6ff3d, 3.2);
+    const dirLight = new THREE.DirectionalLight(0xe7d0a6, 3.2);
     dirLight.position.set(4, 7, 8);
     scene.add(dirLight);
 
-    const blueLight = new THREE.PointLight(0xa6d9ff, 3.8, 40);
+    const blueLight = new THREE.PointLight(0xd9a86a, 3.8, 40);
     blueLight.position.set(-8, -2, 6);
     scene.add(blueLight);
 
-    const limeLight = new THREE.PointLight(0xc6ff3d, 4.5, 35);
+    const limeLight = new THREE.PointLight(0xe7d0a6, 4.5, 35);
     limeLight.position.set(7, 3, 7);
     scene.add(limeLight);
 

@@ -195,7 +195,7 @@ export default function Profile() {
 
     if (total === 0) return [];
 
-    const palette = ["#c6ff3d", "#a6d9ff", "#6a879b", "#c8d2c5", "#536b78"];
+    const palette = ["#c9ad7e", "#c9ad7e", "#6a879b", "#c8d2c5", "#536b78"];
     let idx = 0;
     return Object.entries(counts).map(([label, count]) => {
       const val = Math.round((count / total) * 100);
@@ -222,14 +222,14 @@ export default function Profile() {
 
       <motion.section className="profile-identity-bar" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .32 }}>
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-[#c6ff3d]/10 border border-[#c6ff3d]/30 flex items-center justify-center text-[#c6ff3d]">
+          <div className="w-9 h-9 rounded-xl bg-[#c9ad7e]/10 border border-[#c9ad7e]/30 flex items-center justify-center text-[#c9ad7e]">
             <CalendarDays size={18} />
           </div>
           <div>
             <span className="panel-label">Activity Ledger</span>
             <div className="flex items-center gap-2">
               <strong className="text-sm text-white font-mono">{rangeOptions[range].period}</strong>
-              <span className="px-2 py-0.5 rounded-full bg-[#c6ff3d]/15 border border-[#c6ff3d]/30 text-[#c6ff3d] text-[10px] font-mono font-bold uppercase">
+              <span className="px-2 py-0.5 rounded-full bg-[#c9ad7e]/15 border border-[#c9ad7e]/30 text-[#c9ad7e] text-[10px] font-mono font-bold uppercase">
                 {rangeOptions[range].label}
               </span>
             </div>

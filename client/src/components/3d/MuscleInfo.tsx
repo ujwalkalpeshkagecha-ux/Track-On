@@ -31,7 +31,7 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
 
   return (
     <motion.aside
-      className="muscle-panel bg-[#0b120e] border border-white/10 rounded-2xl p-4 flex flex-col justify-between"
+      className="muscle-panel bg-[#f0e6d3] border border-white/10 rounded-2xl p-4 flex flex-col justify-between"
       key={muscle.id}
       initial={{ opacity: 0, x: 18 }}
       animate={{ opacity: 1, x: 0 }}
@@ -86,13 +86,13 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
           <div className="bg-black/40 border border-white/5 rounded-xl p-3 flex flex-col justify-between">
             <div className="flex items-center justify-between text-[#8b9c8a]">
               <span className="text-[9px] uppercase tracking-wider font-mono">Last Trained</span>
-              <CalendarDays size={12} className="text-[#a6d9ff]" />
+              <CalendarDays size={12} className="text-[#c9ad7e]" />
             </div>
             <div className="my-1">
               <strong className="text-xs text-white font-medium block">{muscle.lastTrained}</strong>
             </div>
             <div className="flex items-center gap-1 text-[10px] text-[#8b9c8a] font-mono">
-              <Dumbbell size={11} className="text-[#c6ff3d]" />
+              <Dumbbell size={11} className="text-[#c9ad7e]" />
               <span>{muscle.weeklyVolume}</span>
             </div>
           </div>
@@ -121,7 +121,7 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
             <Zap size={12} style={{ color: recovery.color }} /> Focus Movements
           </span>
           <button
-            className="text-[10px] font-mono text-[#c6ff3d] hover:underline flex items-center gap-0.5"
+            className="text-[10px] font-mono text-[#c9ad7e] hover:underline flex items-center gap-0.5"
             onClick={() => setLocation("/exercise-library")}
           >
             View all <ArrowUpRight size={11} />
@@ -139,7 +139,7 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
               <div className="flex items-center gap-2.5">
                 <span className="text-[10px] font-mono text-[#8b9c8a] w-4">0{index + 1}</span>
                 <div>
-                  <strong className="text-xs text-white group-hover:text-[#c6ff3d] transition-colors block">
+                  <strong className="text-xs text-white group-hover:text-[#c9ad7e] transition-colors block">
                     {exercise.name}
                   </strong>
                   <div className="flex items-center gap-1.5 mt-0.5">
@@ -153,7 +153,7 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
                   </div>
                 </div>
               </div>
-              <span className="text-[10px] font-mono text-[#c6ff3d] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+              <span className="text-[10px] font-mono text-[#c9ad7e] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
                 <Play size={10} fill="currentColor" /> Form
               </span>
             </div>
@@ -165,7 +165,7 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
       <div className="space-y-2">
         <button
           onClick={handleLaunchRoutine}
-          className="w-full py-3 px-4 bg-[#c6ff3d] hover:bg-[#b8f52e] text-[#0a100c] rounded-xl font-bold font-sans text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-transform active:scale-[0.98] shadow-lg shadow-[#c6ff3d]/10"
+          className="w-full py-3 px-4 bg-[#c9ad7e] hover:bg-[#b8f52e] text-[#f0e6d3] rounded-xl font-bold font-sans text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-transform active:scale-[0.98] shadow-lg shadow-[#c9ad7e]/10"
         >
           <Play size={14} fill="currentColor" />
           <span>Launch {muscle.label} Routine</span>
@@ -177,7 +177,7 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
           className="w-full py-2 px-3 bg-white/5 hover:bg-white/10 border border-white/10 text-[#edf4e9] rounded-xl font-mono text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
           title="Simulate completing 4 heavy sets for this muscle group"
         >
-          <Dumbbell size={12} className="text-[#c6ff3d]" />
+          <Dumbbell size={12} className="text-[#c9ad7e]" />
           <span>⚡ Simulate 4 Completed Sets (-65% Fatigue)</span>
         </button>
       </div>

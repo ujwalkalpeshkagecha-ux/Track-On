@@ -11,11 +11,14 @@ import {
   Flame,
   KeyRound,
   LogIn,
+  Moon,
   Quote,
+  Sun,
   UserCheck,
   UserPlus,
 } from "lucide-react";
 import { toast } from "sonner";
+import { useTheme } from "@/contexts/ThemeContext";
 import { Landing3DScene } from "@/components/3d/Landing3DScene";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { saveAthleteProfile, isProfileConfigured, getScopedKey } from "@/lib/user-store";
@@ -51,6 +54,7 @@ const GOOGLE_CLIENT_ID = "583335952268-9ibrvhstkajdn9ik9did17ml3pldijuk.apps.goo
 
 export default function Landing() {
   const [, setLocation] = useLocation();
+  const { theme, toggleTheme } = useTheme();
   const [currentUser, setCurrentUser] = useState<{ email: string; name: string } | null>(() => {
     try {
       const isAuth = localStorage.getItem("fittrack_auth_state") === "authenticated";
@@ -85,13 +89,20 @@ export default function Landing() {
     }
   };
 
-  // Ensure dark mode is active by default after sign in
+  // Respect the athlete's chosen theme on sign-in; default to dark only if unset.
   const applyDefaultDarkMode = () => {
     try {
-      localStorage.setItem("fittrack-theme", "dark");
-      document.documentElement.classList.add("dark");
-      window.dispatchEvent(new Event("fittrack:signin"));
+      const stored = localStorage.getItem("fittrack-theme");
+      if (stored !== "light" && stored !== "dark") {
+        localStorage.setItem("fittrack-theme", "dark");
+        document.documentElement.classList.add("dark");
+      }
     } catch {}
+  };
+
+  // After a successful sign-in, send new athletes through onboarding first.
+  const proceedAfterAuth = (userEmail: string) => {
+    setLocation(isProfileConfigured(userEmail) ? "/overview" : "/onboarding");
   };
 
   // Decode and cryptographically validate JWT helper for Google One Tap
@@ -140,7 +151,7 @@ export default function Landing() {
           applyDefaultDarkMode();
           toast.success(`Welcome, ${cleanName}! Signed in with Google.`);
           setAuthModalOpen(false);
-          setLocation("/overview");
+          proceedAfterAuth(validEmail);
         }
       } catch (err) {
         console.error("Failed to decode Google JWT:", err);
@@ -187,7 +198,7 @@ export default function Landing() {
                   setIsGoogleLoading(false);
                   setAuthModalOpen(false);
                   toast.success(`Welcome, ${googleName}! Signed in with Google.`);
-                  setLocation("/overview");
+                  proceedAfterAuth(googleEmailClean);
                   return;
                 }
               } catch (fetchErr) {
@@ -352,7 +363,7 @@ export default function Landing() {
         }
       }
       setAuthModalOpen(false);
-      setLocation("/overview");
+      proceedAfterAuth(cleanEmail);
     } catch (err: any) {
       toast.error(err?.message || "Authentication error. Please try again.");
     } finally {
@@ -403,7 +414,17 @@ export default function Landing() {
           </div>
         </div>
 
-        <div className="landing-topbar-right"></div>
+        <div className="landing-topbar-right">
+          <button
+            type="button"
+            className="landing-theme-toggle"
+            onClick={() => toggleTheme?.()}
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {theme === "dark" ? <Sun size={13} /> : <Moon size={13} />}
+            <span>{theme === "dark" ? "Light" : "Dark"}</span>
+          </button>
+        </div>
       </header>
 
       {/* 3. Hero Section */}
@@ -488,14 +509,14 @@ export default function Landing() {
         )}
 
         {/* Unique-value trust badges: what sets FitTrack apart from other fitness apps */}
-        <div className="flex flex-wrap justify-center items-center gap-2.5 mb-10">
-          <span className="inline-flex items-center gap-1.5 bg-[#0c130e]/80 border border-[#c6ff3d]/30 text-[#c6ff3d] text-[10px] sm:text-[11px] font-mono uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-md">
+        <div className="hero-trust-badges">
+          <span className="hero-trust-badge tb-accent">
             <Activity size={12} /> No Install · Works Offline
           </span>
-          <span className="inline-flex items-center gap-1.5 bg-[#0c130e]/80 border border-[#a6d9ff]/30 text-[#a6d9ff] text-[10px] sm:text-[11px] font-mono uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-md">
+          <span className="hero-trust-badge">
             🍛 100+ Indian Foods · Hindi Names
           </span>
-          <span className="inline-flex items-center gap-1.5 bg-[#0c130e]/80 border border-white/15 text-[#d1e0cf] text-[10px] sm:text-[11px] font-mono uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-md">
+          <span className="hero-trust-badge tb-accent">
             <Dumbbell size={12} /> Live 3D Muscle Recovery
           </span>
         </div>
@@ -635,7 +656,7 @@ export default function Landing() {
             </div>
 
             {typeof window !== "undefined" && window.location.hostname === "localhost" && (
-              <p className="text-[11px] text-[#8fa88d] text-center font-['Space_Mono'] bg-[#1a2318]/60 border border-[#2a3827] rounded px-2.5 py-1.5 -mt-1">
+              <p className="text-[11px] text-[#0f172a] text-center font-['Space_Mono'] bg-[#ede4d4] border border-[rgba(180,160,130,0.5)] rounded px-2.5 py-1.5 -mt-1 font-semibold">
                 💡 <strong>Localhost Mode:</strong> Use the Email & Password form below to sign in instantly.
               </p>
             )}

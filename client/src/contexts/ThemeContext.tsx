@@ -40,20 +40,24 @@ export function ThemeProvider({
     localStorage.setItem("fittrack-theme", theme);
   }, [theme, switchable]);
 
-  // Ensure app switches to dark mode by default on sign-in
+  // Default to dark on an explicit sign-in event.
   useEffect(() => {
-    const handleSignIn = () => {
-      setTheme("dark");
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("fittrack-theme", "dark");
+    const handleSignIn = () => setTheme("dark");
+    // Cross-tab: SYNC to the theme another tab chose. Must not force dark here —
+    // the app writes localStorage constantly, and a "storage" event fires in
+    // other tabs on every such write; forcing dark would clobber light mode.
+    const syncFromStorage = (e: StorageEvent) => {
+      if (e.key === "fittrack-theme" && (e.newValue === "dark" || e.newValue === "light")) {
+        setTheme(e.newValue);
+      }
     };
 
     window.addEventListener("fittrack:signin", handleSignIn);
-    window.addEventListener("storage", handleSignIn);
+    window.addEventListener("storage", syncFromStorage);
 
     return () => {
       window.removeEventListener("fittrack:signin", handleSignIn);
-      window.removeEventListener("storage", handleSignIn);
+      window.removeEventListener("storage", syncFromStorage);
     };
   }, []);
 

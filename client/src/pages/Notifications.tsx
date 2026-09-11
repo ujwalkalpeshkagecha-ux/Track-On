@@ -199,7 +199,7 @@ export default function Notifications() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 w-full items-start">
         {/* Left Column: Notification Stream (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
-          <div className="bg-[#0b110d] border border-white/10 rounded-3xl p-5 shadow-xl">
+          <div className="bg-[#f0e6d3] border border-white/10 rounded-3xl p-5 shadow-xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/5">
               <div>
                 <span className="text-[10px] font-mono text-[#8b9c8a] uppercase tracking-wider block">
@@ -213,7 +213,7 @@ export default function Notifications() {
                 <button 
                   type="button" 
                   onClick={handleTestNotification}
-                  className="px-2.5 py-1.5 bg-[#c6ff3d]/10 hover:bg-[#c6ff3d]/20 text-[#c6ff3d] border border-[#c6ff3d]/30 rounded-xl text-xs font-mono flex items-center gap-1.5 transition-all"
+                  className="px-2.5 py-1.5 bg-[#c9ad7e]/10 hover:bg-[#c9ad7e]/20 text-[#c9ad7e] border border-[#c9ad7e]/30 rounded-xl text-xs font-mono flex items-center gap-1.5 transition-all"
                   title="Test notification sound effect"
                 >
                   <Bell size={13} />
@@ -224,7 +224,7 @@ export default function Notifications() {
                   onClick={handleToggleSound}
                   className={`p-1.5 rounded-xl border transition-all ${
                     soundOn 
-                      ? "bg-white/5 border-white/10 text-[#c6ff3d] hover:bg-white/10" 
+                      ? "bg-white/5 border-white/10 text-[#c9ad7e] hover:bg-white/10" 
                       : "bg-red-500/10 border-red-500/30 text-red-400 hover:bg-red-500/20"
                   }`}
                   title={soundOn ? "Sound effects active (click to mute)" : "Sound effects muted (click to enable)"}
@@ -234,7 +234,7 @@ export default function Notifications() {
                 <button 
                   type="button" 
                   onClick={markAll}
-                  className="px-3 py-1.5 bg-white/5 hover:bg-[#c6ff3d]/20 text-[#8b9c8a] hover:text-[#c6ff3d] border border-white/10 rounded-xl text-xs font-mono flex items-center gap-1.5 transition-all"
+                  className="px-3 py-1.5 bg-white/5 hover:bg-[#c9ad7e]/20 text-[#8b9c8a] hover:text-[#c9ad7e] border border-white/10 rounded-xl text-xs font-mono flex items-center gap-1.5 transition-all"
                 >
                   <CheckCheck size={14} />
                   <span>Mark all read</span>
@@ -245,7 +245,7 @@ export default function Notifications() {
             {/* Active signals */}
             {grouped.new.length > 0 && (
               <div className="mt-4 space-y-2">
-                <span className="text-[10px] font-mono text-[#c6ff3d] uppercase tracking-wider block px-1">
+                <span className="text-[10px] font-mono text-[#c9ad7e] uppercase tracking-wider block px-1">
                   Active Signals
                 </span>
                 <div className="space-y-2">
@@ -295,17 +295,17 @@ export default function Notifications() {
         {/* Right Column: Reminders Stack (5 cols) */}
         <div className="lg:col-span-5 space-y-5">
           {/* --- 1. HYDRATION REMINDER & ALARM CONSOLE (SIGNAL LIME THEME) --- */}
-          <div className="bg-[#0b110d] border border-[#c6ff3d]/30 rounded-3xl p-5 space-y-4 shadow-xl relative overflow-hidden">
+          <div className="bg-[#f0e6d3] border border-[#c9ad7e]/30 rounded-3xl p-5 space-y-4 shadow-xl relative overflow-hidden">
             {/* Top Accent line */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c6ff3d] via-[#a6d9ff]/50 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c9ad7e] via-[#c9ad7e]/50 to-transparent" />
 
             <div className="flex items-center justify-between pb-3 border-b border-white/5">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-2xl bg-[#c6ff3d]/15 border border-[#c6ff3d]/30 text-[#c6ff3d] flex items-center justify-center shadow-[0_0_12px_rgba(198,255,61,0.2)]">
+                <div className="w-9 h-9 rounded-2xl bg-[#c9ad7e]/15 border border-[#c9ad7e]/30 text-[#c9ad7e] flex items-center justify-center shadow-[0_0_12px_rgba(231,208,166,0.2)]">
                   <Droplets size={18} />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono text-[#c6ff3d] uppercase tracking-wider block">
+                  <span className="text-[10px] font-mono text-[#c9ad7e] uppercase tracking-wider block">
                     Hydration Alarm
                   </span>
                   <h2 className="text-base font-bold text-white font-mono">
@@ -316,7 +316,7 @@ export default function Notifications() {
               <button
                 type="button"
                 onClick={handleTestChime}
-                className="px-2.5 py-1 bg-[#c6ff3d]/10 hover:bg-[#c6ff3d]/20 text-[#c6ff3d] border border-[#c6ff3d]/30 rounded-xl text-[11px] font-mono flex items-center gap-1 transition-all"
+                className="px-2.5 py-1 bg-[#c9ad7e]/10 hover:bg-[#c9ad7e]/20 text-[#c9ad7e] border border-[#c9ad7e]/30 rounded-xl text-[11px] font-mono flex items-center gap-1 transition-all"
                 title="Test Alarm Sound"
               >
                 <Play size={11} />
@@ -334,7 +334,7 @@ export default function Notifications() {
                 type="button"
                 className={`w-10 h-6 rounded-full transition-all p-0.5 border ${
                   hydrationReminder.enabled 
-                    ? "bg-[#c6ff3d] border-[#c6ff3d]" 
+                    ? "bg-[#c9ad7e] border-[#c9ad7e]" 
                     : "bg-white/10 border-white/10"
                 }`}
                 aria-pressed={hydrationReminder.enabled}
@@ -352,13 +352,13 @@ export default function Notifications() {
             <div className="bg-black/40 p-3.5 rounded-2xl border border-white/5 space-y-2.5">
               <div className="flex items-center justify-between text-xs font-mono">
                 <span className="text-[#8b9c8a]">Today's Intake:</span>
-                <span className="text-[#c6ff3d] font-bold">
+                <span className="text-[#c9ad7e] font-bold">
                   {(todayWaterMl / 1000).toFixed(2)}L / {hydrationReminder.targetDailyLiters}L ({hydrationPct}%)
                 </span>
               </div>
               <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
                 <div
-                  className="bg-[#c6ff3d] h-full rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(198,255,61,0.5)]"
+                  className="bg-[#c9ad7e] h-full rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(231,208,166,0.5)]"
                   style={{ width: `${hydrationPct}%` }}
                 />
               </div>
@@ -368,7 +368,7 @@ export default function Notifications() {
                 <button
                   type="button"
                   onClick={() => handleAddWater(250)}
-                  className="py-2 bg-white/5 hover:bg-[#c6ff3d]/20 text-white hover:text-[#c6ff3d] border border-white/10 hover:border-[#c6ff3d]/30 rounded-xl text-[10px] font-mono font-bold flex items-center justify-center gap-1 transition-all"
+                  className="py-2 bg-white/5 hover:bg-[#c9ad7e]/20 text-white hover:text-[#c9ad7e] border border-white/10 hover:border-[#c9ad7e]/30 rounded-xl text-[10px] font-mono font-bold flex items-center justify-center gap-1 transition-all"
                 >
                   <Plus size={11} />
                   <span>250 ml</span>
@@ -376,7 +376,7 @@ export default function Notifications() {
                 <button
                   type="button"
                   onClick={() => handleAddWater(500)}
-                  className="py-2 bg-white/5 hover:bg-[#c6ff3d]/20 text-white hover:text-[#c6ff3d] border border-white/10 hover:border-[#c6ff3d]/30 rounded-xl text-[10px] font-mono font-bold flex items-center justify-center gap-1 transition-all"
+                  className="py-2 bg-white/5 hover:bg-[#c9ad7e]/20 text-white hover:text-[#c9ad7e] border border-white/10 hover:border-[#c9ad7e]/30 rounded-xl text-[10px] font-mono font-bold flex items-center justify-center gap-1 transition-all"
                 >
                   <Plus size={11} />
                   <span>500 ml</span>
@@ -384,7 +384,7 @@ export default function Notifications() {
                 <button
                   type="button"
                   onClick={() => handleAddWater(1000)}
-                  className="py-2 bg-white/5 hover:bg-[#c6ff3d]/20 text-white hover:text-[#c6ff3d] border border-white/10 hover:border-[#c6ff3d]/30 rounded-xl text-[10px] font-mono font-bold flex items-center justify-center gap-1 transition-all"
+                  className="py-2 bg-white/5 hover:bg-[#c9ad7e]/20 text-white hover:text-[#c9ad7e] border border-white/10 hover:border-[#c9ad7e]/30 rounded-xl text-[10px] font-mono font-bold flex items-center justify-center gap-1 transition-all"
                 >
                   <Plus size={11} />
                   <span>1.0 L</span>
@@ -395,7 +395,7 @@ export default function Notifications() {
             {/* Interval Setting */}
             <div className="space-y-1.5">
               <label className="text-[11px] font-mono text-[#8b9c8a] block">
-                <Clock3 size={13} className="inline mr-1 text-[#c6ff3d]" />
+                <Clock3 size={13} className="inline mr-1 text-[#c9ad7e]" />
                 Reminder Frequency
               </label>
               <div className="grid grid-cols-2 gap-1.5">
@@ -407,7 +407,7 @@ export default function Notifications() {
                     onClick={() => saveHydration({ ...hydrationReminder, intervalMinutes: opt.value })}
                     className={`py-2 px-2 rounded-xl text-[10px] font-mono text-center transition-all border ${
                       hydrationReminder.intervalMinutes === opt.value
-                        ? "bg-[#c6ff3d] text-black font-bold border-[#c6ff3d] shadow-[0_0_10px_rgba(198,255,61,0.3)]"
+                        ? "bg-[#c9ad7e] text-black font-bold border-[#c9ad7e] shadow-[0_0_10px_rgba(231,208,166,0.3)]"
                         : "bg-white/[0.03] border-white/10 text-[#8b9c8a] hover:text-white"
                     }`}
                   >
@@ -426,7 +426,7 @@ export default function Notifications() {
                   value={hydrationReminder.startTime}
                   disabled={!hydrationReminder.enabled}
                   onChange={(e) => saveHydration({ ...hydrationReminder, startTime: e.target.value })}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white font-mono outline-none focus:border-[#c6ff3d]/50"
+                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white font-mono outline-none focus:border-[#c9ad7e]/50"
                 />
               </div>
               <div className="space-y-1">
@@ -436,7 +436,7 @@ export default function Notifications() {
                   value={hydrationReminder.endTime}
                   disabled={!hydrationReminder.enabled}
                   onChange={(e) => saveHydration({ ...hydrationReminder, endTime: e.target.value })}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white font-mono outline-none focus:border-[#c6ff3d]/50"
+                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white font-mono outline-none focus:border-[#c9ad7e]/50"
                 />
               </div>
             </div>
@@ -449,7 +449,7 @@ export default function Notifications() {
                   value={hydrationReminder.soundType}
                   disabled={!hydrationReminder.enabled}
                   onChange={(e) => saveHydration({ ...hydrationReminder, soundType: e.target.value as any })}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2 py-1.5 text-xs text-white outline-none font-mono focus:border-[#c6ff3d]/50"
+                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2 py-1.5 text-xs text-white outline-none font-mono focus:border-[#c9ad7e]/50"
                 >
                   <option value="water_droplet">Water Droplet</option>
                   <option value="gentle_bell">Gentle Bell</option>
@@ -467,14 +467,14 @@ export default function Notifications() {
                   value={hydrationReminder.targetDailyLiters}
                   disabled={!hydrationReminder.enabled}
                   onChange={(e) => saveHydration({ ...hydrationReminder, targetDailyLiters: Number(e.target.value) || 3.0 })}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2 py-1 text-xs text-white font-mono outline-none focus:border-[#c6ff3d]/50"
+                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2 py-1 text-xs text-white font-mono outline-none focus:border-[#c9ad7e]/50"
                 />
               </div>
             </div>
 
             <button
               type="button"
-              className="w-full py-2.5 bg-[#c6ff3d] hover:bg-[#b0f028] text-black font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-[0_0_15px_rgba(198,255,61,0.3)]"
+              className="w-full py-2.5 bg-[#c9ad7e] hover:bg-[#b0f028] text-black font-mono font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-[0_0_15px_rgba(231,208,166,0.3)]"
               onClick={() => toast.success("Hydration reminder settings saved locally!")}
             >
               Save Hydration Alarm
@@ -482,10 +482,10 @@ export default function Notifications() {
           </div>
 
           {/* --- 2. WORKOUT REMINDER CONSOLE (CLEAN & NON-OVERLAPPING) --- */}
-          <div className="bg-[#0b110d] border border-white/10 rounded-3xl p-5 space-y-4 shadow-xl">
+          <div className="bg-[#f0e6d3] border border-white/10 rounded-3xl p-5 space-y-4 shadow-xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/5">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-2xl bg-white/5 border border-white/10 text-[#c6ff3d] flex items-center justify-center">
+                <div className="w-9 h-9 rounded-2xl bg-white/5 border border-white/10 text-[#c9ad7e] flex items-center justify-center">
                   <CalendarClock size={18} />
                 </div>
                 <div>
@@ -500,7 +500,7 @@ export default function Notifications() {
               <button
                 type="button"
                 onClick={handleTestWorkoutAlarm}
-                className="px-2.5 py-1 bg-[#c6ff3d]/10 hover:bg-[#c6ff3d]/20 text-[#c6ff3d] border border-[#c6ff3d]/30 rounded-xl text-[11px] font-mono flex items-center gap-1 transition-all"
+                className="px-2.5 py-1 bg-[#c9ad7e]/10 hover:bg-[#c9ad7e]/20 text-[#c9ad7e] border border-[#c9ad7e]/30 rounded-xl text-[11px] font-mono flex items-center gap-1 transition-all"
                 title="Test Workout Alarm Sound"
               >
                 <Play size={11} />
@@ -517,7 +517,7 @@ export default function Notifications() {
                 type="button"
                 className={`w-10 h-6 rounded-full transition-all p-0.5 border ${
                   workoutReminder.enabled 
-                    ? "bg-[#c6ff3d] border-[#c6ff3d]" 
+                    ? "bg-[#c9ad7e] border-[#c9ad7e]" 
                     : "bg-white/10 border-white/10"
                 }`}
                 aria-pressed={workoutReminder.enabled}
@@ -534,7 +534,7 @@ export default function Notifications() {
             <div className="grid grid-cols-2 gap-2">
               <div className="space-y-1">
                 <span className="text-[10px] font-mono text-[#8b9c8a] block">
-                  <Clock3 size={12} className="inline mr-1 text-[#c6ff3d]" />
+                  <Clock3 size={12} className="inline mr-1 text-[#c9ad7e]" />
                   Preferred time
                 </span>
                 <input
@@ -542,7 +542,7 @@ export default function Notifications() {
                   value={workoutReminder.time}
                   disabled={!workoutReminder.enabled}
                   onChange={(event) => saveWorkout({ ...workoutReminder, time: event.target.value })}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white font-mono outline-none focus:border-[#c6ff3d]/50"
+                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white font-mono outline-none focus:border-[#c9ad7e]/50"
                 />
               </div>
               <div className="space-y-1">
@@ -553,7 +553,7 @@ export default function Notifications() {
                   value={workoutReminder.soundType || "radar_pulse"}
                   disabled={!workoutReminder.enabled}
                   onChange={(e) => saveWorkout({ ...workoutReminder, soundType: e.target.value as WorkoutAlarmSound })}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2 py-1.5 text-xs text-white outline-none font-mono focus:border-[#c6ff3d]/50"
+                  className="w-full bg-black/40 border border-white/10 rounded-xl px-2 py-1.5 text-xs text-white outline-none font-mono focus:border-[#c9ad7e]/50"
                 >
                   <option value="radar_pulse">Radar Pulse</option>
                   <option value="digital_alarm">Digital Alarm</option>
@@ -565,7 +565,7 @@ export default function Notifications() {
 
             <div className="space-y-1.5">
               <span className="text-[11px] font-mono text-[#8b9c8a] block">
-                <CalendarClock size={13} className="inline mr-1 text-[#c6ff3d]" />
+                <CalendarClock size={13} className="inline mr-1 text-[#c9ad7e]" />
                 Training days
               </span>
               <div className="grid grid-cols-7 gap-1">
@@ -576,7 +576,7 @@ export default function Notifications() {
                     disabled={!workoutReminder.enabled}
                     className={`py-1.5 rounded-lg text-[10px] font-mono transition-all border ${
                       workoutReminder.days.includes(day)
-                        ? "bg-[#c6ff3d] text-black font-bold border-[#c6ff3d]"
+                        ? "bg-[#c9ad7e] text-black font-bold border-[#c9ad7e]"
                         : "bg-white/[0.03] border-white/10 text-[#8b9c8a] hover:text-white"
                     }`}
                     onClick={() => toggleDay(day)}
@@ -589,7 +589,7 @@ export default function Notifications() {
 
             <button
               type="button"
-              className="w-full py-2.5 bg-white/5 hover:bg-[#c6ff3d]/15 text-white hover:text-[#c6ff3d] rounded-xl text-xs font-mono border border-white/10 hover:border-[#c6ff3d]/30 transition-all flex items-center justify-center gap-1.5 mt-2 font-bold uppercase tracking-wider"
+              className="w-full py-2.5 bg-white/5 hover:bg-[#c9ad7e]/15 text-white hover:text-[#c9ad7e] rounded-xl text-xs font-mono border border-white/10 hover:border-[#c9ad7e]/30 transition-all flex items-center justify-center gap-1.5 mt-2 font-bold uppercase tracking-wider"
               onClick={() => {
                 playNotificationSound("success");
                 toast.success("Workout reminder and alarm saved to this device");
@@ -611,15 +611,15 @@ function NotificationItem({ item, onRead }: { item: NotificationRecord; onRead?:
     <article 
       className={`p-3.5 rounded-2xl border transition-all flex items-start gap-3 relative ${
         item.read 
-          ? "bg-[#0b110d]/60 border-white/5 opacity-70" 
-          : "bg-[#0b110d] border-[#c6ff3d]/30 hover:border-[#c6ff3d]/60 cursor-pointer shadow-lg"
+          ? "bg-[#f0e6d3]/60 border-white/5 opacity-70" 
+          : "bg-[#f0e6d3] border-[#c9ad7e]/30 hover:border-[#c9ad7e]/60 cursor-pointer shadow-lg"
       }`} 
       onClick={onRead}
     >
       <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 border ${
         item.read 
           ? "bg-white/5 border-white/10 text-[#8b9c8a]" 
-          : "bg-[#c6ff3d]/15 border-[#c6ff3d]/30 text-[#c6ff3d]"
+          : "bg-[#c9ad7e]/15 border-[#c9ad7e]/30 text-[#c9ad7e]"
       }`}>
         <Icon size={16} />
       </div>
@@ -636,7 +636,7 @@ function NotificationItem({ item, onRead }: { item: NotificationRecord; onRead?:
         <p className="text-xs text-[#a0aba0] mt-0.5 leading-relaxed">{item.detail}</p>
       </div>
       {!item.read && (
-        <span className="w-2 h-2 rounded-full bg-[#c6ff3d] shadow-[0_0_8px_#c6ff3d] flex-shrink-0 mt-1" />
+        <span className="w-2 h-2 rounded-full bg-[#c9ad7e] shadow-[0_0_8px_#c9ad7e] flex-shrink-0 mt-1" />
       )}
     </article>
   );

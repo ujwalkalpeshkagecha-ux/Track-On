@@ -107,14 +107,14 @@ export function ExerciseVideoModal({ exercise, open, onClose }: ExerciseVideoMod
 
   return (
     <Dialog open={open} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="max-w-md sm:max-w-lg p-0 bg-[#080d0a] border border-[#c6ff3d]/40 text-[#edf4e9] overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.9)]">
+      <DialogContent className="max-w-md sm:max-w-lg p-0 bg-[#ece1cc] border border-[#c9ad7e]/40 text-[#edf4e9] overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.9)]">
         <DialogHeader className="p-4 pb-3 border-b border-[rgba(237,244,233,0.08)] pr-12">
           <div className="flex items-center gap-2 mb-1">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c6ff3d] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#c6ff3d]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c9ad7e] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#c9ad7e]"></span>
             </span>
-            <span className="font-mono text-[9px] uppercase tracking-widest text-[#c6ff3d]">
+            <span className="font-mono text-[9px] uppercase tracking-widest text-[#c9ad7e]">
               Video Guidance
             </span>
           </div>
@@ -124,7 +124,7 @@ export function ExerciseVideoModal({ exercise, open, onClose }: ExerciseVideoMod
         </DialogHeader>
 
         {/* Video Player Display - Clean and Focused */}
-        <div className="relative w-full aspect-[9/14] sm:aspect-[9/13] max-h-[480px] bg-[#000000] flex items-center justify-center overflow-hidden">
+        <div className="relative w-full aspect-[9/14] sm:aspect-[9/13] max-h-[480px] bg-[#ece1cc] flex items-center justify-center overflow-hidden">
           {videoSrc && !videoError ? (
             <video
               ref={videoRef}
@@ -138,7 +138,7 @@ export function ExerciseVideoModal({ exercise, open, onClose }: ExerciseVideoMod
             />
           ) : (
             <div className="flex flex-col items-center justify-center text-center p-6 gap-2">
-              <Zap className="w-10 h-10 text-[#c6ff3d] animate-pulse" />
+              <Zap className="w-10 h-10 text-[#c9ad7e] animate-pulse" />
               <strong className="text-sm text-[#edf4e9]">Kinetic Form Telemetry</strong>
               <p className="text-xs text-[#8b9c8a] max-w-xs">
                 Visual demonstration stream active.
@@ -147,12 +147,12 @@ export function ExerciseVideoModal({ exercise, open, onClose }: ExerciseVideoMod
           )}
 
           {/* Floating Controls Bar */}
-          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-[#080d0a]/90 backdrop-blur-md border border-white/10 rounded-lg px-3 py-1.5 z-10">
+          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-[#ece1cc]/90 backdrop-blur-md border border-white/10 rounded-lg px-3 py-1.5 z-10">
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={togglePlay}
-                className="w-8 h-8 rounded-md bg-[#c6ff3d] hover:bg-[#d8ff6b] flex items-center justify-center text-[#080c0a] font-bold cursor-pointer transition-all active:scale-95"
+                className="w-8 h-8 rounded-md bg-[#c9ad7e] hover:bg-[#d8ff6b] flex items-center justify-center text-[#ece1cc] font-bold cursor-pointer transition-all active:scale-95"
                 title={isPlaying ? "Pause" : "Play"}
               >
                 {isPlaying ? <Pause size={14} /> : <Play size={14} className="ml-0.5" />}
@@ -161,7 +161,7 @@ export function ExerciseVideoModal({ exercise, open, onClose }: ExerciseVideoMod
               <button
                 type="button"
                 onClick={cycleSpeed}
-                className="px-2.5 py-1 rounded-md bg-white/10 hover:bg-white/15 text-xs font-mono text-[#a6d9ff] flex items-center gap-1 cursor-pointer transition-all"
+                className="px-2.5 py-1 rounded-md bg-white/10 hover:bg-white/15 text-xs font-mono text-[#c9ad7e] flex items-center gap-1 cursor-pointer transition-all"
                 title="Toggle playback speed for slow-mo form check"
               >
                 <Gauge size={12} />
@@ -178,8 +178,8 @@ export function ExerciseVideoModal({ exercise, open, onClose }: ExerciseVideoMod
               </button>
             </div>
 
-            <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#c6ff3d]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#c6ff3d] animate-pulse"></span>
+            <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#c9ad7e]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c9ad7e] animate-pulse"></span>
               <span>LOOPING</span>
             </div>
           </div>

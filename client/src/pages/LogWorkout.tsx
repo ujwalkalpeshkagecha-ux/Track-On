@@ -163,7 +163,7 @@ export default function LogWorkout() {
               <div>
                 <span className="panel-label">{primaryFocus} / hypertrophy</span>
                 <b className="workout-status">
-                  <Activity size={12} className="text-[#c6ff3d] animate-pulse" />
+                  <Activity size={12} className="text-[#c9ad7e] animate-pulse" />
                   Strength protocol
                 </b>
               </div>
@@ -185,16 +185,16 @@ export default function LogWorkout() {
             )}
 
             {/* Live ECG Heartbeat Pulse Bar */}
-            <div className="bg-[#0a100c] border border-[rgba(237,244,233,0.08)] rounded-lg p-2.5 my-3 flex items-center justify-between">
+            <div className="bg-[#f0e6d3] border border-[rgba(237,244,233,0.08)] rounded-lg p-2.5 my-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c6ff3d] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#c6ff3d]"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c9ad7e] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#c9ad7e]"></span>
                 </span>
                 <span className="text-[10px] font-mono text-[#edf4e9] uppercase tracking-wider">Live Work Output</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <svg className="w-24 h-5 text-[#c6ff3d]" viewBox="0 0 100 20" fill="none">
+                <svg className="w-24 h-5 text-[#c9ad7e]" viewBox="0 0 100 20" fill="none">
                   <motion.path
                     d="M0 10 L25 10 L32 2 L40 18 L48 6 L55 13 L62 10 L100 10"
                     stroke="currentColor"
@@ -206,7 +206,7 @@ export default function LogWorkout() {
                     transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
                   />
                 </svg>
-                <span className="text-[10px] font-mono text-[#c6ff3d]">138 BPM</span>
+                <span className="text-[10px] font-mono text-[#c9ad7e]">138 BPM</span>
               </div>
             </div>
 
@@ -233,7 +233,7 @@ export default function LogWorkout() {
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", stiffness: 400, damping: 15 }}
                     >
-                      <Check size={16} className="text-[#080c0a]" />
+                      <Check size={16} className="text-[#ece1cc]" />
                     </motion.div>
                   ) : (
                     <span>0{index + 1}</span>
@@ -254,16 +254,16 @@ export default function LogWorkout() {
                         alignItems: "center",
                         gap: "6px",
                         padding: "5px 12px",
-                        background: "linear-gradient(135deg, rgba(198, 255, 61, 0.25) 0%, rgba(198, 255, 61, 0.1) 100%)",
-                        border: "1.5px solid #c6ff3d",
+                        background: "linear-gradient(135deg, rgba(231, 208, 166, 0.25) 0%, rgba(231, 208, 166, 0.1) 100%)",
+                        border: "1.5px solid #c9ad7e",
                         borderRadius: "4px",
-                        color: "#c6ff3d",
+                        color: "#c9ad7e",
                         fontSize: "11px",
                         fontFamily: "'Space Mono', monospace",
                         fontWeight: 700,
                         textTransform: "uppercase",
                         cursor: "pointer",
-                        boxShadow: "0 0 10px rgba(198, 255, 61, 0.35)",
+                        boxShadow: "0 0 10px rgba(231, 208, 166, 0.35)",
                       }}
                       title={`Watch video demonstration for ${lift.name}`}
                     >
@@ -334,7 +334,7 @@ export default function LogWorkout() {
             </div>
 
             {/* Circular Protocol Completion Dial */}
-            <div className="bg-[#0b120e] border border-[rgba(237,244,233,0.08)] rounded-xl p-4 flex items-center gap-4 my-2">
+            <div className="bg-[#f0e6d3] border border-[rgba(237,244,233,0.08)] rounded-xl p-4 flex items-center gap-4 my-2">
               <div className="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
                 <svg className="w-16 h-16 -rotate-90 transform" viewBox="0 0 60 60">
                   <circle cx="30" cy="30" r="24" className="stroke-[rgba(255,255,255,0.08)] fill-none" strokeWidth="5" />
@@ -342,14 +342,14 @@ export default function LogWorkout() {
                     cx="30"
                     cy="30"
                     r="24"
-                    className="stroke-[#c6ff3d] fill-none"
+                    className="stroke-[#c9ad7e] fill-none"
                     strokeWidth="5"
                     strokeLinecap="round"
                     strokeDasharray={2 * Math.PI * 24}
                     initial={{ strokeDashoffset: 2 * Math.PI * 24 }}
                     animate={{ strokeDashoffset: (2 * Math.PI * 24) - ((completion / 100) * (2 * Math.PI * 24)) }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    style={{ filter: "drop-shadow(0 0 6px rgba(198,255,61,0.6))" }}
+                    style={{ filter: "drop-shadow(0 0 6px rgba(231,208,166,0.6))" }}
                   />
                 </svg>
                 <span className="absolute text-xs font-bold font-mono text-[#edf4e9]">{completion}%</span>
@@ -359,7 +359,7 @@ export default function LogWorkout() {
                 <strong className="text-xs text-[#edf4e9] font-mono block">
                   {complete.length} of {lifts.length} sets completed
                 </strong>
-                <span className="text-[10px] text-[#c6ff3d] font-mono">
+                <span className="text-[10px] text-[#c9ad7e] font-mono">
                   {completion === 100 ? "Ready to commit protocol" : "Sets remaining"}
                 </span>
               </div>

@@ -500,7 +500,7 @@ export default function GpsTracker() {
               <div>
                 <MapPinned size={15} />
                 <span>Coordinates</span>
-                <b className="text-[10px] text-[#c6ff3d]">{userLocationInfo.lat.toFixed(4)}, {userLocationInfo.lng.toFixed(4)}</b>
+                <b className="text-[10px] text-[#c9ad7e]">{userLocationInfo.lat.toFixed(4)}, {userLocationInfo.lng.toFixed(4)}</b>
               </div>
             )}
           </div>

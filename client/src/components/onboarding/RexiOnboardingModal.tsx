@@ -21,6 +21,13 @@ export function RexiOnboardingModal() {
   useEffect(() => {
     const checkAndOpen = () => {
       try {
+        // The dedicated /onboarding questionnaire owns first-run setup; never
+        // overlay this legacy welcome modal on top of it.
+        if (location.startsWith("/onboarding")) {
+          setIsOpen(false);
+          return;
+        }
+
         const isAuth = localStorage.getItem("fittrack_auth_state") === "authenticated";
         if (!isAuth) {
           setIsOpen(false);

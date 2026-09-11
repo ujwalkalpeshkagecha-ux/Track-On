@@ -26,6 +26,7 @@ import Settings from "./pages/Settings";
 import Support from "./pages/Support";
 import GpsTracker from "./pages/GpsTracker";
 import BodyMap from "./pages/BodyMap";
+import Onboarding from "./pages/Onboarding";
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
   const [, setLocation] = useLocation();
@@ -87,6 +88,7 @@ function Router() {
     <Switch>
       <Route path={"/"} component={RootRoute} />
       <Route path={"/landing"} component={Landing} />
+      <Route path={"/onboarding"}>{() => <ProtectedRoute component={Onboarding} />}</Route>
       <Route path={"/overview"}>{() => <ProtectedRoute component={Home} />}</Route>
       <Route path={"/home"}>{() => <ProtectedRoute component={Home} />}</Route>
       <Route path={"/body-map"}>{() => <ProtectedRoute component={BodyMap} />}</Route>
@@ -109,6 +111,13 @@ function Router() {
   );
 }
 
+// Keep the floating Rexi assistant off the dedicated onboarding flow so it stays clean.
+function GlobalRexi() {
+  const [location] = useLocation();
+  if (location.startsWith("/onboarding")) return null;
+  return <EchoAssistant />;
+}
+
 function App() {
   useEffect(() => {
     // Proactively request and auto-sync athlete location on app initialization
@@ -122,7 +131,7 @@ function App() {
           <AnimatedBackground />
           <Toaster />
           <Router />
-          <EchoAssistant />
+          <GlobalRexi />
           <RexiOnboardingModal />
           <RexiGuidedTour />
         </TooltipProvider>

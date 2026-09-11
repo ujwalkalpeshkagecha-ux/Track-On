@@ -44,7 +44,7 @@ export default function BodyMap() {
               </button>
               <div>
                 <span className="eyebrow flex items-center gap-1">
-                  <Sparkles size={11} className="text-[#c6ff3d]" /> 3D Muscle Studio
+                  <Sparkles size={11} className="text-[#c9ad7e]" /> 3D Muscle Studio
                 </span>
                 <h1 className="text-2xl font-bold uppercase font-sans text-white tracking-wide">
                   Anatomy & Recovery Map
@@ -75,7 +75,7 @@ export default function BodyMap() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch min-h-[680px]">
           {/* Main 3D Interactive Canvas */}
           <motion.div
-            className="lg:col-span-8 bg-[#070908] border border-white/10 rounded-2xl overflow-hidden relative min-h-[580px] flex flex-col"
+            className="lg:col-span-8 bg-[#1e130c] border border-white/10 rounded-2xl overflow-hidden relative min-h-[580px] flex flex-col"
             initial={{ opacity: 0, scale: 0.99 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.35 }}

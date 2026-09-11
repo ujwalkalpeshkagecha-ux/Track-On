@@ -199,8 +199,8 @@ export function MapView({
         const customIcon = L.divIcon({
           className: "gps-user-beacon",
           html: `<div style="position:relative;width:24px;height:24px;">
-            <div style="position:absolute;inset:0;background:rgba(198,255,61,0.5);border-radius:50%;animation:ping 1.6s cubic-bezier(0,0,0.2,1) infinite;"></div>
-            <div style="position:absolute;top:4px;left:4px;width:16px;height:16px;background:#c6ff3d;border:3px solid #080c0a;border-radius:50%;box-shadow:0 0 16px #c6ff3d;"></div>
+            <div style="position:absolute;inset:0;background:rgba(231,208,166,0.5);border-radius:50%;animation:ping 1.6s cubic-bezier(0,0,0.2,1) infinite;"></div>
+            <div style="position:absolute;top:4px;left:4px;width:16px;height:16px;background:#c9ad7e;border:3px solid #ece1cc;border-radius:50%;box-shadow:0 0 16px #c9ad7e;"></div>
           </div>`,
           iconSize: [24, 24],
           iconAnchor: [12, 12],
@@ -211,9 +211,9 @@ export function MapView({
         if (accuracy && accuracy < 5000) {
           leafletLocCircleRef.current = L.circle([lat, lng], {
             radius: accuracy,
-            color: "#c6ff3d",
+            color: "#c9ad7e",
             weight: 1.5,
-            fillColor: "#c6ff3d",
+            fillColor: "#c9ad7e",
             fillOpacity: 0.15,
           }).addTo(map);
         }
@@ -236,13 +236,13 @@ export function MapView({
 
         if (latlngs.length > 1) {
           leafletRouteHaloRef.current = L.polyline(latlngs, {
-            color: "#a6d9ff",
+            color: "#c9ad7e",
             weight: 8,
             opacity: 0.3,
           }).addTo(map);
 
           leafletRouteLineRef.current = L.polyline(latlngs, {
-            color: "#c6ff3d",
+            color: "#c9ad7e",
             weight: 4,
             opacity: 0.98,
           }).addTo(map);
@@ -254,7 +254,7 @@ export function MapView({
 
         const startIcon = L.divIcon({
           className: "gps-start-node",
-          html: `<div style="width:22px;height:22px;background:#c6ff3d;color:#080c0a;font-weight:700;font-size:11px;line-height:22px;text-align:center;border-radius:50%;border:2px solid #ffffff;box-shadow:0 0 10px rgba(0,0,0,0.5);">S</div>`,
+          html: `<div style="width:22px;height:22px;background:#c9ad7e;color:#ece1cc;font-weight:700;font-size:11px;line-height:22px;text-align:center;border-radius:50%;border:2px solid #ffffff;box-shadow:0 0 10px rgba(0,0,0,0.5);">S</div>`,
           iconSize: [22, 22],
           iconAnchor: [11, 11],
         });
@@ -264,7 +264,7 @@ export function MapView({
         if (latlngs.length > 1) {
           const endIcon = L.divIcon({
             className: "gps-end-node",
-            html: `<div style="width:22px;height:22px;background:#a6d9ff;color:#080c0a;font-weight:700;font-size:11px;line-height:22px;text-align:center;border-radius:50%;border:2px solid #ffffff;box-shadow:0 0 10px rgba(0,0,0,0.5);">E</div>`,
+            html: `<div style="width:22px;height:22px;background:#c9ad7e;color:#ece1cc;font-weight:700;font-size:11px;line-height:22px;text-align:center;border-radius:50%;border:2px solid #ffffff;box-shadow:0 0 10px rgba(0,0,0,0.5);">E</div>`,
             iconSize: [22, 22],
             iconAnchor: [11, 11],
           });
@@ -275,7 +275,7 @@ export function MapView({
         if (activePoint) {
           const activeIcon = L.divIcon({
             className: "gps-active-node",
-            html: `<div style="width:24px;height:24px;background:#c6ff3d;border:4px solid #080c0a;border-radius:50%;box-shadow:0 0 18px #c6ff3d;"></div>`,
+            html: `<div style="width:24px;height:24px;background:#c9ad7e;border:4px solid #ece1cc;border-radius:50%;box-shadow:0 0 18px #c9ad7e;"></div>`,
             iconSize: [24, 24],
             iconAnchor: [12, 12],
           });
@@ -306,12 +306,12 @@ export function MapView({
       fullscreenControl: true,
       gestureHandling: "greedy",
       styles: [
-        { elementType: "geometry", stylers: [{ color: "#0d1310" }] },
-        { elementType: "labels.text.stroke", stylers: [{ color: "#0d1310" }] },
+        { elementType: "geometry", stylers: [{ color: "#f2e9d8" }] },
+        { elementType: "labels.text.stroke", stylers: [{ color: "#f2e9d8" }] },
         { elementType: "labels.text.fill", stylers: [{ color: "#8b9c8a" }] },
         { featureType: "road", elementType: "geometry", stylers: [{ color: "#1b2620" }] },
         { featureType: "road", elementType: "geometry.stroke", stylers: [{ color: "#121b16" }] },
-        { featureType: "water", elementType: "geometry", stylers: [{ color: "#081014" }] },
+        { featureType: "water", elementType: "geometry", stylers: [{ color: "#ece1cc" }] },
         { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] },
       ],
     });
@@ -335,9 +335,9 @@ export function MapView({
           zIndex: 1000,
           icon: {
             path: maps.SymbolPath.CIRCLE,
-            fillColor: "#c6ff3d",
+            fillColor: "#c9ad7e",
             fillOpacity: 1,
-            strokeColor: "#080c0a",
+            strokeColor: "#ece1cc",
             strokeWeight: 3,
             scale: 9,
           },
@@ -348,9 +348,9 @@ export function MapView({
             map: gmap,
             center: { lat, lng },
             radius: accuracy,
-            fillColor: "#c6ff3d",
+            fillColor: "#c9ad7e",
             fillOpacity: 0.15,
-            strokeColor: "#c6ff3d",
+            strokeColor: "#c9ad7e",
             strokeOpacity: 0.5,
             strokeWeight: 1.5,
           });
@@ -376,7 +376,7 @@ export function MapView({
         if (path.length > 1) {
           googleRouteHaloRef.current = new maps.Polyline({
             path,
-            strokeColor: "#a6d9ff",
+            strokeColor: "#c9ad7e",
             strokeOpacity: 0.3,
             strokeWeight: 8,
             map: gmap,
@@ -384,7 +384,7 @@ export function MapView({
 
           googleRouteLineRef.current = new maps.Polyline({
             path,
-            strokeColor: "#c6ff3d",
+            strokeColor: "#c9ad7e",
             strokeOpacity: 0.98,
             strokeWeight: 4,
             map: gmap,
@@ -401,10 +401,10 @@ export function MapView({
         const startMarker = new maps.Marker({
           position: path[0],
           map: gmap,
-          label: { text: "S", color: "#080a09", fontWeight: "700" },
+          label: { text: "S", color: "#ece1cc", fontWeight: "700" },
           icon: {
             path: maps.SymbolPath.CIRCLE,
-            fillColor: "#c6ff3d",
+            fillColor: "#c9ad7e",
             fillOpacity: 1,
             strokeColor: "#ffffff",
             strokeWeight: 1.5,
@@ -417,10 +417,10 @@ export function MapView({
           const endMarker = new maps.Marker({
             position: path[path.length - 1],
             map: gmap,
-            label: { text: "E", color: "#071116", fontWeight: "700" },
+            label: { text: "E", color: "#ece1cc", fontWeight: "700" },
             icon: {
               path: maps.SymbolPath.CIRCLE,
-              fillColor: "#a6d9ff",
+              fillColor: "#c9ad7e",
               fillOpacity: 1,
               strokeColor: "#ffffff",
               strokeWeight: 1.5,
@@ -436,9 +436,9 @@ export function MapView({
             map: gmap,
             icon: {
               path: maps.SymbolPath.CIRCLE,
-              fillColor: "#c6ff3d",
+              fillColor: "#c9ad7e",
               fillOpacity: 1,
-              strokeColor: "#080c0a",
+              strokeColor: "#ece1cc",
               strokeWeight: 4,
               scale: 11,
             },
@@ -618,21 +618,21 @@ export function MapView({
   };
 
   return (
-    <div className={cn("relative w-full h-[480px] overflow-hidden bg-[#080c0a] rounded-lg select-none", className)}>
+    <div className={cn("relative w-full h-[480px] overflow-hidden bg-[#ece1cc] rounded-lg select-none", className)}>
       <div ref={containerRef} className="absolute inset-0 w-full h-full z-[1]" />
 
       {/* Top Map Controls */}
       {!isLoading && !errorMessage && (
         <div className="absolute top-3 left-3 right-3 z-[20] flex items-center justify-between pointer-events-none">
           <div className="flex items-center gap-2 pointer-events-auto">
-            <div className="bg-[#080c0a]/90 border border-[#a6d9ff]/30 px-3 py-1.5 rounded-md text-[10px] font-mono text-[#a6d9ff] uppercase tracking-wider backdrop-blur-md flex items-center gap-1.5 shadow-lg">
-              <Compass className="w-3.5 h-3.5 text-[#c6ff3d]" />
+            <div className="bg-[#ece1cc]/90 border border-[#c9ad7e]/30 px-3 py-1.5 rounded-md text-[10px] font-mono text-[#c9ad7e] uppercase tracking-wider backdrop-blur-md flex items-center gap-1.5 shadow-lg">
+              <Compass className="w-3.5 h-3.5 text-[#c9ad7e]" />
               <span>{activeEngine === "google" ? "Google Maps" : "Interactive Field Map"}</span>
             </div>
 
             {/* Tile Layer Selector */}
             {activeEngine === "leaflet" && (
-              <div className="flex bg-[#080c0a]/90 border border-white/10 rounded-md p-0.5 backdrop-blur-md">
+              <div className="flex bg-[#ece1cc]/90 border border-white/10 rounded-md p-0.5 backdrop-blur-md">
                 {(["dark", "streets", "satellite"] as TileStyle[]).map((style) => (
                   <button
                     key={style}
@@ -640,7 +640,7 @@ export function MapView({
                     onClick={() => changeTile(style)}
                     className={cn(
                       "px-2 py-1 text-[9px] font-mono uppercase tracking-wider rounded transition-all cursor-pointer",
-                      tileStyle === style ? "bg-[#c6ff3d] text-[#080c0a] font-bold" : "text-[#9eab9c] hover:text-white"
+                      tileStyle === style ? "bg-[#c9ad7e] text-[#ece1cc] font-bold" : "text-[#9eab9c] hover:text-white"
                     )}
                   >
                     {style}
@@ -656,8 +656,8 @@ export function MapView({
       {showMyLocation && !isLoading && !errorMessage && (
         <div className="absolute bottom-4 right-4 z-[20] flex flex-col items-end gap-2 pointer-events-auto">
           {coords && (
-            <div className="bg-[#080c0a]/95 border border-[#c6ff3d]/40 px-3.5 py-1.5 rounded-md text-[11px] font-mono text-[#c6ff3d] shadow-2xl backdrop-blur-md">
-              <span className="text-[#a6d9ff] font-bold">LIVE GPS: </span>
+            <div className="bg-[#ece1cc]/95 border border-[#c9ad7e]/40 px-3.5 py-1.5 rounded-md text-[11px] font-mono text-[#c9ad7e] shadow-2xl backdrop-blur-md">
+              <span className="text-[#c9ad7e] font-bold">LIVE GPS: </span>
               {coords.lat.toFixed(5)}, {coords.lng.toFixed(5)}
               <span className="text-[#9eab9c] text-[10px] ml-1.5">(±{Math.round(coords.accuracy)}m)</span>
             </div>
@@ -666,17 +666,17 @@ export function MapView({
             type="button"
             onClick={handleLocateMe}
             disabled={isLocating}
-            className="flex items-center gap-2 bg-[#c6ff3d] hover:bg-[#d8ff6b] active:scale-95 text-[#080c0a] font-bold font-mono text-xs px-4 py-2.5 rounded-md shadow-[0_0_24px_rgba(198,255,61,0.5)] transition-all cursor-pointer disabled:opacity-60"
+            className="flex items-center gap-2 bg-[#c9ad7e] hover:bg-[#d8ff6b] active:scale-95 text-[#ece1cc] font-bold font-mono text-xs px-4 py-2.5 rounded-md shadow-[0_0_24px_rgba(231,208,166,0.5)] transition-all cursor-pointer disabled:opacity-60"
             title="Check and pinpoint your exact GPS location on map"
           >
             {isLocating ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin text-[#080c0a]" />
+                <Loader2 className="w-4 h-4 animate-spin text-[#ece1cc]" />
                 <span>Locating GPS...</span>
               </>
             ) : (
               <>
-                <Crosshair className="w-4 h-4 text-[#080c0a]" />
+                <Crosshair className="w-4 h-4 text-[#ece1cc]" />
                 <span>Check My Location</span>
               </>
             )}
@@ -686,12 +686,12 @@ export function MapView({
 
       {/* Loading Overlay */}
       {isLoading && (
-        <div className="absolute inset-0 z-[30] grid place-items-center bg-[#080c0a]/95 text-center px-6">
-          <div className="max-w-xs border border-[#a6d9ff]/25 bg-[#0d1511]/90 p-5 shadow-[0_0_42px_rgba(166,217,255,0.08)]">
+        <div className="absolute inset-0 z-[30] grid place-items-center bg-[#ece1cc]/95 text-center px-6">
+          <div className="max-w-xs border border-[#c9ad7e]/25 bg-[#f4ecdd]/90 p-5 shadow-[0_0_42px_rgba(217,168,106,0.08)]">
             <div className="flex justify-center mb-3">
-              <Navigation className="w-6 h-6 text-[#a6d9ff] animate-pulse" />
+              <Navigation className="w-6 h-6 text-[#c9ad7e] animate-pulse" />
             </div>
-            <span className="font-mono text-[10px] tracking-widest text-[#a6d9ff] block mb-2">CALIBRATING MAP LINK</span>
+            <span className="font-mono text-[10px] tracking-widest text-[#c9ad7e] block mb-2">CALIBRATING MAP LINK</span>
             <strong className="block text-sm text-[#edf4e9] mb-1">Loading Interactive Map</strong>
             <p className="text-xs text-[#9eab9c]">Connecting GPS telemetry and cartographic tiles...</p>
           </div>
@@ -700,7 +700,7 @@ export function MapView({
 
       {/* Error Overlay */}
       {errorMessage && (
-        <div className="map-service-unavailable absolute inset-0 z-[30] grid place-items-center bg-[#080c0a] text-center px-6">
+        <div className="map-service-unavailable absolute inset-0 z-[30] grid place-items-center bg-[#ece1cc] text-center px-6">
           <div className="max-w-sm border border-[#ff6b6b]/30 bg-[#140d0d] p-5 shadow-lg">
             <div className="flex justify-center mb-3 text-[#ff6b6b]">
               <AlertCircle className="w-7 h-7" />
@@ -710,7 +710,7 @@ export function MapView({
             <button
               type="button"
               onClick={() => window.location.reload()}
-              className="border border-[#c6ff3d]/40 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-[#c6ff3d] hover:bg-[#c6ff3d]/10 transition cursor-pointer"
+              className="border border-[#c9ad7e]/40 px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-[#c9ad7e] hover:bg-[#c9ad7e]/10 transition cursor-pointer"
             >
               Retry
             </button>

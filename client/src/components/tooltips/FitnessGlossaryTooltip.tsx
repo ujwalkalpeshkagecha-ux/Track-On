@@ -95,20 +95,20 @@ export function GlossaryTooltip({ termKey, children, inline = true }: GlossaryTo
           e.stopPropagation();
           setModalOpen(true);
         }}
-        className={`inline-flex items-center gap-1 cursor-pointer group text-[#c6ff3d] hover:underline ${
-          inline ? "border-b border-dashed border-[#c6ff3d]/60" : ""
+        className={`inline-flex items-center gap-1 cursor-pointer group text-[#c9ad7e] hover:underline ${
+          inline ? "border-b border-dashed border-[#c9ad7e]/60" : ""
         }`}
         title={`Click to learn: What is a ${data.term}?`}
       >
         {children || data.term}
-        <HelpCircle size={11} className="text-[#c6ff3d]/80 group-hover:text-[#c6ff3d] transition-colors" />
+        <HelpCircle size={11} className="text-[#c9ad7e]/80 group-hover:text-[#c9ad7e] transition-colors" />
       </span>
 
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-md bg-[#0c120e] border border-[#c6ff3d]/30 text-white rounded-3xl p-6 shadow-2xl">
+        <DialogContent className="max-w-md bg-[#f2e9d8] border border-[#c9ad7e]/30 text-white rounded-3xl p-6 shadow-2xl">
           <DialogHeader>
             <div className="flex items-center justify-between pb-2 border-b border-white/10">
-              <span className="text-[10px] font-mono text-[#c6ff3d] uppercase tracking-wider flex items-center gap-1.5">
+              <span className="text-[10px] font-mono text-[#c9ad7e] uppercase tracking-wider flex items-center gap-1.5">
                 <Sparkles size={13} />
                 <span>Beginner Concept Guide</span>
               </span>
@@ -119,7 +119,7 @@ export function GlossaryTooltip({ termKey, children, inline = true }: GlossaryTo
             <DialogTitle className="text-xl font-extrabold text-white mt-2">
               {data.term}
             </DialogTitle>
-            <DialogDescription className="text-xs text-[#c6ff3d] font-mono font-medium">
+            <DialogDescription className="text-xs text-[#c9ad7e] font-mono font-medium">
               {data.shortDefinition}
             </DialogDescription>
           </DialogHeader>
@@ -134,8 +134,8 @@ export function GlossaryTooltip({ termKey, children, inline = true }: GlossaryTo
               </p>
             </div>
 
-            <div className="bg-[#c6ff3d]/5 border border-[#c6ff3d]/20 p-3 rounded-2xl">
-              <span className="font-mono text-[10px] uppercase text-[#c6ff3d] block mb-1">
+            <div className="bg-[#c9ad7e]/5 border border-[#c9ad7e]/20 p-3 rounded-2xl">
+              <span className="font-mono text-[10px] uppercase text-[#c9ad7e] block mb-1">
                 Real-World Example
               </span>
               <p className="font-mono text-[11px] text-white">
@@ -167,10 +167,10 @@ export function BeginnerGlossaryModal({ open, onOpenChange }: { open: boolean; o
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl bg-[#0c120e] border border-[#c6ff3d]/30 text-white rounded-3xl p-6 shadow-2xl">
+      <DialogContent className="max-w-2xl bg-[#f2e9d8] border border-[#c9ad7e]/30 text-white rounded-3xl p-6 shadow-2xl">
         <DialogHeader>
           <DialogTitle className="text-lg font-bold text-white flex items-center gap-2">
-            <BookOpen size={18} className="text-[#c6ff3d]" />
+            <BookOpen size={18} className="text-[#c9ad7e]" />
             <span>Beginner Fitness Encyclopedia & Fundamentals</span>
           </DialogTitle>
           <DialogDescription className="text-xs text-[#8b9c8a]">
@@ -188,7 +188,7 @@ export function BeginnerGlossaryModal({ open, onOpenChange }: { open: boolean; o
                 onClick={() => setSelectedTerm(key)}
                 className={`w-full text-left px-3 py-2 rounded-xl text-xs font-mono transition-all flex items-center justify-between border ${
                   selectedTerm === key
-                    ? "bg-[#c6ff3d] text-black font-bold border-[#c6ff3d]"
+                    ? "bg-[#c9ad7e] text-black font-bold border-[#c9ad7e]"
                     : "bg-white/[0.02] border-white/10 text-[#8b9c8a] hover:text-white"
                 }`}
               >
@@ -201,7 +201,7 @@ export function BeginnerGlossaryModal({ open, onOpenChange }: { open: boolean; o
           {/* Detailed Explanation Column */}
           <div className="sm:col-span-8 bg-black/40 border border-white/10 rounded-2xl p-4 space-y-3">
             <div>
-              <span className="text-[10px] font-mono text-[#c6ff3d] uppercase tracking-wider">
+              <span className="text-[10px] font-mono text-[#c9ad7e] uppercase tracking-wider">
                 {current.category}
               </span>
               <h4 className="text-base font-extrabold text-white">{current.term}</h4>
@@ -212,7 +212,7 @@ export function BeginnerGlossaryModal({ open, onOpenChange }: { open: boolean; o
               {current.inDepthExplanation}
             </div>
 
-            <div className="bg-[#c6ff3d]/10 p-2.5 rounded-xl border border-[#c6ff3d]/20 text-[11px] font-mono text-[#c6ff3d]">
+            <div className="bg-[#c9ad7e]/10 p-2.5 rounded-xl border border-[#c9ad7e]/20 text-[11px] font-mono text-[#c9ad7e]">
               <b>Example: </b> {current.beginnerExample}
             </div>
 

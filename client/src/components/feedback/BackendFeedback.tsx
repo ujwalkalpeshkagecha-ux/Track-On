@@ -16,8 +16,8 @@ export function BackendFeedback({ tone, title, detail, onRetry, className = "" }
   const toneClass = tone === "error"
     ? "border-[#ff9c78]/35 bg-[#2a1612]/85 text-[#ffd2c0]"
     : tone === "success"
-      ? "border-[#c6ff3d]/30 bg-[#10180f]/85 text-[#e9ffd0]"
-      : "border-[#a6d9ff]/30 bg-[#0c1719]/85 text-[#d7efff]";
+      ? "border-[#c9ad7e]/30 bg-[#10180f]/85 text-[#e9ffd0]"
+      : "border-[#c9ad7e]/30 bg-[#f4ecdd]/85 text-[#d7efff]";
 
   return <motion.div
     initial={{ opacity: 0, y: 5 }}

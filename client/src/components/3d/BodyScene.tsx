@@ -589,7 +589,7 @@ function AnatomicalPlate({
       />
       <Edges
         scale={1.012}
-        color={active ? "#ffffff" : "#0d1410"}
+        color={active ? "#ffffff" : "#f4ecdd"}
         threshold={15}
         transparent
         opacity={active ? 0.96 : 0.60}
@@ -785,7 +785,7 @@ function MuscleFiberDetail({ selected }: { selected: MuscleId }) {
   const strip = (key: string, position: [number, number, number], scale: [number, number, number], rotation = 0, region: MuscleId = "chest", opacity = 0.2) => (
     <mesh key={key} position={position} rotation={[0, 0, rotation]} scale={scale}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshBasicMaterial color={selected === region ? "#dfffa8" : "#a6d9ff"} transparent opacity={selected === region ? Math.min(opacity + 0.16, 0.42) : opacity * 0.72} />
+      <meshBasicMaterial color={selected === region ? "#dfffa8" : "#c9ad7e"} transparent opacity={selected === region ? Math.min(opacity + 0.16, 0.42) : opacity * 0.72} />
     </mesh>
   );
   return (
@@ -805,7 +805,7 @@ function MannequinMaterial() {
   return (
     <meshStandardMaterial
       color="#121714"
-      emissive="#090d0a"
+      emissive="#ece1cc"
       emissiveIntensity={0.35}
       roughness={0.62}
       metalness={0.22}
@@ -1323,8 +1323,8 @@ function SceneInner({ view, autoRotate, reduceMotion, selected, onSelected, isMo
 
   return (
     <>
-      <color attach="background" args={["#070908"]} />
-      <fog attach="fog" args={["#070908", 6.0, isMobile ? 18.0 : 12.0]} />
+      <color attach="background" args={["#1e130c"]} />
+      <fog attach="fog" args={["#1e130c", 6.0, isMobile ? 18.0 : 12.0]} />
       <ambientLight intensity={1.8} color="#d5e8d8" />
       <directionalLight
         position={[3.8, 5.2, 4]}
@@ -1340,7 +1340,7 @@ function SceneInner({ view, autoRotate, reduceMotion, selected, onSelected, isMo
         <HumanBody key={recoveryTick} selected={selected} hovered={hovered} onHover={setHovered} onSelect={onSelected} />
       </group>
       {!reduceMotion && (
-        <Sparkles count={28} scale={[5.7, 8.7, 4.2]} size={1.2} speed={0.22} color="#c6ff3d" opacity={0.22} />
+        <Sparkles count={28} scale={[5.7, 8.7, 4.2]} size={1.2} speed={0.22} color="#c9ad7e" opacity={0.22} />
       )}
       <mesh position={[0, -3.5, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <circleGeometry args={[2.38, 48]} />
@@ -1409,7 +1409,7 @@ export function BodyScene({ selected, onSelected }: BodySceneProps) {
         </span>
       </div>
 
-      <div className="absolute top-12 left-4 z-10 pointer-events-none bg-[#080d0a]/90 backdrop-blur-md border border-white/10 rounded-lg px-2.5 py-1.5 flex items-center gap-2 shadow-lg">
+      <div className="absolute top-12 left-4 z-10 pointer-events-none bg-[#ece1cc]/90 backdrop-blur-md border border-white/10 rounded-lg px-2.5 py-1.5 flex items-center gap-2 shadow-lg">
         <span
           className="w-2 h-2 rounded-full animate-pulse flex-shrink-0"
           style={{ background: recovery.color, boxShadow: `0 0 8px ${recovery.color}` }}
@@ -1427,7 +1427,7 @@ export function BodyScene({ selected, onSelected }: BodySceneProps) {
         </div>
       </div>
 
-      <div className="absolute top-12 right-4 z-10 hidden sm:flex items-center gap-3 bg-[#080d0a]/85 backdrop-blur-md border border-white/10 rounded-lg px-2.5 py-1.5 text-[10px] font-mono text-[#8b9c8a] shadow-lg">
+      <div className="absolute top-12 right-4 z-10 hidden sm:flex items-center gap-3 bg-[#ece1cc]/85 backdrop-blur-md border border-white/10 rounded-lg px-2.5 py-1.5 text-[10px] font-mono text-[#8b9c8a] shadow-lg">
         <span className="flex items-center gap-1">
           <span className="w-2 h-2 rounded-full bg-[#22c55e]" /> Ready
         </span>

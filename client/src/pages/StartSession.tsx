@@ -140,7 +140,7 @@ export default function StartSession() {
             {/* LIVE WORKOUT SESSION EXERCISE TABLE WITH VIDEO BUTTONS */}
             <div className="mt-6 border-t border-[rgba(237,244,233,0.08)] pt-4">
               <div className="flex items-center justify-between mb-3">
-                <span className="panel-label flex items-center gap-1.5 text-[#c6ff3d]">
+                <span className="panel-label flex items-center gap-1.5 text-[#c9ad7e]">
                   <Zap size={13} /> Active Session Workout Table
                 </span>
                 <span className="text-[10px] font-mono text-[#8b9c8a]">
@@ -152,10 +152,10 @@ export default function StartSession() {
                 {sessionWorkouts.map((workout, idx) => (
                   <div
                     key={workout.id}
-                    className="bg-[#0b120e] border border-[rgba(237,244,233,0.09)] hover:border-[#c6ff3d]/40 rounded-lg p-3 flex items-center justify-between gap-3 transition-colors"
+                    className="bg-[#f0e6d3] border border-[rgba(237,244,233,0.09)] hover:border-[#c9ad7e]/40 rounded-lg p-3 flex items-center justify-between gap-3 transition-colors"
                   >
                     <div className="flex items-center gap-3">
-                      <span className="font-mono text-[#c6ff3d] text-xs font-bold w-5">
+                      <span className="font-mono text-[#c9ad7e] text-xs font-bold w-5">
                         0{idx + 1}
                       </span>
                       <div>
@@ -170,7 +170,7 @@ export default function StartSession() {
                     <button
                       type="button"
                       onClick={() => setSelectedVideo(workout)}
-                      className="px-3 py-1.5 bg-[#c6ff3d]/15 hover:bg-[#c6ff3d] border border-[#c6ff3d] text-[#c6ff3d] hover:text-[#080c0a] rounded font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_10px_rgba(198,255,61,0.25)] hover:shadow-[0_0_15px_rgba(198,255,61,0.6)] cursor-pointer transition-all active:scale-95"
+                      className="px-3 py-1.5 bg-[#c9ad7e]/15 hover:bg-[#c9ad7e] border border-[#c9ad7e] text-[#c9ad7e] hover:text-[#ece1cc] rounded font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_10px_rgba(231,208,166,0.25)] hover:shadow-[0_0_15px_rgba(231,208,166,0.6)] cursor-pointer transition-all active:scale-95"
                     >
                       <Play size={11} fill="currentColor" /> Play Video
                     </button>

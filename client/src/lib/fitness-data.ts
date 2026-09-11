@@ -376,9 +376,9 @@ export const muscleLibrary: Record<MuscleId, MuscleInfo> = new Proxy(
 );
 
 export const macroData = [
-  { label: "Protein", value: 142, goal: 180, unit: "g", color: "#C6FF3D" },
-  { label: "Carbs", value: 214, goal: 280, unit: "g", color: "#A6D9FF" },
-  { label: "Fat", value: 58, goal: 72, unit: "g", color: "#E7C6FF" },
+  { label: "Protein", value: 142, goal: 180, unit: "g", color: "#c9ad7e" },
+  { label: "Carbs", value: 214, goal: 280, unit: "g", color: "#c9ad7e" },
+  { label: "Fat", value: 58, goal: 72, unit: "g", color: "#c9ad7e" },
 ];
 
 export const weeklySessions = [

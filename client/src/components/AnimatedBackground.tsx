@@ -1,13 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 
 export function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [motionIntensity, setMotionIntensity] = useState<"subtle" | "active">("subtle");
   const { theme } = useTheme();
 
   useEffect(() => {
-    if (theme !== "dark") return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -18,7 +16,6 @@ export function AnimatedBackground() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Particle nodes definition
     interface Particle {
       x: number;
       y: number;
@@ -31,25 +28,35 @@ export function AnimatedBackground() {
       pulseSpeed: number;
     }
 
-    const particleCount = Math.min(65, Math.floor((width * height) / 28000));
+    const particleCount = Math.min(55, Math.floor((width * height) / 32000));
     const particles: Particle[] = [];
 
-    const colors = [
-      "198, 255, 61",  // Neon Lime (#c6ff3d)
-      "166, 217, 255", // Electric Cyan (#a6d9ff)
-      "140, 215, 144", // Soft Mint (#8cd790)
-    ];
+    const isDark = theme === "dark";
+
+    // Palette:
+    // Dark mode: Beige background (#f5f0e6) with Sky Blue (#38bdf8), subtle Cream (#fdfbf7), and deep Navy (#0a192f)
+    // Light mode: Navy background (#0a192f) with Sky Blue (#38bdf8) and Off-White (#f8fafc)
+    const colors = isDark
+      ? [
+          "56, 189, 248",   // Sky Blue
+          "10, 25, 47",     // Navy
+          "180, 160, 140",  // Muted Beige
+        ]
+      : [
+          "56, 189, 248",   // Sky Blue
+          "248, 250, 252",  // Off-white
+          "14, 165, 233",   // Vivid Sky Blue
+        ];
 
     for (let i = 0; i < particleCount; i++) {
-      const isLime = Math.random() > 0.45;
-      const col = isLime ? colors[0] : Math.random() > 0.5 ? colors[1] : colors[2];
-      const baseA = Math.random() * 0.35 + 0.1;
+      const col = colors[Math.floor(Math.random() * colors.length)];
+      const baseA = Math.random() * 0.25 + 0.08;
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        size: Math.random() * 2.2 + 0.8,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        size: Math.random() * 2.0 + 0.8,
         color: col,
         alpha: baseA,
         baseAlpha: baseA,
@@ -57,7 +64,6 @@ export function AnimatedBackground() {
       });
     }
 
-    // Grid nodes
     let time = 0;
 
     const handleResize = () => {
@@ -67,11 +73,10 @@ export function AnimatedBackground() {
     };
     window.addEventListener("resize", handleResize);
 
-    // Main 60fps render loop
     const render = () => {
-      time += 0.006;
+      time += 0.005;
 
-      // 1. Base gradient background (Deep obsidian cybernetic space)
+      // 1. Base gradient background
       const bgGrad = ctx.createRadialGradient(
         width * 0.5,
         height * 0.4,
@@ -80,14 +85,23 @@ export function AnimatedBackground() {
         height * 0.5,
         width * 0.85
       );
-      bgGrad.addColorStop(0, "#0e1611");
-      bgGrad.addColorStop(0.5, "#080c0a");
-      bgGrad.addColorStop(1, "#040605");
+
+      if (isDark) {
+        // Dark Mode: Beige background
+        bgGrad.addColorStop(0, "#faf6ef");
+        bgGrad.addColorStop(0.5, "#f5f0e6");
+        bgGrad.addColorStop(1, "#ebdcc9");
+      } else {
+        // Light Mode: Navy Blue background
+        bgGrad.addColorStop(0, "#0e2444");
+        bgGrad.addColorStop(0.5, "#0a192f");
+        bgGrad.addColorStop(1, "#061020");
+      }
 
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, width, height);
 
-      // 2. Animated Glowing Ambient Flow Waves (Minimal 4K fluid curves)
+      // 2. Animated Ambient Flow Waves
       ctx.save();
       const waveCount = 3;
       for (let w = 0; w < waveCount; w++) {
@@ -97,9 +111,9 @@ export function AnimatedBackground() {
         ctx.moveTo(0, baseY);
 
         for (let x = 0; x <= width; x += 30) {
-          const sin1 = Math.sin(x * 0.0018 + time + waveOffset) * 45;
-          const sin2 = Math.sin(x * 0.0035 - time * 0.8 + waveOffset) * 22;
-          const cos1 = Math.cos(x * 0.001 + time * 0.5) * 15;
+          const sin1 = Math.sin(x * 0.0018 + time + waveOffset) * 40;
+          const sin2 = Math.sin(x * 0.0035 - time * 0.8 + waveOffset) * 20;
+          const cos1 = Math.cos(x * 0.001 + time * 0.5) * 12;
           const y = baseY + sin1 + sin2 + cos1;
           ctx.lineTo(x, y);
         }
@@ -109,17 +123,14 @@ export function AnimatedBackground() {
         ctx.closePath();
 
         const grad = ctx.createLinearGradient(0, baseY - 60, width, baseY + 120);
-        if (w === 0) {
-          grad.addColorStop(0, "rgba(198, 255, 61, 0.025)");
-          grad.addColorStop(0.5, "rgba(166, 217, 255, 0.015)");
-          grad.addColorStop(1, "rgba(8, 12, 10, 0)");
-        } else if (w === 1) {
-          grad.addColorStop(0, "rgba(166, 217, 255, 0.02)");
-          grad.addColorStop(0.6, "rgba(198, 255, 61, 0.018)");
-          grad.addColorStop(1, "rgba(8, 12, 10, 0)");
+        if (isDark) {
+          grad.addColorStop(0, "rgba(56, 189, 248, 0.02)");
+          grad.addColorStop(0.5, "rgba(253, 251, 247, 0.03)");
+          grad.addColorStop(1, "rgba(245, 240, 230, 0)");
         } else {
-          grad.addColorStop(0, "rgba(198, 255, 61, 0.015)");
-          grad.addColorStop(1, "rgba(8, 12, 10, 0)");
+          grad.addColorStop(0, "rgba(56, 189, 248, 0.04)");
+          grad.addColorStop(0.5, "rgba(14, 165, 233, 0.025)");
+          grad.addColorStop(1, "rgba(10, 25, 47, 0)");
         }
 
         ctx.fillStyle = grad;
@@ -128,58 +139,55 @@ export function AnimatedBackground() {
         // Wave crest highlight line
         ctx.beginPath();
         for (let x = 0; x <= width; x += 30) {
-          const sin1 = Math.sin(x * 0.0018 + time + waveOffset) * 45;
-          const sin2 = Math.sin(x * 0.0035 - time * 0.8 + waveOffset) * 22;
-          const cos1 = Math.cos(x * 0.001 + time * 0.5) * 15;
+          const sin1 = Math.sin(x * 0.0018 + time + waveOffset) * 40;
+          const sin2 = Math.sin(x * 0.0035 - time * 0.8 + waveOffset) * 20;
+          const cos1 = Math.cos(x * 0.001 + time * 0.5) * 12;
           const y = baseY + sin1 + sin2 + cos1;
           if (x === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
         }
-        ctx.strokeStyle = w === 0 ? "rgba(198, 255, 61, 0.08)" : "rgba(166, 217, 255, 0.06)";
-        ctx.lineWidth = 1.2;
+        ctx.strokeStyle = isDark
+          ? "rgba(56, 189, 248, 0.06)"
+          : "rgba(56, 189, 248, 0.1)";
+        ctx.lineWidth = 1;
         ctx.stroke();
       }
       ctx.restore();
 
-      // 3. Cybernetic Particle Constellation Network
+      // 3. Particle Constellation Network
       ctx.save();
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        // Move
         p.x += p.vx;
         p.y += p.vy;
 
-        // Wrap edges
         if (p.x < 0) p.x = width;
         else if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
         else if (p.y > height) p.y = 0;
 
-        // Pulse alpha
-        p.alpha = p.baseAlpha + Math.sin(time * 3 + i) * 0.12;
+        p.alpha = p.baseAlpha + Math.sin(time * 3 + i) * 0.08;
 
-        // Draw particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${p.color}, ${Math.max(0.04, p.alpha)})`;
-        ctx.shadowColor = `rgba(${p.color}, 0.8)`;
-        ctx.shadowBlur = 8;
+        ctx.shadowColor = `rgba(${p.color}, 0.6)`;
+        ctx.shadowBlur = 6;
         ctx.fill();
 
-        // Connect nearby particles with subtle laser filaments
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dx = p.x - p2.x;
           const dy = p.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 130) {
-            const lineAlpha = (1 - dist / 130) * 0.08;
+          if (dist < 120) {
+            const lineAlpha = (1 - dist / 120) * 0.07;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(198, 255, 61, ${lineAlpha})`;
+            ctx.strokeStyle = `rgba(56, 189, 248, ${lineAlpha})`;
             ctx.lineWidth = 0.6;
             ctx.stroke();
           }
@@ -187,13 +195,15 @@ export function AnimatedBackground() {
       }
       ctx.restore();
 
-      // 4. Subtle Digital Grid Telemetry Overlay
+      // 4. Digital Grid Telemetry Overlay
       ctx.save();
-      ctx.strokeStyle = "rgba(166, 217, 255, 0.015)";
+      ctx.strokeStyle = isDark
+        ? "rgba(10, 25, 47, 0.03)"
+        : "rgba(56, 189, 248, 0.03)";
       ctx.lineWidth = 1;
       const gridSize = 64;
-      const offsetX = (time * 12) % gridSize;
-      const offsetY = (time * 6) % gridSize;
+      const offsetX = (time * 10) % gridSize;
+      const offsetY = (time * 5) % gridSize;
 
       for (let x = -gridSize + offsetX; x < width + gridSize; x += gridSize) {
         ctx.beginPath();
@@ -210,7 +220,7 @@ export function AnimatedBackground() {
       }
       ctx.restore();
 
-      // 5. Cinematic Vignette (darkens screen perimeter for ultimate focus)
+      // 5. Cinematic Edge Vignette
       const vignette = ctx.createRadialGradient(
         width * 0.5,
         height * 0.5,
@@ -219,8 +229,13 @@ export function AnimatedBackground() {
         height * 0.5,
         Math.max(width, height) * 0.75
       );
-      vignette.addColorStop(0, "rgba(0, 0, 0, 0)");
-      vignette.addColorStop(1, "rgba(4, 6, 5, 0.75)");
+      if (isDark) {
+        vignette.addColorStop(0, "rgba(245, 240, 230, 0)");
+        vignette.addColorStop(1, "rgba(215, 200, 180, 0.3)");
+      } else {
+        vignette.addColorStop(0, "rgba(10, 25, 47, 0)");
+        vignette.addColorStop(1, "rgba(6, 16, 32, 0.55)");
+      }
       ctx.fillStyle = vignette;
       ctx.fillRect(0, 0, width, height);
 
@@ -235,8 +250,6 @@ export function AnimatedBackground() {
     };
   }, [theme]);
 
-  if (theme !== "dark") return null;
-
   return (
     <div
       className="fixed inset-0 pointer-events-none overflow-hidden select-none"
@@ -247,7 +260,7 @@ export function AnimatedBackground() {
         ref={canvasRef}
         className="w-full h-full block"
         style={{
-          filter: "contrast(1.05) brightness(1.02)",
+          filter: "contrast(1.02) brightness(1.01)",
         }}
       />
     </div>

@@ -21,25 +21,26 @@
   flex-direction: column !important;
   justify-content: space-between !important;
   overflow: hidden;
-  border: 1px solid rgba(226, 245, 225, 0.12);
-  background: #101610;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
+  border: 1px solid var(--border) !important;
+  background: var(--card) !important;
+  box-shadow: var(--card-shadow);
+  border-radius: 6px;
+  color: var(--card-foreground) !important;
 }
 
 .exercise-card--compact.is-complete {
-  border-color: rgba(198, 255, 61, 0.42);
-  box-shadow: inset 3px 0 0 #c6ff3d, 0 4px 20px rgba(0, 0, 0, 0.25);
+  border-color: #38bdf8 !important;
+  box-shadow: inset 3px 0 0 #38bdf8, var(--card-shadow) !important;
 }
 
 .exercise-card--compact.is-active {
-  border-color: rgba(198, 255, 61, 0.8) !important;
-  box-shadow: 0 0 16px rgba(198, 255, 61, 0.22), inset 0 0 0 1px rgba(198, 255, 61, 0.4) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.25), inset 0 0 0 1px #38bdf8 !important;
 }
 
 .anchor-body .active-glow {
-  background: #c6ff3d !important;
-  box-shadow: 0 0 10px #c6ff3d, 0 0 18px rgba(198, 255, 61, 0.6) !important;
+  background: #38bdf8 !important;
+  box-shadow: 0 0 10px #38bdf8, 0 0 18px rgba(56, 189, 248, 0.6) !important;
 }
 
 .exercise-card--compact .exercise-preference-row {
@@ -48,8 +49,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
-  background: rgba(226, 245, 225, 0.1);
-  border-bottom: 1px solid rgba(226, 245, 225, 0.1);
+  background: var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .exercise-card--compact .exercise-preference-row button {
@@ -58,8 +59,8 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
-  color: #aab6a8;
-  background: #111811;
+  color: var(--card-foreground);
+  background: var(--card);
   border: 0;
   font: 700 7px "Space Mono", monospace;
   text-transform: uppercase;
@@ -68,8 +69,8 @@
 }
 
 .exercise-card--compact .exercise-preference-row button:hover {
-  color: #f6e59a;
-  background: #172016;
+  color: #0a192f;
+  background: #38bdf8;
 }
 
 .exercise-card--compact .exercise-card-face {
@@ -81,10 +82,11 @@
   justify-content: space-between;
   min-height: 0;
   padding: 12px 14px;
-  background: #101610 !important;
+  background: var(--card) !important;
   background-image: none !important;
   transform: none !important;
   backface-visibility: visible !important;
+  color: var(--card-foreground) !important;
 }
 
 .exercise-card--compact .exercise-card-face::before,
@@ -106,7 +108,7 @@
   margin: 2px 0 4px;
   font-size: 22px;
   line-height: 1;
-  color: #edf5e9;
+  color: var(--card-foreground);
 }
 
 .exercise-card--compact .exercise-prescription {
@@ -115,8 +117,8 @@
   gap: 6px;
   margin-top: 4px;
   padding: 8px 0;
-  border-top: 1px solid rgba(226, 245, 225, 0.09);
-  border-bottom: 1px solid rgba(226, 245, 225, 0.09);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .exercise-card--compact .exercise-prescription span,
@@ -127,7 +129,7 @@
 }
 
 .exercise-card--compact .exercise-prescription small {
-  color: #788376;
+  color: var(--muted-foreground);
   font: 700 6px "Space Mono", monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -135,7 +137,7 @@
 
 .exercise-card--compact .exercise-prescription b {
   overflow: hidden;
-  color: #e2f5e1;
+  color: var(--card-foreground);
   font: 700 9px "Space Mono", monospace;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -146,24 +148,24 @@
   width: 100%;
   padding: 2px 0;
   border: 0;
-  border-bottom: 1px solid rgba(226, 245, 225, 0.32);
+  border-bottom: 1px solid var(--border);
   border-radius: 0;
-  color: #e2f5e1;
+  color: var(--card-foreground);
   background: transparent;
   font: 700 10px "Space Mono", monospace;
   outline: none;
 }
 
 .exercise-card--compact .exercise-prescription input:focus {
-  border-color: #c6ff3d;
-  color: #c6ff3d;
+  border-color: #38bdf8;
+  color: #38bdf8;
 }
 
 .exercise-card--compact .coaching-toggle {
   justify-self: start;
   padding: 0;
   border: 0;
-  color: #98a395;
+  color: var(--muted-foreground);
   background: transparent;
   font: 700 7px "Space Mono", monospace;
   letter-spacing: 0.05em;
@@ -172,7 +174,7 @@
 }
 
 .exercise-card--compact .coaching-toggle:hover {
-  color: #c6ff3d;
+  color: #38bdf8;
 }
 
 .exercise-card--compact .exercise-coaching-panel {
@@ -189,11 +191,12 @@
 .exercise-card--compact .coaching-copy b,
 .exercise-card--compact .coaching-copy strong {
   font: 700 14px "Chakra Petch", sans-serif;
+  color: var(--card-foreground);
 }
 
 .exercise-card--compact .coaching-copy p {
   margin: 0;
-  color: #aab6a8;
+  color: var(--muted-foreground);
   font-size: 9px;
 }
 
@@ -201,9 +204,9 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: rgba(198, 255, 61, 0.2);
-  border: 1px solid #c6ff3d;
-  color: #c6ff3d;
+  background: #38bdf8;
+  border: 1px solid #38bdf8;
+  color: #0a192f;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -212,9 +215,8 @@
 }
 
 .exercise-card--compact .exercise-title-play-btn:hover {
-  background: #c6ff3d;
-  color: #080c0a;
-  box-shadow: 0 0 12px #c6ff3d;
+  background: #0ea5e9;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
   transform: scale(1.1);
 }
 
@@ -223,10 +225,10 @@
   min-height: 36px;
   margin: 8px 0 6px;
   padding: 6px 12px;
-  background: linear-gradient(135deg, rgba(198, 255, 61, 0.22) 0%, rgba(198, 255, 61, 0.08) 100%);
-  border: 1.5px solid #c6ff3d;
+  background: #38bdf8;
+  border: 1px solid #38bdf8;
   border-radius: 4px;
-  color: #c6ff3d;
+  color: #0a192f;
   font: 700 10px "Space Mono", monospace;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -235,14 +237,14 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow: 0 0 14px rgba(198, 255, 61, 0.25);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
   transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .exercise-card--compact .card-video-banner-btn:hover {
-  background: #c6ff3d;
-  color: #080c0a;
-  box-shadow: 0 0 22px rgba(198, 255, 61, 0.7);
+  background: #0ea5e9;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
   transform: translateY(-1px);
 }
 
@@ -250,22 +252,17 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: rgba(198, 255, 61, 0.3);
+  background: rgba(10, 25, 47, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: currentColor;
-}
-
-.exercise-card--compact .card-video-banner-btn:hover .video-play-pulse-icon {
-  background: #080c0a;
-  color: #c6ff3d;
+  color: #0a192f;
 }
 
 .exercise-card--compact .exercise-card-actions {
   display: grid;
   grid-template-columns: 0.9fr 1fr 0.9fr;
-  border-top: 1px solid rgba(226, 245, 225, 0.11);
+  border-top: 1px solid var(--border);
   margin-top: auto;
 }
 
@@ -274,8 +271,8 @@
   align-items: center;
   gap: 5px;
   padding: 0 8px;
-  border-right: 1px solid rgba(226, 245, 225, 0.11);
-  color: #9eab9c;
+  border-right: 1px solid var(--border);
+  color: var(--muted-foreground);
   font: 700 7px "Space Mono", monospace;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -284,28 +281,28 @@
 .exercise-card--compact .exercise-completion [data-slot="checkbox"] {
   width: 13px;
   height: 13px;
-  border-color: rgba(226, 245, 225, 0.45);
+  border-color: var(--border);
   border-radius: 2px;
-  background: #111811;
+  background: var(--card);
 }
 
 .exercise-card--compact .exercise-completion [data-state="checked"] {
-  border-color: #c6ff3d;
-  background: #c6ff3d;
-  color: #101610;
+  border-color: #38bdf8;
+  background: #38bdf8;
+  color: #0a192f;
 }
 
 .exercise-card--compact.is-complete .exercise-completion label {
-  color: #c6ff3d;
+  color: #38bdf8;
 }
 
 .exercise-card--compact .video-action-btn {
   min-height: 40px;
   padding: 0 8px;
   border: 0;
-  border-right: 1px solid rgba(226, 245, 225, 0.11);
-  background: rgba(198, 255, 61, 0.08);
-  color: #c6ff3d;
+  border-right: 1px solid var(--border);
+  background: #38bdf8;
+  color: #0a192f;
   font-size: 8px;
   cursor: pointer;
   display: flex;
@@ -319,31 +316,30 @@
 }
 
 .exercise-card--compact .video-action-btn:hover {
-  background: #c6ff3d;
-  color: #080c0a;
-  box-shadow: 0 0 10px rgba(198, 255, 61, 0.4);
+  background: #0ea5e9;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
 }
 
 .exercise-card--compact .stage-movement {
   min-height: 40px;
   padding: 0 8px;
   border: 0;
-  background: #101610;
+  background: var(--card);
   font-size: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  color: #d7e4d4;
+  color: var(--card-foreground);
   font-family: "Space Mono", monospace;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .exercise-card--compact .stage-movement:hover {
-  background: #172016;
-  color: #fff;
+  background: #38bdf8;
+  color: #0a192f;
 }
 
 @media (max-width: 1180px) {

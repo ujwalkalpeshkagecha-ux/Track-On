@@ -359,7 +359,7 @@ export default function LogFood() {
     <WorkflowLayout title="Nutrition Lab">
       <div className="w-full space-y-5">
         {/* 1. MINIMALIST MACRO HUD (CLEAN & HIGH-LEVEL) */}
-        <div className="bg-[#0b110d] border border-white/10 rounded-3xl p-5 shadow-xl relative overflow-hidden">
+        <div className="bg-[var(--card)] border border-[var(--border)] rounded-3xl p-5 shadow-xl relative overflow-hidden">
           <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/5">
             <span className="text-xs font-mono font-bold text-white uppercase tracking-wider">
               Daily Intake
@@ -375,7 +375,7 @@ export default function LogFood() {
                 });
                 setTargetModalOpen(true);
               }}
-              className="px-3 py-1 bg-white/5 hover:bg-white/10 text-[#c6ff3d] border border-[#c6ff3d]/30 rounded-xl text-xs font-mono flex items-center gap-1.5 transition-all"
+              className="px-3 py-1 bg-[#38bdf8]/10 hover:bg-[#38bdf8]/20 text-[#38bdf8] border border-[#38bdf8]/30 rounded-xl text-xs font-mono flex items-center gap-1.5 transition-all"
             >
               <Settings2 size={12} />
               <span>Edit Targets</span>
@@ -401,8 +401,8 @@ export default function LogFood() {
             </div>
 
             {/* Protein */}
-            <div className="bg-[#c6ff3d]/5 p-3 rounded-2xl border border-[#c6ff3d]/20">
-              <div className="flex items-center justify-between text-[11px] font-mono text-[#c6ff3d] mb-1">
+            <div className="bg-[#38bdf8]/5 p-3 rounded-2xl border border-[#38bdf8]/20">
+              <div className="flex items-center justify-between text-[11px] font-mono text-[#38bdf8] mb-1">
                 <span>Protein</span>
                 <Zap size={13} />
               </div>
@@ -411,7 +411,7 @@ export default function LogFood() {
               </div>
               <div className="w-full bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
                 <div
-                  className="bg-[#c6ff3d] h-full rounded-full transition-all duration-300"
+                  className="bg-[#38bdf8] h-full rounded-full transition-all duration-300"
                   style={{ width: `${Math.min(100, (totalP / targetProtein) * 100)}%` }}
                 />
               </div>
@@ -463,7 +463,7 @@ export default function LogFood() {
                 onClick={() => setSelectedSlot(slot)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all whitespace-nowrap border ${
                   selectedSlot === slot
-                    ? "bg-[#c6ff3d] text-black font-bold border-[#c6ff3d]"
+                    ? "bg-[#38bdf8] text-[#0a192f] font-bold border-[#38bdf8]"
                     : "bg-white/[0.03] border-white/10 text-[#8b9c8a] hover:text-white"
                 }`}
               >
@@ -490,7 +490,7 @@ export default function LogFood() {
               onClick={() => setActiveTab("quick_search")}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 border ${
                 activeTab === "quick_search"
-                  ? "bg-[#c6ff3d]/15 border-[#c6ff3d] text-[#c6ff3d]"
+                  ? "bg-[#38bdf8]/15 border-[#38bdf8] text-[#38bdf8]"
                   : "bg-white/[0.02] border-white/10 text-[#8b9c8a] hover:text-white"
               }`}
             >
@@ -503,7 +503,7 @@ export default function LogFood() {
               onClick={() => setActiveTab("custom_builder")}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 border ${
                 activeTab === "custom_builder"
-                  ? "bg-[#c6ff3d]/15 border-[#c6ff3d] text-[#c6ff3d]"
+                  ? "bg-[#38bdf8]/15 border-[#38bdf8] text-[#38bdf8]"
                   : "bg-white/[0.02] border-white/10 text-[#8b9c8a] hover:text-white"
               }`}
             >
@@ -515,7 +515,7 @@ export default function LogFood() {
           <button
             type="button"
             onClick={() => setCustomItemModalOpen(true)}
-            className="px-2.5 py-1.5 bg-[#c6ff3d]/10 hover:bg-[#c6ff3d] text-[#c6ff3d] hover:text-black border border-[#c6ff3d]/30 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1"
+            className="px-2.5 py-1.5 bg-[#38bdf8]/10 hover:bg-[#38bdf8] text-[#38bdf8] hover:text-[#0a192f] border border-[#38bdf8]/30 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1"
           >
             <Plus size={12} />
             <span>Custom Item</span>
@@ -535,7 +535,7 @@ export default function LogFood() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search Indian foods (Roti, Dal, Paneer, Chicken, Sattu, Biryani)..."
-                  className="w-full bg-[#0b110d] border border-white/10 focus:border-[#c6ff3d] rounded-2xl pl-9 pr-4 py-2 text-xs text-white placeholder:text-[#5a6b58] outline-none"
+                  className="w-full bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] focus:border-[#38bdf8] rounded-2xl pl-9 pr-4 py-2 text-xs placeholder:text-[var(--muted-foreground)] outline-none"
                 />
               </div>
 
@@ -553,7 +553,7 @@ export default function LogFood() {
                     onClick={() => setCategoryFilter(c.id)}
                     className={`px-2.5 py-1 rounded-xl text-[11px] font-mono transition-all border ${
                       categoryFilter === c.id
-                        ? "bg-[#c6ff3d]/20 border-[#c6ff3d] text-[#c6ff3d] font-bold"
+                        ? "bg-[#38bdf8]/20 border-[#38bdf8] text-[#38bdf8] font-bold"
                         : "bg-white/[0.02] border-white/10 text-[#8b9c8a] hover:text-white"
                     }`}
                   >
@@ -572,7 +572,7 @@ export default function LogFood() {
                       onClick={() => setPicked(item)}
                       className={`p-2.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
                         isSelected
-                          ? "bg-[#c6ff3d]/15 border-[#c6ff3d]"
+                          ? "bg-[#38bdf8]/15 border-[#38bdf8]"
                           : "bg-[#0b110d] border-white/5 hover:border-white/20"
                       }`}
                     >
@@ -587,7 +587,7 @@ export default function LogFood() {
                       <div className="text-right flex items-center gap-2">
                         <div>
                           <b className="text-xs text-white block">{item.kcal} kcal</b>
-                          <span className="text-[10px] font-mono text-[#c6ff3d]">{item.p}g P</span>
+                          <span className="text-[10px] font-mono text-[#38bdf8]">{item.p}g P</span>
                         </div>
                         <ChevronRight size={13} className="text-[#8b9c8a]" />
                       </div>
@@ -599,13 +599,13 @@ export default function LogFood() {
 
             {/* Right: Portion & 1-Click Log (5 Cols) */}
             <div className="lg:col-span-5 space-y-4">
-              <div className="bg-[#0b110d] border border-[#c6ff3d]/30 rounded-3xl p-4 space-y-3.5">
+              <div className="bg-[var(--card)] border border-[#38bdf8]/30 rounded-3xl p-4 space-y-3.5">
                 <div>
-                  <span className="text-[10px] font-mono text-[#c6ff3d] uppercase tracking-wider block">
+                  <span className="text-[10px] font-mono text-[#38bdf8] uppercase tracking-wider block">
                     Selected Item
                   </span>
-                  <h3 className="text-sm font-extrabold text-white mt-0.5">{picked.name}</h3>
-                  <span className="text-[10px] font-mono text-[#8b9c8a]">{picked.servingSize}</span>
+                  <h3 className="text-sm font-extrabold text-[var(--card-foreground)] mt-0.5">{picked.name}</h3>
+                  <span className="text-[10px] font-mono text-[var(--muted-foreground)]">{picked.servingSize}</span>
                 </div>
 
                 {/* Portion Multipliers */}
@@ -617,7 +617,7 @@ export default function LogFood() {
                       onClick={() => setPortionMultiplier(m)}
                       className={`py-1.5 rounded-xl text-xs font-mono font-bold transition-all border ${
                         portionMultiplier === m
-                          ? "bg-[#c6ff3d] text-black border-[#c6ff3d]"
+                          ? "bg-[#38bdf8] text-[#0a192f] border-[#38bdf8]"
                           : "bg-white/5 text-[#8b9c8a] border-white/10 hover:text-white"
                       }`}
                     >
@@ -627,18 +627,18 @@ export default function LogFood() {
                 </div>
 
                 {/* Macro Summary Strip */}
-                <div className="grid grid-cols-4 gap-1 bg-black/40 p-2.5 rounded-2xl border border-white/5 text-center text-[11px] font-mono">
-                  <div><span className="text-[#8b9c8a] block text-[9px]">KCAL</span><b className="text-white">{currentKcal}</b></div>
-                  <div><span className="text-[#c6ff3d] block text-[9px]">PROT</span><b className="text-[#c6ff3d]">{currentP}g</b></div>
-                  <div><span className="text-sky-400 block text-[9px]">CARB</span><b className="text-white">{currentC}g</b></div>
-                  <div><span className="text-rose-400 block text-[9px]">FAT</span><b className="text-white">{currentF}g</b></div>
+                <div className="grid grid-cols-4 gap-1 bg-[var(--card)]/60 p-2.5 rounded-2xl border border-[var(--border)] text-center text-[11px] font-mono">
+                  <div><span className="text-[var(--muted-foreground)] block text-[9px]">KCAL</span><b className="text-[var(--card-foreground)]">{currentKcal}</b></div>
+                  <div><span className="text-[#38bdf8] block text-[9px]">PROT</span><b className="text-[#38bdf8]">{currentP}g</b></div>
+                  <div><span className="text-sky-400 block text-[9px]">CARB</span><b className="text-[var(--card-foreground)]">{currentC}g</b></div>
+                  <div><span className="text-rose-400 block text-[9px]">FAT</span><b className="text-[var(--card-foreground)]">{currentF}g</b></div>
                 </div>
 
                 {/* 1-Click Log Button */}
                 <button
                   type="button"
                   onClick={handleLogSingle}
-                  className="w-full py-3 bg-[#c6ff3d] hover:bg-[#b0f028] text-black font-mono font-bold text-xs uppercase tracking-wider rounded-2xl transition-all flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(198,255,61,0.2)]"
+                  className="w-full py-3 bg-[#38bdf8] hover:bg-[#0ea5e9] text-[#0a192f] font-mono font-bold text-xs uppercase tracking-wider rounded-2xl transition-all flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(56,189,248,0.25)]"
                 >
                   <Plus size={15} />
                   <span>Log to {selectedSlot} ({currentKcal} kcal)</span>
@@ -653,8 +653,8 @@ export default function LogFood() {
           /* PANTRY MEAL BUILDER VIEW */
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
             {/* Left: Ingredients Picker (6 Cols) */}
-            <div className="lg:col-span-6 space-y-3 bg-[#0b110d] border border-white/10 rounded-3xl p-4">
-              <span className="text-xs font-mono font-bold text-white uppercase tracking-wider block">
+            <div className="lg:col-span-6 space-y-3 bg-[var(--card)] border border-[var(--border)] rounded-3xl p-4">
+              <span className="text-xs font-mono font-bold text-[var(--card-foreground)] uppercase tracking-wider block">
                 Select Raw Ingredients
               </span>
 
@@ -665,7 +665,7 @@ export default function LogFood() {
                   value={pantryQuery}
                   onChange={(e) => setPantryQuery(e.target.value)}
                   placeholder="Filter ingredients (Oats, Eggs, Chicken, Milk, Rice)..."
-                  className="w-full bg-[#080d09] border border-white/10 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white outline-none"
+                  className="w-full bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] focus:border-[#38bdf8] rounded-xl pl-8 pr-3 py-1.5 text-xs outline-none"
                 />
               </div>
 
@@ -681,28 +681,28 @@ export default function LogFood() {
                       ]);
                       toast.info(`Added ${ing.name}`);
                     }}
-                    className="p-2 rounded-xl bg-black/40 border border-white/5 hover:border-[#c6ff3d]/40 transition-all cursor-pointer flex items-center justify-between text-xs"
+                    className="p-2 rounded-xl bg-[var(--card)]/70 border border-[var(--border)] hover:border-[#38bdf8]/50 transition-all cursor-pointer flex items-center justify-between text-xs"
                   >
                     <div>
-                      <b className="text-white block">{ing.name}</b>
-                      <span className="text-[10px] font-mono text-[#5a6b58]">
+                      <b className="text-[var(--card-foreground)] block">{ing.name}</b>
+                      <span className="text-[10px] font-mono text-[var(--muted-foreground)]">
                         Per 100g: {ing.kcalPer100g} kcal • {ing.pPer100g}g P
                       </span>
                     </div>
-                    <Plus size={14} className="text-[#c6ff3d]" />
+                    <Plus size={14} className="text-[#38bdf8]" />
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Right: Recipe Assembler (6 Cols) */}
-            <div className="lg:col-span-6 space-y-3 bg-[#0b110d] border border-[#c6ff3d]/30 rounded-3xl p-4">
+            <div className="lg:col-span-6 space-y-3 bg-[var(--card)] border border-[#38bdf8]/30 rounded-3xl p-4">
               <input
                 type="text"
                 value={builderMealName}
                 onChange={(e) => setBuilderMealName(e.target.value)}
                 placeholder="Meal Name (e.g. Power Oats Bowl)"
-                className="w-full bg-transparent border-b border-white/20 focus:border-[#c6ff3d] pb-1 text-sm font-bold text-white outline-none"
+                className="w-full bg-transparent border-b border-[var(--border)] focus:border-[#38bdf8] pb-1 text-sm font-bold text-[var(--card-foreground)] outline-none"
               />
 
               <div className="space-y-1.5 max-h-[180px] overflow-y-auto pr-1">
@@ -712,7 +712,7 @@ export default function LogFood() {
                     <div key={item.id} className="p-2 rounded-xl bg-black/40 border border-white/5 flex items-center justify-between text-xs">
                       <div>
                         <b className="text-white block">{item.ingredient.name}</b>
-                        <span className="text-[10px] font-mono text-[#c6ff3d]">{m.kcal} kcal • {m.p}g P</span>
+                        <span className="text-[10px] font-mono text-[#38bdf8]">{m.kcal} kcal • {m.p}g P</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <input
@@ -724,7 +724,7 @@ export default function LogFood() {
                               prev.map((it, i) => (i === idx ? { ...it, amount: val } : it))
                             );
                           }}
-                          className="w-12 text-center bg-[#080d09] border border-white/10 rounded px-1 text-xs text-white font-mono"
+                          className="w-12 text-center bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded px-1 text-xs font-mono"
                         />
                         <span className="text-[10px] font-mono text-[#8b9c8a]">{item.unit}</span>
                         <button
@@ -741,17 +741,17 @@ export default function LogFood() {
               </div>
 
               {/* Total Macros */}
-              <div className="grid grid-cols-4 gap-1 bg-black/50 p-2 rounded-xl border border-white/5 text-center text-[10px] font-mono">
-                <div><span className="text-[#8b9c8a] block">KCAL</span><b className="text-white">{builderTotals.kcal}</b></div>
-                <div><span className="text-[#c6ff3d] block">PROT</span><b className="text-[#c6ff3d]">{builderTotals.p}g</b></div>
-                <div><span className="text-sky-400 block">CARB</span><b className="text-white">{builderTotals.c}g</b></div>
-                <div><span className="text-rose-400 block">FAT</span><b className="text-white">{builderTotals.f}g</b></div>
+              <div className="grid grid-cols-4 gap-1 bg-[var(--card)]/60 p-2 rounded-xl border border-[var(--border)] text-center text-[10px] font-mono">
+                <div><span className="text-[var(--muted-foreground)] block">KCAL</span><b className="text-[var(--card-foreground)]">{builderTotals.kcal}</b></div>
+                <div><span className="text-[#38bdf8] block">PROT</span><b className="text-[#38bdf8]">{builderTotals.p}g</b></div>
+                <div><span className="text-sky-400 block">CARB</span><b className="text-[var(--card-foreground)]">{builderTotals.c}g</b></div>
+                <div><span className="text-rose-400 block">FAT</span><b className="text-[var(--card-foreground)]">{builderTotals.f}g</b></div>
               </div>
 
               <button
                 type="button"
                 onClick={handleLogBuiltMeal}
-                className="w-full py-2.5 bg-[#c6ff3d] text-black font-mono font-bold text-xs rounded-xl uppercase tracking-wider"
+                className="w-full py-2.5 bg-[#38bdf8] hover:bg-[#0ea5e9] text-[#0a192f] font-mono font-bold text-xs rounded-xl uppercase tracking-wider transition-all"
               >
                 Log to {selectedSlot}
               </button>
@@ -762,13 +762,13 @@ export default function LogFood() {
 
       {/* --- MODAL 1: TARGETS & DIET PRESETS --- */}
       <Dialog open={targetModalOpen} onOpenChange={setTargetModalOpen}>
-        <DialogContent className="max-w-md bg-[#0c120e] border border-[#c6ff3d]/30 text-white rounded-3xl p-5 shadow-2xl">
+        <DialogContent className="max-w-md bg-[var(--card)] border border-[#38bdf8]/30 text-[var(--card-foreground)] rounded-3xl p-5 shadow-2xl">
           <DialogHeader>
-            <DialogTitle className="text-base font-bold text-white flex items-center gap-2">
-              <Sliders size={16} className="text-[#c6ff3d]" />
+            <DialogTitle className="text-base font-bold text-[var(--card-foreground)] flex items-center gap-2">
+              <Sliders size={16} className="text-[#38bdf8]" />
               <span>Macro Targets & Strategy</span>
             </DialogTitle>
-            <DialogDescription className="text-xs text-[#8b9c8a]">
+            <DialogDescription className="text-xs text-[var(--muted-foreground)]">
               Choose a strategy preset or adjust grams directly.
             </DialogDescription>
           </DialogHeader>
@@ -786,7 +786,7 @@ export default function LogFood() {
                   key={s.id}
                   type="button"
                   onClick={() => handleApplyDietPreset(s.id)}
-                  className="p-2 rounded-xl bg-white/5 hover:bg-[#c6ff3d]/15 border border-white/10 text-xs font-mono font-bold text-center"
+                  className="p-2 rounded-xl bg-[var(--card)]/70 hover:bg-[#38bdf8]/15 border border-[var(--border)] text-[var(--card-foreground)] text-xs font-mono font-bold text-center"
                 >
                   {s.label}
                 </button>
@@ -796,21 +796,21 @@ export default function LogFood() {
             {/* Inputs */}
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <label className="text-[10px] font-mono text-amber-400 block mb-1">Calories (kcal)</label>
+                <label className="text-[10px] font-mono text-[var(--muted-foreground)] block mb-1">Calories (kcal)</label>
                 <input
                   type="number"
                   value={draftTarget.goalKcal}
                   onChange={(e) => setDraftTarget({ ...draftTarget, goalKcal: Number(e.target.value) })}
-                  className="w-full bg-[#080d09] border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white outline-none"
+                  className="w-full bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] focus:border-[#38bdf8] rounded-xl px-2.5 py-1.5 text-xs outline-none"
                 />
               </div>
               <div>
-                <label className="text-[10px] font-mono text-[#c6ff3d] block mb-1">Protein (g)</label>
+                <label className="text-[10px] font-mono text-[#38bdf8] block mb-1">Protein (g)</label>
                 <input
                   type="number"
                   value={draftTarget.goalProtein}
                   onChange={(e) => setDraftTarget({ ...draftTarget, goalProtein: Number(e.target.value) })}
-                  className="w-full bg-[#080d09] border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white outline-none"
+                  className="w-full bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] focus:border-[#38bdf8] rounded-xl px-2.5 py-1.5 text-xs outline-none"
                 />
               </div>
               <div>
@@ -819,7 +819,7 @@ export default function LogFood() {
                   type="number"
                   value={draftTarget.goalCarbs}
                   onChange={(e) => setDraftTarget({ ...draftTarget, goalCarbs: Number(e.target.value) })}
-                  className="w-full bg-[#080d09] border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white outline-none"
+                  className="w-full bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] focus:border-[#38bdf8] rounded-xl px-2.5 py-1.5 text-xs outline-none"
                 />
               </div>
               <div>
@@ -828,7 +828,7 @@ export default function LogFood() {
                   type="number"
                   value={draftTarget.goalFat}
                   onChange={(e) => setDraftTarget({ ...draftTarget, goalFat: Number(e.target.value) })}
-                  className="w-full bg-[#080d09] border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white outline-none"
+                  className="w-full bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] focus:border-[#38bdf8] rounded-xl px-2.5 py-1.5 text-xs outline-none"
                 />
               </div>
             </div>
@@ -836,7 +836,7 @@ export default function LogFood() {
             <button
               type="button"
               onClick={handleSaveTargets}
-              className="w-full py-2.5 bg-[#c6ff3d] text-black font-mono font-bold text-xs uppercase rounded-xl"
+              className="w-full py-2.5 bg-[#38bdf8] hover:bg-[#0ea5e9] text-[#0a192f] font-mono font-bold text-xs uppercase rounded-xl transition-all"
             >
               Save Targets
             </button>
@@ -846,43 +846,43 @@ export default function LogFood() {
 
       {/* --- MODAL 2: CUSTOM SINGLE FOOD ITEM --- */}
       <Dialog open={customItemModalOpen} onOpenChange={setCustomItemModalOpen}>
-        <DialogContent className="max-w-sm bg-[#0c120e] border border-[#c6ff3d]/30 text-white rounded-3xl p-5 shadow-2xl">
+        <DialogContent className="max-w-sm bg-[var(--card)] border border-[#38bdf8]/30 text-[var(--card-foreground)] rounded-3xl p-5 shadow-2xl">
           <DialogHeader>
-            <DialogTitle className="text-base font-bold text-white flex items-center gap-2">
-              <Plus size={16} className="text-[#c6ff3d]" />
+            <DialogTitle className="text-base font-bold text-[var(--card-foreground)] flex items-center gap-2">
+              <Plus size={16} className="text-[#38bdf8]" />
               <span>Add Custom Food</span>
             </DialogTitle>
           </DialogHeader>
 
           <div className="space-y-2.5 mt-2">
             <div>
-              <label className="text-[10px] font-mono text-[#8b9c8a] block mb-1">Item Name</label>
+              <label className="text-[10px] font-mono text-[var(--muted-foreground)] block mb-1">Item Name</label>
               <input
                 type="text"
                 value={draftCustom.name}
                 onChange={(e) => setDraftCustom({ ...draftCustom, name: e.target.value })}
                 placeholder="e.g. Sattu Drink"
-                className="w-full bg-[#080d09] border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white outline-none"
+                className="w-full bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] focus:border-[#38bdf8] rounded-xl px-2.5 py-1.5 text-xs outline-none"
               />
             </div>
 
             <div className="grid grid-cols-4 gap-1.5">
               <div>
-                <label className="text-[9px] font-mono text-amber-400 block mb-0.5">Kcal</label>
+                <label className="text-[9px] font-mono text-[var(--muted-foreground)] block mb-0.5">Kcal</label>
                 <input
                   type="number"
                   value={draftCustom.kcal}
                   onChange={(e) => setDraftCustom({ ...draftCustom, kcal: e.target.value })}
-                  className="w-full bg-[#080d09] border border-white/10 rounded-lg px-2 py-1 text-xs text-white"
+                  className="w-full bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-lg px-2 py-1 text-xs"
                 />
               </div>
               <div>
-                <label className="text-[9px] font-mono text-[#c6ff3d] block mb-0.5">Prot</label>
+                <label className="text-[9px] font-mono text-[#38bdf8] block mb-0.5">Prot</label>
                 <input
                   type="number"
                   value={draftCustom.p}
                   onChange={(e) => setDraftCustom({ ...draftCustom, p: e.target.value })}
-                  className="w-full bg-[#080d09] border border-white/10 rounded-lg px-2 py-1 text-xs text-white"
+                  className="w-full bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-lg px-2 py-1 text-xs"
                 />
               </div>
               <div>
@@ -891,7 +891,7 @@ export default function LogFood() {
                   type="number"
                   value={draftCustom.c}
                   onChange={(e) => setDraftCustom({ ...draftCustom, c: e.target.value })}
-                  className="w-full bg-[#080d09] border border-white/10 rounded-lg px-2 py-1 text-xs text-white"
+                  className="w-full bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-lg px-2 py-1 text-xs"
                 />
               </div>
               <div>
@@ -900,7 +900,7 @@ export default function LogFood() {
                   type="number"
                   value={draftCustom.f}
                   onChange={(e) => setDraftCustom({ ...draftCustom, f: e.target.value })}
-                  className="w-full bg-[#080d09] border border-white/10 rounded-lg px-2 py-1 text-xs text-white"
+                  className="w-full bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-lg px-2 py-1 text-xs"
                 />
               </div>
             </div>
@@ -908,7 +908,7 @@ export default function LogFood() {
             <button
               type="button"
               onClick={handleSaveCustomItem}
-              className="w-full py-2.5 bg-[#c6ff3d] text-black font-mono font-bold text-xs uppercase rounded-xl mt-1"
+              className="w-full py-2.5 bg-[#38bdf8] hover:bg-[#0ea5e9] text-[#0a192f] font-mono font-bold text-xs uppercase rounded-xl mt-1 transition-all"
             >
               Add Item
             </button>
@@ -918,10 +918,10 @@ export default function LogFood() {
 
       {/* --- MODAL 3: ADD MEAL SLOT --- */}
       <Dialog open={slotModalOpen} onOpenChange={setSlotModalOpen}>
-        <DialogContent className="max-w-sm bg-[#0c120e] border border-[#c6ff3d]/30 text-white rounded-3xl p-5 shadow-2xl">
+        <DialogContent className="max-w-sm bg-[var(--card)] border border-[#38bdf8]/30 text-[var(--card-foreground)] rounded-3xl p-5 shadow-2xl">
           <DialogHeader>
-            <DialogTitle className="text-base font-bold text-white flex items-center gap-2">
-              <Layers size={16} className="text-[#c6ff3d]" />
+            <DialogTitle className="text-base font-bold text-[var(--card-foreground)] flex items-center gap-2">
+              <Layers size={16} className="text-[#38bdf8]" />
               <span>Add Meal Category</span>
             </DialogTitle>
           </DialogHeader>
@@ -933,12 +933,12 @@ export default function LogFood() {
                 value={newSlotName}
                 onChange={(e) => setNewSlotName(e.target.value)}
                 placeholder="e.g. Midnight Snack"
-                className="flex-1 bg-[#080d09] border border-white/10 rounded-xl px-2.5 py-1.5 text-xs text-white outline-none"
+                className="flex-1 bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] focus:border-[#38bdf8] rounded-xl px-2.5 py-1.5 text-xs outline-none"
               />
               <button
                 type="button"
                 onClick={handleAddSlot}
-                className="px-3 py-1.5 bg-[#c6ff3d] text-black font-mono font-bold text-xs rounded-xl"
+                className="px-3 py-1.5 bg-[#38bdf8] hover:bg-[#0ea5e9] text-[#0a192f] font-mono font-bold text-xs rounded-xl transition-all"
               >
                 Add
               </button>
@@ -959,36 +959,36 @@ function CleanTimelineCard({
   onDelete: (id: string) => void;
 }) {
   return (
-    <div className="bg-[#0b110d] border border-white/10 rounded-3xl p-4 space-y-2.5">
+    <div className="bg-[var(--card)] border border-[var(--border)] rounded-3xl p-4 space-y-2.5">
       <div className="flex items-center justify-between pb-2 border-b border-white/5">
-        <span className="text-xs font-mono font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-          <Clock size={13} className="text-[#c6ff3d]" />
+        <span className="text-xs font-mono font-bold text-[var(--card-foreground)] uppercase tracking-wider flex items-center gap-1.5">
+          <Clock size={13} className="text-[#38bdf8]" />
           <span>Today's Log ({loggedEntries.length})</span>
         </span>
       </div>
 
       <div className="space-y-1.5 max-h-[160px] overflow-y-auto pr-1">
         {loggedEntries.length === 0 ? (
-          <div className="text-center py-4 text-[11px] font-mono text-[#5a6b58]">
+          <div className="text-center py-4 text-[11px] font-mono text-[var(--muted-foreground)]">
             No meals logged yet today.
           </div>
         ) : (
           loggedEntries.map((entry) => (
             <div
               key={entry.id}
-              className="p-2 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between text-xs"
+              className="p-2 rounded-xl bg-[var(--card)]/60 border border-[var(--border)] flex items-center justify-between text-xs"
             >
               <div>
-                <b className="text-white block">{entry.name}</b>
-                <span className="text-[10px] font-mono text-[#8b9c8a]">
+                <b className="text-[var(--card-foreground)] block">{entry.name}</b>
+                <span className="text-[10px] font-mono text-[var(--muted-foreground)]">
                   {entry.meal} • {entry.time}
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 <div className="text-right font-mono text-[11px]">
-                  <b className="text-white block">{entry.kcal} kcal</b>
-                  <span className="text-[#c6ff3d] text-[10px]">{entry.p}g P</span>
+                  <b className="text-[var(--card-foreground)] block">{entry.kcal} kcal</b>
+                  <span className="text-[#38bdf8] text-[10px]">{entry.p}g P</span>
                 </div>
                 <button
                   type="button"

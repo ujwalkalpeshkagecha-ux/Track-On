@@ -31,7 +31,7 @@ const activityOptions = [
 
 const experienceTierOptions = [
   { id: "beginner" as const, label: "Beginner", desc: "Learning proper exercise form, guided cues and basic lifts", icon: Dumbbell, color: "text-emerald-400" },
-  { id: "intermediate" as const, label: "Intermediate", desc: "Consistent training, progressive overload and volume", icon: Zap, color: "text-[#c6ff3d]" },
+  { id: "intermediate" as const, label: "Intermediate", desc: "Consistent training, progressive overload and volume", icon: Zap, color: "text-[#c9ad7e]" },
   { id: "advanced" as const, label: "Advanced Gym Rat", desc: "Biomechanics mastery, periodization and deep telemetry", icon: Flame, color: "text-amber-400" },
 ];
 
@@ -206,9 +206,9 @@ export default function Settings() {
   return (
     <WorkflowLayout title="Profile">
       {isOnboarding && (
-        <div className="bg-gradient-to-r from-[#c6ff3d]/20 via-[#c6ff3d]/10 to-transparent border border-[#c6ff3d]/40 rounded-2xl p-4 mb-6 flex items-center justify-between shadow-[0_0_30px_rgba(198,255,61,0.12)]">
+        <div className="bg-gradient-to-r from-[#c9ad7e]/20 via-[#c9ad7e]/10 to-transparent border border-[#c9ad7e]/40 rounded-2xl p-4 mb-6 flex items-center justify-between shadow-[0_0_30px_rgba(231,208,166,0.12)]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#c6ff3d] text-black flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-xl bg-[#c9ad7e] text-black flex items-center justify-center font-bold">
               <Sparkles size={20} />
             </div>
             <div>
@@ -216,7 +216,7 @@ export default function Settings() {
               <p className="text-xs text-[#8b9c8a] mt-0.5">Let's calibrate your daily biometrics and nutrition targets to personalize your command center.</p>
             </div>
           </div>
-          <span className="text-[10px] font-mono uppercase bg-[#c6ff3d]/20 text-[#c6ff3d] px-3 py-1 rounded-full border border-[#c6ff3d]/40 font-bold">
+          <span className="text-[10px] font-mono uppercase bg-[#c9ad7e]/20 text-[#c9ad7e] px-3 py-1 rounded-full border border-[#c9ad7e]/40 font-bold">
             Step 2 of 2
           </span>
         </div>
@@ -240,18 +240,18 @@ export default function Settings() {
             <span className="panel-label">Athlete Record</span>
             <div className="flex items-center gap-2">
               <strong>{athlete.name || form.name}</strong>
-              <span className="px-2 py-0.5 rounded-full bg-[#c6ff3d]/15 border border-[#c6ff3d]/30 text-[#c6ff3d] text-[10px] font-mono font-bold uppercase">
+              <span className="px-2 py-0.5 rounded-full bg-[#c9ad7e]/15 border border-[#c9ad7e]/30 text-[#c9ad7e] text-[10px] font-mono font-bold uppercase">
                 {experienceTier.replace("_", " ")}
               </span>
             </div>
             <p className="flex items-center gap-1.5 flex-wrap">
-              <span className="text-[#a6d9ff] font-medium">{athlete.location || "Detecting location..."}</span>
+              <span className="text-[#c9ad7e] font-medium">{athlete.location || "Detecting location..."}</span>
               <button
                 type="button"
                 onClick={handleAutoDetectLocation}
                 disabled={isLocating}
                 title="Detect GPS Location"
-                className="p-1 rounded text-[#c6ff3d] hover:bg-[#c6ff3d]/10 transition-colors inline-flex items-center"
+                className="p-1 rounded text-[#c9ad7e] hover:bg-[#c9ad7e]/10 transition-colors inline-flex items-center"
               >
                 <MapPin size={11} className={isLocating ? "animate-pulse" : ""} />
               </button>
@@ -434,7 +434,7 @@ export default function Settings() {
                     type="button"
                     onClick={handleAutoDetectLocation}
                     disabled={isLocating}
-                    className="text-[#c6ff3d] hover:text-[#d4ff66] text-[10px] font-mono uppercase flex items-center gap-1 bg-[#c6ff3d]/10 px-2 py-0.5 rounded border border-[#c6ff3d]/30"
+                    className="text-[#c9ad7e] hover:text-[#d4ff66] text-[10px] font-mono uppercase flex items-center gap-1 bg-[#c9ad7e]/10 px-2 py-0.5 rounded border border-[#c9ad7e]/30"
                   >
                     <MapPin size={11} className={isLocating ? "animate-spin" : ""} />
                     {isLocating ? "Detecting..." : "Auto-Detect GPS"}
