@@ -487,6 +487,19 @@ export default function Landing() {
           </div>
         )}
 
+        {/* Unique-value trust badges: what sets FitTrack apart from other fitness apps */}
+        <div className="flex flex-wrap justify-center items-center gap-2.5 mb-10">
+          <span className="inline-flex items-center gap-1.5 bg-[#0c130e]/80 border border-[#c6ff3d]/30 text-[#c6ff3d] text-[10px] sm:text-[11px] font-mono uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-md">
+            <Activity size={12} /> No Install · Works Offline
+          </span>
+          <span className="inline-flex items-center gap-1.5 bg-[#0c130e]/80 border border-[#a6d9ff]/30 text-[#a6d9ff] text-[10px] sm:text-[11px] font-mono uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-md">
+            🍛 100+ Indian Foods · Hindi Names
+          </span>
+          <span className="inline-flex items-center gap-1.5 bg-[#0c130e]/80 border border-white/15 text-[#d1e0cf] text-[10px] sm:text-[11px] font-mono uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-md">
+            <Dumbbell size={12} /> Live 3D Muscle Recovery
+          </span>
+        </div>
+
         {/* Live Motivating Quotes Ticker Centered */}
         <motion.div
           className="landing-quote-card mx-auto"
@@ -523,7 +536,7 @@ export default function Landing() {
               <Dumbbell size={20} />
             </div>
             <h3>Interactive Anatomy</h3>
-            <p>Select target muscle groups in full 3D and understand muscle activation pathways across comprehensive training movements.</p>
+            <p>Rotate a full 3D body, tap any muscle, and see its live recovery readiness — a science-based recovery curve most fitness apps do not offer.</p>
           </div>
 
           <div className="feature-pillar-card">
@@ -532,7 +545,7 @@ export default function Landing() {
               <Flame size={20} />
             </div>
             <h3>Smart Macro Targets</h3>
-            <p>Automatic energy and protein calibrations calculated for your exact weight, height, age, and training frequency.</p>
+            <p>Built around 100+ Indian foods with Hindi names and raw-ingredient macros, with automatic calorie and protein targets for your exact body and training.</p>
           </div>
 
           <div className="feature-pillar-card">
@@ -541,7 +554,7 @@ export default function Landing() {
               <Award size={20} />
             </div>
             <h3>GPS Logging and Badges</h3>
-            <p>Track outdoor routes with live GPS maps, build unbroken workout streaks, and unlock earned milestone achievements.</p>
+            <p>Track outdoor routes on live GPS maps that need no paid map key, build unbroken workout streaks, and unlock earned milestone achievements.</p>
           </div>
         </div>
       </main>

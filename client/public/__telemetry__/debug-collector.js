@@ -13,7 +13,7 @@
   "use strict";
 
   // Prevent double initialization
-  if ((window as any).__TELEMETRY_DEBUG_COLLECTOR__) return;
+  if (window.__TELEMETRY_DEBUG_COLLECTOR__) return;
 
   // ==========================================================================
   // Configuration

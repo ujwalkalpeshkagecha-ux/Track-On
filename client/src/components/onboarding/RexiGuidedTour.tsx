@@ -55,8 +55,8 @@ export const tourSteps: TourStep[] = [
     pageName: "Nutrition",
     category: "Step 4 of 5",
     speechText:
-      "Log your daily meals, search traditional Indian foods and global recipes, and monitor your calorie and protein goals.",
-    quickHighlight: "Log meals and track your daily nutrition progress.",
+      "Log your daily meals from 100+ traditional Indian foods with Hindi names, build meals from raw ingredients, and monitor your calorie and protein goals.",
+    quickHighlight: "Log Indian meals with Hindi names and track your daily nutrition.",
   },
   {
     stepIndex: 4,

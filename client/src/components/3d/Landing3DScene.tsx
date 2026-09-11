@@ -8,8 +8,8 @@ export function Landing3DScene() {
     const container = mountRef.current;
     if (!container) return;
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
+    let width = window.innerWidth || 1;
+    let height = window.innerHeight || 1;
 
     // 1. Three.js Scene, Camera & Renderer
     const scene = new THREE.Scene();
@@ -54,9 +54,11 @@ export function Landing3DScene() {
       const vFOV = (camera.fov * Math.PI) / 180;
       const visibleH = 2 * Math.tan(vFOV / 2) * camera.position.z;
       const visibleW = visibleH * camera.aspect;
-      // Generously cover entire screen with bleed
-      const planeW = Math.max(visibleW * 1.15, 24);
-      const planeH = Math.max(visibleH * 1.15, 14.5);
+      // Generously cover entire screen with bleed. Guard against NaN/Infinity
+      // (e.g. a 0x0 viewport at mount makes camera.aspect NaN, and Math.max
+      // propagates NaN into the geometry -> "Computed radius is NaN").
+      const planeW = Number.isFinite(visibleW) ? Math.max(visibleW * 1.15, 24) : 24;
+      const planeH = Number.isFinite(visibleH) ? Math.max(visibleH * 1.15, 14.5) : 14.5;
       return { planeW, planeH };
     };
 
@@ -166,8 +168,8 @@ export function Landing3DScene() {
 
     // Window resize handler
     const handleResize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
+      width = window.innerWidth || 1;
+      height = window.innerHeight || 1;
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
