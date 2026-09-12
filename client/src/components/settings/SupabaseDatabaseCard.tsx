@@ -237,7 +237,7 @@ CREATE POLICY "Streak records own data only" ON public.streak_records FOR ALL
   };
 
   return (
-    <section className="settings-section rounded-2xl bg-[#f6efe0]/60 border border-emerald-500/20 p-6 backdrop-blur-md">
+    <section className="settings-section rounded-2xl bg-[#1c140c] border border-emerald-500/25 p-6 backdrop-blur-md">
       <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-white/5">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">

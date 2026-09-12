@@ -326,15 +326,22 @@ export default function Landing() {
         const inputHash = await hashPassword(password);
 
         if (authMode === "signup") {
-          localStorage.setItem(credKey, inputHash);
-        } else {
-          if (storedHash && storedHash !== inputHash) {
-            toast.error("Incorrect password for this account.");
+          if (storedHash) {
+            toast.error("An account already exists for this email. Please sign in instead.");
             setIsSubmitting(false);
             return;
           }
+          localStorage.setItem(credKey, inputHash);
+        } else {
           if (!storedHash) {
-            localStorage.setItem(credKey, inputHash);
+            toast.error("No account found for this email. Please create an account first.");
+            setIsSubmitting(false);
+            return;
+          }
+          if (storedHash !== inputHash) {
+            toast.error("Incorrect password for this account.");
+            setIsSubmitting(false);
+            return;
           }
         }
       }

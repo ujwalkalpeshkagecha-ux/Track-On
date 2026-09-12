@@ -1,7 +1,7 @@
 ﻿import { ArrowRight, Utensils } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import { getAthleteProfile, getScopedKey } from "@/lib/user-store";
+import { getAthleteProfile, getScopedKey, getCalibrationSettings } from "@/lib/user-store";
 
 // =============================================================================
 // 1. WORKOUT RECOMMENDATION CARD
@@ -66,15 +66,19 @@ interface NutritionTarget {
 
 export function NutritionLedgerCard() {
   const [, setLocation] = useLocation();
+  // Targets come from the athlete's onboarding calibration so the dashboard,
+  // Log Food, and the onboarding plan all agree on the same numbers.
+  const calibration = getCalibrationSettings();
   const [data, setData] = useState<NutritionTarget>({
-    energy: { current: 0, target: 2400, unit: "kcal" },
-    protein: { current: 0, target: 150, unit: "g" },
-    carbs: { current: 0, target: 270, unit: "g" },
-    fats: { current: 0, target: 65, unit: "g" },
+    energy: { current: 0, target: calibration.goalKcal, unit: "kcal" },
+    protein: { current: 0, target: calibration.goalProtein, unit: "g" },
+    carbs: { current: 0, target: calibration.goalCarbs, unit: "g" },
+    fats: { current: 0, target: calibration.goalFat, unit: "g" },
   });
 
   useEffect(() => {
     try {
+      const cal = getCalibrationSettings();
       const todayKey = new Date().toISOString().split("T")[0];
       const scopedToday = localStorage.getItem(getScopedKey("fittrack_logged_nutrition_today"));
       const legacyToday = localStorage.getItem("fittrack_logged_nutrition_today");
@@ -105,10 +109,10 @@ export function NutritionLedgerCard() {
       }
 
       setData({
-        energy: { current: Math.round(currentCals), target: 2400, unit: "kcal" },
-        protein: { current: Math.round(currentProtein), target: 150, unit: "g" },
-        carbs: { current: Math.round(currentCarbs), target: 270, unit: "g" },
-        fats: { current: Math.round(currentFats), target: 65, unit: "g" },
+        energy: { current: Math.round(currentCals), target: cal.goalKcal, unit: "kcal" },
+        protein: { current: Math.round(currentProtein), target: cal.goalProtein, unit: "g" },
+        carbs: { current: Math.round(currentCarbs), target: cal.goalCarbs, unit: "g" },
+        fats: { current: Math.round(currentFats), target: cal.goalFat, unit: "g" },
       });
     } catch {
       // fallback

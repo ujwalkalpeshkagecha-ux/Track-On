@@ -310,9 +310,11 @@
 }
 
 .echo-msg-assistant .echo-msg-bubble {
-  background: var(--muted);
-  border: 1px solid var(--border);
-  color: var(--card-foreground);
+  /* Warm-toned premium bubble with light text so replies read clearly in both
+     themes (was var(--muted)/var(--card-foreground): near-black on near-black). */
+  background: linear-gradient(145deg, #2a1c13 0%, #38251a 100%);
+  border: 1px solid rgba(201, 173, 126, 0.22);
+  color: #f2e8d7;
   border-top-left-radius: 3px;
 }
 
@@ -378,8 +380,8 @@
   align-items: center;
   gap: 4px;
   padding: 10px 14px;
-  background: var(--muted);
-  border: 1px solid var(--border);
+  background: linear-gradient(145deg, #2a1c13 0%, #38251a 100%);
+  border: 1px solid rgba(201, 173, 126, 0.22);
   border-radius: 12px;
   border-top-left-radius: 3px;
   width: fit-content;
@@ -388,7 +390,7 @@
 .echo-typing-dot {
   width: 6px;
   height: 6px;
-  background: #38bdf8;
+  background: #c9ad7e;
   border-radius: 50%;
   animation: echoBlink 1.4s infinite ease-in-out both;
 }
@@ -555,25 +557,28 @@
 
 .echo-input-field {
   flex: 1;
-  background: var(--muted);
-  border: 1px solid var(--border);
+  /* Premium, calm warm-toned gradient — same in dark and light so typed text
+     is always high-contrast (was var(--muted)/var(--card-foreground): near-black
+     on near-black = invisible). */
+  background: linear-gradient(145deg, #2a1c13 0%, #3a2519 100%);
+  border: 1px solid rgba(201, 173, 126, 0.30);
   border-radius: 10px;
   padding: 8px 12px;
-  color: var(--card-foreground);
+  color: #f4ebdb;
   font-size: 0.82rem;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   font-family: inherit;
   resize: none;
 }
 
 .echo-input-field:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+  border-color: #c9ad7e;
+  box-shadow: 0 0 12px rgba(201, 173, 126, 0.28);
 }
 
 .echo-input-field::placeholder {
-  color: var(--muted-foreground);
+  color: #c3ac90;
 }
 
 .echo-send-btn {

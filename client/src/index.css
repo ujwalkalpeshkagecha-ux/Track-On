@@ -1851,7 +1851,8 @@ body :is(h1,h2,h3,h4,h5,h6,.workflow-brand,.header-wordmark,.brand-row strong),b
 
 @media (max-width: 860px) {
   .editorial-main-content {
-    padding: 24px 18px 48px;
+    /* Extra top padding so the greeting/timestamp clears the fixed menu button. */
+    padding: 60px 18px 48px;
   }
 }
 

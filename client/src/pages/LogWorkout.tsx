@@ -99,6 +99,10 @@ export default function LogWorkout() {
       recordLiveSetProgress(targetMuscleId, next.length, lifts.length, currentVolume);
       if (isCompleting) {
         playNotificationSound("chime");
+        try {
+          const info = getDynamicMuscleLibrary()[targetMuscleId];
+          toast.success(`Set logged — ${info?.label || "muscle"} recovery now ${info?.score ?? ""}% (fatigued)`);
+        } catch { /* ignore */ }
       }
       return next;
     });
@@ -191,7 +195,7 @@ export default function LogWorkout() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c9ad7e] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#c9ad7e]"></span>
                 </span>
-                <span className="text-[10px] font-mono text-[#edf4e9] uppercase tracking-wider">Live Work Output</span>
+                <span className="text-[10px] font-mono text-[#1c140c] uppercase tracking-wider">Live Work Output</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <svg className="w-24 h-5 text-[#c9ad7e]" viewBox="0 0 100 20" fill="none">
@@ -352,11 +356,11 @@ export default function LogWorkout() {
                     style={{ filter: "drop-shadow(0 0 6px rgba(231,208,166,0.6))" }}
                   />
                 </svg>
-                <span className="absolute text-xs font-bold font-mono text-[#edf4e9]">{completion}%</span>
+                <span className="absolute text-xs font-bold font-mono text-[#1c140c]">{completion}%</span>
               </div>
               <div>
-                <span className="text-[9px] uppercase tracking-wider text-[#8b9c8a] font-mono block">Progress</span>
-                <strong className="text-xs text-[#edf4e9] font-mono block">
+                <span className="text-[9px] uppercase tracking-wider text-[#6b5a44] font-mono block">Progress</span>
+                <strong className="text-xs text-[#1c140c] font-mono block">
                   {complete.length} of {lifts.length} sets completed
                 </strong>
                 <span className="text-[10px] text-[#c9ad7e] font-mono">

@@ -19,6 +19,7 @@ import {
 } from "@/lib/user-store";
 import { autoSyncAthleteLocation, requestDeviceLocation } from "@/lib/location-resolver";
 import { SupabaseDatabaseCard } from "@/components/settings/SupabaseDatabaseCard";
+import { AccountDataCard } from "@/components/settings/AccountDataCard";
 import "./CommandDeck.css";
 import "./ProfileInteractions.css";
 
@@ -398,6 +399,9 @@ export default function Settings() {
       <div className="mt-8 mb-6">
         <SupabaseDatabaseCard />
       </div>
+
+      {/* Account & Data management (sign out / delete account) */}
+      <AccountDataCard />
 
       {/* Edit Bio / Photo Dialog */}
       <Dialog open={profileOpen} onOpenChange={setProfileOpen}>

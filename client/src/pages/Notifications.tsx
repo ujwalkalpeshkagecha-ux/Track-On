@@ -199,7 +199,7 @@ export default function Notifications() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 w-full items-start">
         {/* Left Column: Notification Stream (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
-          <div className="bg-[#f0e6d3] border border-white/10 rounded-3xl p-5 shadow-xl">
+          <div className="bg-[#1c140c] border border-white/10 rounded-3xl p-5 shadow-xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/5">
               <div>
                 <span className="text-[10px] font-mono text-[#8b9c8a] uppercase tracking-wider block">
@@ -295,7 +295,7 @@ export default function Notifications() {
         {/* Right Column: Reminders Stack (5 cols) */}
         <div className="lg:col-span-5 space-y-5">
           {/* --- 1. HYDRATION REMINDER & ALARM CONSOLE (SIGNAL LIME THEME) --- */}
-          <div className="bg-[#f0e6d3] border border-[#c9ad7e]/30 rounded-3xl p-5 space-y-4 shadow-xl relative overflow-hidden">
+          <div className="bg-[#1c140c] border border-[#c9ad7e]/30 rounded-3xl p-5 space-y-4 shadow-xl relative overflow-hidden">
             {/* Top Accent line */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c9ad7e] via-[#c9ad7e]/50 to-transparent" />
 
@@ -482,7 +482,7 @@ export default function Notifications() {
           </div>
 
           {/* --- 2. WORKOUT REMINDER CONSOLE (CLEAN & NON-OVERLAPPING) --- */}
-          <div className="bg-[#f0e6d3] border border-white/10 rounded-3xl p-5 space-y-4 shadow-xl">
+          <div className="bg-[#1c140c] border border-white/10 rounded-3xl p-5 space-y-4 shadow-xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/5">
               <div className="flex items-center gap-2.5">
                 <div className="w-9 h-9 rounded-2xl bg-white/5 border border-white/10 text-[#c9ad7e] flex items-center justify-center">
@@ -611,8 +611,8 @@ function NotificationItem({ item, onRead }: { item: NotificationRecord; onRead?:
     <article 
       className={`p-3.5 rounded-2xl border transition-all flex items-start gap-3 relative ${
         item.read 
-          ? "bg-[#f0e6d3]/60 border-white/5 opacity-70" 
-          : "bg-[#f0e6d3] border-[#c9ad7e]/30 hover:border-[#c9ad7e]/60 cursor-pointer shadow-lg"
+          ? "bg-[#1c140c]/60 border-white/5 opacity-70" 
+          : "bg-[#1c140c] border-[#c9ad7e]/30 hover:border-[#c9ad7e]/60 cursor-pointer shadow-lg"
       }`} 
       onClick={onRead}
     >

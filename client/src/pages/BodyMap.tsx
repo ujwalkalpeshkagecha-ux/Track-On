@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useLocation } from "wouter";
 import { toast } from "sonner";
 import { Sidebar } from "@/components/navigation/Sidebar";
-import { BodyScene } from "@/components/3d/BodyScene";
+import { BodyMuscleMap } from "@/components/3d/BodyMuscleMap";
 import { MuscleInfo } from "@/components/3d/MuscleInfo";
 import { muscleLibrary, resetAllMuscleRecovery, type MuscleId } from "@/lib/fitness-data";
 
@@ -80,7 +80,7 @@ export default function BodyMap() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.35 }}
           >
-            <BodyScene selected={selected} onSelected={setSelected} />
+            <BodyMuscleMap selected={selected} onSelected={setSelected} />
           </motion.div>
 
           {/* Diagnostic Sidebar Panel */}

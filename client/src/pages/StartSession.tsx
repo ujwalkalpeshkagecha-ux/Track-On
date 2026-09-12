@@ -152,7 +152,7 @@ export default function StartSession() {
                 {sessionWorkouts.map((workout, idx) => (
                   <div
                     key={workout.id}
-                    className="bg-[#f0e6d3] border border-[rgba(237,244,233,0.09)] hover:border-[#c9ad7e]/40 rounded-lg p-3 flex items-center justify-between gap-3 transition-colors"
+                    className="bg-[#1c140c] border border-[rgba(237,244,233,0.09)] hover:border-[#c9ad7e]/40 rounded-lg p-3 flex items-center justify-between gap-3 transition-colors"
                   >
                     <div className="flex items-center gap-3">
                       <span className="font-mono text-[#c9ad7e] text-xs font-bold w-5">

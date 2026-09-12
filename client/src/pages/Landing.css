@@ -453,6 +453,29 @@ html.dark .landing-container {
 .hero-trust-badge.tb-accent { border-color: var(--border-strong); color: var(--accent); }
 .hero-trust-badge.tb-accent svg { color: var(--accent); }
 
+/* ---- Dark-mode contrast corrections --------------------------------------
+   In dark (espresso) mode the surface boxes are warm beige, but --accent /
+   --text-strong are ALSO beige, so those tokens render light-on-light (invisible)
+   on any beige-surfaced chip or card. Force espresso-brown ink on those boxes. */
+html.dark .landing-theme-toggle {
+  color: #2a1c10;
+}
+html.dark .landing-theme-toggle svg { color: #2a1c10; }
+
+html.dark .hero-trust-badge,
+html.dark .hero-trust-badge.tb-accent {
+  color: #2a1c10;
+  border-color: rgba(42, 28, 16, 0.28);
+}
+html.dark .hero-trust-badge svg,
+html.dark .hero-trust-badge.tb-accent svg { color: #7a5a34; }
+
+html.dark .feature-card-index { color: #8a6a3f; }
+
+html.dark .quote-text { color: #1a120b; }
+html.dark .quote-text em { color: #6b3f14; }
+html.dark .quote-author { color: #6b5a44; }
+
 /* Motivational Quotes Ticker */
 .landing-quote-card {
   position: relative;

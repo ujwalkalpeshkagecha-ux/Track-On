@@ -406,7 +406,7 @@ export default function LogFood() {
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {/* Calories */}
-            <div className="bg-black/30 p-3 rounded-2xl border border-white/5">
+            <div className="bg-[#1c140c] p-3 rounded-2xl border border-white/10">
               <div className="flex items-center justify-between text-[11px] font-mono text-[#8b9c8a] mb-1">
                 <span>Calories</span>
                 <Flame size={13} className="text-amber-400" />
@@ -423,7 +423,7 @@ export default function LogFood() {
             </div>
 
             {/* Protein */}
-            <div className="bg-[#38bdf8]/5 p-3 rounded-2xl border border-[#38bdf8]/20">
+            <div className="bg-[#1c140c] p-3 rounded-2xl border border-[#38bdf8]/30">
               <div className="flex items-center justify-between text-[11px] font-mono text-[#38bdf8] mb-1">
                 <span>Protein</span>
                 <Zap size={13} />
@@ -440,7 +440,7 @@ export default function LogFood() {
             </div>
 
             {/* Carbs */}
-            <div className="bg-black/30 p-3 rounded-2xl border border-white/5">
+            <div className="bg-[#1c140c] p-3 rounded-2xl border border-white/10">
               <div className="flex items-center justify-between text-[11px] font-mono text-[#8b9c8a] mb-1">
                 <span>Carbs</span>
                 <Wheat size={13} className="text-sky-400" />
@@ -457,7 +457,7 @@ export default function LogFood() {
             </div>
 
             {/* Fats */}
-            <div className="bg-black/30 p-3 rounded-2xl border border-white/5">
+            <div className="bg-[#1c140c] p-3 rounded-2xl border border-white/10">
               <div className="flex items-center justify-between text-[11px] font-mono text-[#8b9c8a] mb-1">
                 <span>Fats</span>
                 <Utensils size={13} className="text-rose-400" />
