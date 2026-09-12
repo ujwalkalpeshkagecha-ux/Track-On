@@ -251,7 +251,7 @@ export default function Achievements() {
             <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "12px", borderBottom: "1px solid rgba(231, 208, 166, 0.2)", paddingBottom: "8px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <Zap size={16} color="#c9ad7e" />
-                <h3 style={{ margin: 0, font: "700 18px 'Chakra Petch', sans-serif", textTransform: "uppercase", color: "#edf4e9", letterSpacing: "0.04em" }}>
+                <h3 style={{ margin: 0, font: "700 18px 'Space Grotesk', sans-serif", textTransform: "uppercase", color: "#edf4e9", letterSpacing: "0.04em" }}>
                   Daily Tasks <span style={{ fontSize: "11px", color: "#c9ad7e", fontFamily: "'Space Mono', monospace", marginLeft: "6px" }}>({unlockedDailyCount}/{dailyAchievements.length} Completed)</span>
                 </h3>
               </div>
@@ -271,7 +271,7 @@ export default function Achievements() {
             <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "12px", borderBottom: "1px solid rgba(217, 168, 106, 0.2)", paddingBottom: "8px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <Trophy size={16} color="#c9ad7e" />
-                <h3 style={{ margin: 0, font: "700 18px 'Chakra Petch', sans-serif", textTransform: "uppercase", color: "#edf4e9", letterSpacing: "0.04em" }}>
+                <h3 style={{ margin: 0, font: "700 18px 'Space Grotesk', sans-serif", textTransform: "uppercase", color: "#edf4e9", letterSpacing: "0.04em" }}>
                   Monthly Milestones <span style={{ fontSize: "11px", color: "#c9ad7e", fontFamily: "'Space Mono', monospace", marginLeft: "6px" }}>({unlockedMonthlyCount}/{monthlyAchievements.length} Completed)</span>
                 </h3>
               </div>

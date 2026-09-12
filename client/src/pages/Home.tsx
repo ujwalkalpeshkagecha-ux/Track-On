@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { Sidebar } from "@/components/navigation/Sidebar";
+import { FlameButton } from "@/components/ui/flame-button";
 import { OrbitalReadinessScene } from "@/components/3d/OrbitalReadinessScene";
 import {
   WorkoutRecommendationCard,
@@ -9,6 +10,7 @@ import {
   TrainingRhythmCard,
 } from "@/components/dashboard/DashboardCards";
 import { getAthleteProfile, getScopedKey } from "@/lib/user-store";
+import { muscleLibrary, type MuscleId } from "@/lib/fitness-data";
 
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -17,70 +19,28 @@ export default function Home() {
     const hour = new Date().getHours();
     if (hour >= 5 && hour < 12) return "MORNING";
     if (hour >= 12 && hour < 17) return "AFTERNOON";
-    if (hour >= 17 && hour < 21) return "EVENING";
-    return "NIGHT";
+    // Evening covers evening AND night, so the greeting is never "GOOD NIGHT".
+    return "EVENING";
   };
 
+  // Overall body recovery = the average of every muscle's live recovery score.
+  // This keeps the dashboard readiness IN SYNC with the Body Map recovery
+  // (a fresh/untrained athlete reads 100% on both screens).
   const computeReadinessScore = (): number => {
-    let score = 82; // Baseline optimal athletic readiness
     try {
-      const todayKey = new Date().toISOString().split("T")[0];
-
-      // 1. Workouts completed
-      const rawWorkouts =
-        localStorage.getItem(getScopedKey("fittrack_workout_logs")) ||
-        localStorage.getItem("fittrack_workout_logs") ||
-        localStorage.getItem("fittrack_workout_history");
-      if (rawWorkouts) {
-        const parsed = JSON.parse(rawWorkouts);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          const todayWorkout = parsed.find((w: any) => {
-            const d = w.completedAt || w.date || w.startedAt;
-            return d && d.startsWith(todayKey);
-          });
-          if (todayWorkout) {
-            score = 92; // Active high recovery stimulus today
-          } else {
-            score += 4;
-          }
-        }
-      }
-
-      // 2. Nutrition adherence
-      const scopedTodayNut =
-        localStorage.getItem(getScopedKey("fittrack_logged_nutrition_today")) ||
-        localStorage.getItem("fittrack_logged_nutrition_today");
-      if (scopedTodayNut) {
-        const nut = JSON.parse(scopedTodayNut);
-        if (nut.calories && nut.calories > 800) {
-          score = Math.min(98, score + 4);
-        }
-      }
-
-      // 3. GPS activity
-      const rawGps =
-        localStorage.getItem(getScopedKey("fittrack_gps_routes")) ||
-        localStorage.getItem("fittrack_gps_routes");
-      if (rawGps) {
-        const gps = JSON.parse(rawGps);
-        if (Array.isArray(gps) && gps.length > 0) {
-          score = Math.min(98, score + 3);
-        }
-      }
-
-      // 4. Daily Streak Momentum
-      const rawStreak =
-        localStorage.getItem(getScopedKey("fittrack-daily-streak")) ||
-        localStorage.getItem("fittrack-daily-streak");
-      if (rawStreak) {
-        const streak = JSON.parse(rawStreak);
-        if (streak.count && streak.count > 0) {
-          score = Math.min(98, score + Math.min(6, streak.count * 2));
-        }
-      }
-    } catch {}
-
-    return Math.min(98, Math.max(50, score));
+      const ids: MuscleId[] = [
+        "chest", "shoulders", "biceps", "triceps", "core",
+        "back", "glutes", "quads", "hamstrings", "calves",
+      ];
+      const scores = ids.map((id) => {
+        const s = muscleLibrary[id]?.score;
+        return typeof s === "number" ? s : 100;
+      });
+      const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+      return Math.max(0, Math.min(100, Math.round(avg)));
+    } catch {
+      return 100;
+    }
   };
 
   const [greetingWord, setGreetingWord] = useState(getGreetingPeriod());
@@ -132,13 +92,14 @@ export default function Home() {
             </h1>
 
             <div className="editorial-action-row">
-              <button
-                className="editorial-primary-btn"
+              <FlameButton
+                text="Begin Today's Session"
+                href=""
+                height={50}
+                textColor="#17110a"
+                borderColor="rgba(0,0,0,0.18)"
                 onClick={() => setLocation("/start-session")}
-              >
-                <span>BEGIN TODAY'S SESSION</span>
-                <ArrowRight size={16} />
-              </button>
+              />
 
               <button
                 className="editorial-secondary-link"

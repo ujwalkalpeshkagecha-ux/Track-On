@@ -29,7 +29,7 @@
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  font-family: "Chakra Petch", sans-serif, -apple-system, sans-serif;
+  font-family: "Space Grotesk", sans-serif, -apple-system, sans-serif;
 }
 
 .gh-contribution-settings-btn {
@@ -191,7 +191,7 @@
   color: var(--muted-foreground);
   font-size: 11px;
   text-decoration: none;
-  font-family: "Manrope", sans-serif, -apple-system, sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif, -apple-system, sans-serif;
   transition: color 0.15s ease;
 }
 

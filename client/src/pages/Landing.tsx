@@ -20,6 +20,7 @@ import {
 import { toast } from "sonner";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Landing3DScene } from "@/components/3d/Landing3DScene";
+import { FlameButton } from "@/components/ui/flame-button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { saveAthleteProfile, isProfileConfigured, getScopedKey } from "@/lib/user-store";
 import { sanitizeText, sanitizeEmail, hashPassword } from "@/lib/sanitize";
@@ -485,26 +486,8 @@ export default function Landing() {
           </div>
         ) : (
           <div className="hero-cta-group mb-10 flex flex-wrap justify-center items-center gap-4">
-            <button
-              type="button"
-              onClick={() => openAuth("signin")}
-              className="hero-primary-cta"
-              aria-label="Open Sign In Console"
-            >
-              <LogIn size={16} />
-              <span>Sign In</span>
-              <ArrowRight size={16} />
-            </button>
-
-            <button
-              type="button"
-              onClick={() => openAuth("signup")}
-              className="hero-secondary-cta"
-              aria-label="Create Account"
-            >
-              <UserCheck size={15} />
-              <span>Create Account</span>
-            </button>
+            <FlameButton text="Sign In" href="" height={50} textColor="#17110a" borderColor="rgba(0,0,0,0.18)" onClick={() => openAuth("signin")} />
+            <FlameButton text="Create Account" href="" height={50} showArrow={false} textColor="#17110a" borderColor="rgba(0,0,0,0.18)" onClick={() => openAuth("signup")} />
           </div>
         )}
 

@@ -52,7 +52,7 @@
 .gps-map-head b,
 .gps-control-heading b {
   color: var(--card-foreground);
-  font: 700 15px / 1.15 "Chakra Petch", sans-serif;
+  font: 700 15px / 1.15 "Space Grotesk", sans-serif;
   letter-spacing: 0.01em;
 }
 .gps-live-state {
@@ -145,7 +145,7 @@
 }
 .gps-map-empty b {
   color: var(--card-foreground);
-  font: 700 15px / 1.2 "Chakra Petch", sans-serif;
+  font: 700 15px / 1.2 "Space Grotesk", sans-serif;
 }
 .gps-map-empty span {
   color: var(--muted-foreground);
@@ -183,7 +183,7 @@
 }
 .gps-metrics-strip b {
   color: var(--card-foreground);
-  font: 700 16px / 1.1 "Chakra Petch", sans-serif;
+  font: 700 16px / 1.1 "Space Grotesk", sans-serif;
 }
 
 .gps-control-bay {
@@ -318,7 +318,7 @@
   display: block;
   margin-top: 12px;
   color: var(--muted-foreground);
-  font: 10px / 1.45 "Manrope", sans-serif;
+  font: 10px / 1.45 "Plus Jakarta Sans", sans-serif;
 }
 
 .gps-history-section {
@@ -340,7 +340,7 @@
 .gps-history-title h2 {
   margin: 0;
   color: var(--card-foreground);
-  font: 700 19px / 1.1 "Chakra Petch", sans-serif;
+  font: 700 19px / 1.1 "Space Grotesk", sans-serif;
 }
 .gps-history-title > span {
   color: #38bdf8;
@@ -392,7 +392,7 @@
 .gps-history-select b {
   overflow: hidden;
   color: var(--card-foreground);
-  font: 700 13px / 1.2 "Chakra Petch", sans-serif;
+  font: 700 13px / 1.2 "Space Grotesk", sans-serif;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

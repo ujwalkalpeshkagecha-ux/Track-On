@@ -60,15 +60,15 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
 
         {/* Clean Muscle Title */}
         <div className="my-3">
-          <h2 className="text-2xl font-bold text-white tracking-wide uppercase font-sans">{muscle.label}</h2>
-          <p className="text-xs text-[#8b9c8a] italic font-mono mt-0.5">{muscle.anatomicalName}</p>
+          <h2 className="text-2xl font-bold text-[#1c140c] tracking-wide uppercase font-sans">{muscle.label}</h2>
+          <p className="text-xs text-[#6b5a44] italic font-mono mt-0.5">{muscle.anatomicalName}</p>
         </div>
 
         {/* 2-Column Telemetry Metrics */}
         <div className="grid grid-cols-2 gap-2 mb-3">
           {/* Recovery Score Card */}
-          <div className="bg-black/40 border border-white/5 rounded-xl p-3 flex flex-col justify-between">
-            <span className="text-[9px] uppercase tracking-wider text-[#8b9c8a] font-mono block">Recovery</span>
+          <div className="bg-[#1c140c] border border-white/5 rounded-xl p-3 flex flex-col justify-between">
+            <span className="text-[9px] uppercase tracking-wider text-[#b3a48f] font-mono block">Recovery</span>
             <div className="flex items-baseline gap-1 my-1">
               <span className="text-2xl font-bold font-mono" style={{ color: recovery.color }}>
                 {score}%
@@ -83,8 +83,8 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
           </div>
 
           {/* Last Trained Card */}
-          <div className="bg-black/40 border border-white/5 rounded-xl p-3 flex flex-col justify-between">
-            <div className="flex items-center justify-between text-[#8b9c8a]">
+          <div className="bg-[#1c140c] border border-white/5 rounded-xl p-3 flex flex-col justify-between">
+            <div className="flex items-center justify-between text-[#b3a48f]">
               <span className="text-[9px] uppercase tracking-wider font-mono">Last Trained</span>
               <CalendarDays size={12} className="text-[#c9ad7e]" />
             </div>
@@ -110,7 +110,7 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
             <Activity size={13} />
             <span className="text-[10px] uppercase font-mono tracking-wider">Recommended Action</span>
           </div>
-          <p className="text-[11px] text-[#d5e4d3] leading-relaxed">
+          <p className="text-[11px] text-[#4a3c28] leading-relaxed">
             {recovery.action}
           </p>
         </div>
@@ -134,7 +134,7 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
             <div
               key={exercise.name}
               onClick={() => setSelectedVideo({ name: exercise.name, focus: muscle.label })}
-              className="bg-black/30 hover:bg-white/5 border border-white/5 hover:border-white/15 rounded-xl p-2.5 flex items-center justify-between cursor-pointer transition-all group"
+              className="bg-[#1c140c] hover:bg-[#2a1e14] border border-white/5 hover:border-white/15 rounded-xl p-2.5 flex items-center justify-between cursor-pointer transition-all group"
             >
               <div className="flex items-center gap-2.5">
                 <span className="text-[10px] font-mono text-[#8b9c8a] w-4">0{index + 1}</span>
@@ -165,7 +165,7 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
       <div className="space-y-2">
         <button
           onClick={handleLaunchRoutine}
-          className="w-full py-3 px-4 bg-[#c9ad7e] hover:bg-[#b8f52e] text-[#f0e6d3] rounded-xl font-bold font-sans text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-transform active:scale-[0.98] shadow-lg shadow-[#c9ad7e]/10"
+          className="w-full py-3 px-4 bg-[#c9ad7e] hover:bg-[#d8bf94] text-[#1c140c] rounded-xl font-bold font-sans text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-transform active:scale-[0.98] shadow-lg shadow-[#c9ad7e]/10"
         >
           <Play size={14} fill="currentColor" />
           <span>Launch {muscle.label} Routine</span>

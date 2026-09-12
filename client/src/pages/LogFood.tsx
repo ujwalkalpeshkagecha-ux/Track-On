@@ -18,7 +18,8 @@ import {
   Sliders, 
   BookOpen, 
   Sparkles,
-  HelpCircle
+  HelpCircle,
+  AlertTriangle
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
@@ -179,6 +180,18 @@ export default function LogFood() {
 
   const remKcal = Math.max(0, targetKcal - totalKcal);
   const remP = Math.max(0, Math.round((targetProtein - totalP) * 10) / 10);
+
+  // Maintenance calories (TDEE) via Mifflin-St Jeor, to warn on a real surplus.
+  const activityMultipliers: Record<string, number> = { light: 1.375, moderate: 1.55, active: 1.725, very_active: 1.9 };
+  const bmr = Math.round(
+    10 * (calibration?.weightKg || 70) +
+    6.25 * (calibration?.heightCm || 175) -
+    5 * (calibration?.age || 26) +
+    (calibration?.sex === "female" ? -161 : 5)
+  );
+  const maintenanceKcal = Math.round(bmr * (activityMultipliers[calibration?.activityLevel || "moderate"] || 1.55));
+  const calorieSurplus = totalKcal - maintenanceKcal;
+  const showSurplusAlert = calorieSurplus >= 300; // ate 300+ kcal over maintenance
 
   // Filtered Foods
   const filteredFoods = useMemo(() => {
@@ -361,7 +374,7 @@ export default function LogFood() {
         {/* 1. MINIMALIST MACRO HUD (CLEAN & HIGH-LEVEL) */}
         <div className="bg-[var(--card)] border border-[var(--border)] rounded-3xl p-5 shadow-xl relative overflow-hidden">
           <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/5">
-            <span className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+            <span className="text-xs font-mono font-bold text-[var(--card-foreground)] uppercase tracking-wider">
               Daily Intake
             </span>
             <button
@@ -381,6 +394,15 @@ export default function LogFood() {
               <span>Edit Targets</span>
             </button>
           </div>
+
+          {showSurplusAlert && (
+            <div className="flex items-start gap-2.5 mb-3 px-3.5 py-2.5 rounded-2xl bg-amber-500/20 border border-amber-600/50">
+              <AlertTriangle size={16} className="text-amber-600 flex-shrink-0 mt-0.5" />
+              <div className="text-[12px] leading-snug text-amber-900">
+                <strong className="font-bold text-amber-950">Over maintenance:</strong> You've eaten <strong>{calorieSurplus} kcal</strong> above your maintenance (~{maintenanceKcal} kcal/day) — that's a calorie surplus for today.
+              </div>
+            </div>
+          )}
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {/* Calories */}

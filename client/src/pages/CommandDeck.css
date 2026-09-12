@@ -69,7 +69,7 @@
   max-width: 500px;
   margin: 9px 0 0;
   color: var(--card-foreground);
-  font: 700 clamp(28px, 3vw, 42px) / 0.88 "Chakra Petch", sans-serif;
+  font: 700 clamp(28px, 3vw, 42px) / 0.88 "Space Grotesk", sans-serif;
   text-transform: uppercase;
 }
 .command-deck-head p {
@@ -136,7 +136,7 @@
 }
 .section-marker b {
   color: var(--card-foreground);
-  font: 700 14px "Chakra Petch", sans-serif;
+  font: 700 14px "Space Grotesk", sans-serif;
   text-transform: uppercase;
 }
 .section-marker .recalculate-button {
@@ -176,7 +176,7 @@
   border: 1px solid var(--border);
   border-radius: 4px;
   outline: 0;
-  font: 600 12px "Manrope", sans-serif;
+  font: 600 12px "Plus Jakarta Sans", sans-serif;
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 .deck-field input:focus {
@@ -214,7 +214,7 @@
   background: transparent;
   border: 0;
   border-radius: 3px;
-  font: 700 8px "Manrope", sans-serif;
+  font: 700 8px "Plus Jakarta Sans", sans-serif;
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -253,7 +253,7 @@
   display: block;
   margin-top: 13px;
   color: var(--card-foreground);
-  font: 700 13px / 0.95 "Chakra Petch", sans-serif;
+  font: 700 13px / 0.95 "Space Grotesk", sans-serif;
   text-transform: uppercase;
 }
 .activity-choice small {
@@ -323,7 +323,7 @@
   justify-content: center;
   gap: 7px;
   padding: 0 16px;
-  font: 700 8px "Manrope", sans-serif;
+  font: 700 8px "Plus Jakarta Sans", sans-serif;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   border-radius: 4px;
@@ -420,7 +420,7 @@
   display: block;
   margin-top: 8px;
   color: var(--card-foreground);
-  font: 700 28px / 0.8 "Chakra Petch", sans-serif;
+  font: 700 28px / 0.8 "Space Grotesk", sans-serif;
 }
 .metabolism-readout strong small {
   margin-left: 3px;
@@ -498,7 +498,7 @@
 }
 .target-readout b {
   color: var(--card-foreground);
-  font: 700 18px / 0.8 "Chakra Petch", sans-serif;
+  font: 700 18px / 0.8 "Space Grotesk", sans-serif;
 }
 .target-readout b small {
   margin-left: 2px;
@@ -544,7 +544,7 @@
   display: block;
   margin-bottom: 2px;
   color: var(--card-foreground);
-  font: 700 9px "Chakra Petch", sans-serif;
+  font: 700 9px "Space Grotesk", sans-serif;
   text-transform: uppercase;
 }
 
@@ -586,7 +586,7 @@
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 4px;
-  font: 700 8px "Manrope", sans-serif;
+  font: 700 8px "Plus Jakarta Sans", sans-serif;
   cursor: pointer;
 }
 .topic-tabs button:hover {
@@ -624,7 +624,7 @@
 }
 .knowledge-item summary b {
   color: var(--card-foreground);
-  font: 700 14px "Chakra Petch", sans-serif;
+  font: 700 14px "Space Grotesk", sans-serif;
   text-transform: uppercase;
 }
 .knowledge-item summary i {
@@ -684,7 +684,7 @@
 }
 .help-route-panel > button b {
   color: var(--card-foreground);
-  font: 700 12px "Chakra Petch", sans-serif;
+  font: 700 12px "Space Grotesk", sans-serif;
   text-transform: uppercase;
 }
 .help-route-panel > button small {
@@ -716,7 +716,7 @@
   background: #38bdf8;
   border: 1px solid #38bdf8;
   border-radius: 4px;
-  font: 700 8px "Manrope", sans-serif;
+  font: 700 8px "Plus Jakarta Sans", sans-serif;
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;

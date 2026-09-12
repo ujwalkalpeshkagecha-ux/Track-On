@@ -117,7 +117,7 @@
 .reminder-head h2 {
   margin: 6px 0 0;
   color: var(--card-foreground);
-  font: 700 32px / 0.85 "Chakra Petch", sans-serif;
+  font: 700 32px / 0.85 "Space Grotesk", sans-serif;
   text-transform: uppercase;
 }
 .inbox-topline button {
@@ -185,7 +185,7 @@
 .notification-item h3 {
   margin: 4px 0 3px;
   color: var(--card-foreground);
-  font: 700 19px / 0.9 "Chakra Petch", sans-serif;
+  font: 700 19px / 0.9 "Space Grotesk", sans-serif;
   text-transform: uppercase;
 }
 .notification-item p {
@@ -521,7 +521,7 @@
 .profile-heading h1 {
   margin: 4px 0 0;
   color: var(--foreground);
-  font: 700 34px / 0.9 "Chakra Petch", sans-serif;
+  font: 700 34px / 0.9 "Space Grotesk", sans-serif;
   letter-spacing: 0.005em;
   text-transform: uppercase;
 }
@@ -564,13 +564,13 @@
   border: 2px solid #38bdf8;
   border-radius: 50%;
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
-  font: 700 18px "Chakra Petch", sans-serif;
+  font: 700 18px "Space Grotesk", sans-serif;
 }
 .identity-athlete strong {
   display: block;
   margin-top: 3px;
   color: var(--card-foreground);
-  font: 700 22px / 0.95 "Chakra Petch", sans-serif;
+  font: 700 22px / 0.95 "Space Grotesk", sans-serif;
   text-transform: uppercase;
 }
 .identity-athlete p {
@@ -643,7 +643,7 @@
   display: block;
   margin: 5px 0 4px;
   color: var(--card-foreground);
-  font: 700 30px / 0.83 "Chakra Petch", sans-serif;
+  font: 700 30px / 0.83 "Space Grotesk", sans-serif;
   letter-spacing: 0.01em;
 }
 .profile-metric strong small {
@@ -692,7 +692,7 @@
 .profile-panel-head h2 {
   margin: 5px 0 0;
   color: var(--card-foreground);
-  font: 700 24px / 0.9 "Chakra Petch", sans-serif;
+  font: 700 24px / 0.9 "Space Grotesk", sans-serif;
   text-transform: uppercase;
 }
 .profile-panel-head > span {
@@ -773,7 +773,7 @@
 }
 .activity-donut strong {
   color: var(--card-foreground);
-  font: 700 38px / 0.75 "Chakra Petch", sans-serif;
+  font: 700 38px / 0.75 "Space Grotesk", sans-serif;
 }
 .activity-donut span {
   margin-top: 7px;
@@ -881,7 +881,7 @@
   max-width: 310px;
   margin: 8px 0;
   color: var(--card-foreground);
-  font: 700 26px / 0.91 "Chakra Petch", sans-serif;
+  font: 700 26px / 0.91 "Space Grotesk", sans-serif;
   text-transform: uppercase;
 }
 .profile-guidance p {

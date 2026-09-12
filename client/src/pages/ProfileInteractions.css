@@ -73,7 +73,7 @@
 .profile-dialog [data-slot="dialog-title"] {
   margin-top: 4px;
   color: var(--card-foreground);
-  font: 700 28px / 0.92 "Chakra Petch", sans-serif;
+  font: 700 28px / 0.92 "Space Grotesk", sans-serif;
   letter-spacing: 0.01em;
   text-transform: uppercase;
 }
@@ -114,7 +114,7 @@
   overflow: hidden;
   color: #0a192f;
   background: #38bdf8;
-  font: 700 16px "Chakra Petch", sans-serif;
+  font: 700 16px "Space Grotesk", sans-serif;
 }
 .profile-photo-preview.has-photo {
   background: var(--card);
@@ -173,7 +173,7 @@
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 4px;
-  font: 12px "Manrope", sans-serif;
+  font: 12px "Plus Jakarta Sans", sans-serif;
 }
 .profile-form-grid input:focus {
   border-color: #38bdf8;

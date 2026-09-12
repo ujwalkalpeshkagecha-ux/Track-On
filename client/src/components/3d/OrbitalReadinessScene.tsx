@@ -254,7 +254,7 @@ export function OrbitalReadinessScene({ score = 50 }: OrbitalReadinessSceneProps
         <span
           className="readiness-orb-digit"
           style={{
-            fontFamily: '"Chakra Petch", "Space Mono", sans-serif',
+            fontFamily: '"Space Grotesk", "Space Mono", sans-serif',
             fontSize: "clamp(64px, 7vw, 84px)",
             fontWeight: 700,
             lineHeight: 1,
