@@ -174,7 +174,7 @@ export function MuscleInfo({ muscle }: { muscle: MuscleInfoType }) {
         <button
           type="button"
           onClick={handleQuickCompleteSets}
-          className="w-full py-2 px-3 bg-white/5 hover:bg-white/10 border border-white/10 text-[#edf4e9] rounded-xl font-mono text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+          className="w-full py-2 px-3 bg-[var(--muted)]/10 hover:bg-[var(--muted)]/20 border border-[var(--border)] text-[var(--card-foreground)] rounded-xl font-mono text-[10px] uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
           title="Simulate completing 4 heavy sets for this muscle group"
         >
           <Dumbbell size={12} className="text-[#c9ad7e]" />

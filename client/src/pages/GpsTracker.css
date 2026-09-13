@@ -509,3 +509,14 @@
     padding: 18px;
   }
 }
+
+/* Light-mode legibility: the sky-blue map/history labels wash out on the theme's
+   light cards, and the secondary control's text goes light-on-light. Darken them
+   so they stay readable. (Dark mode is unchanged.) */
+:root:not(.dark) .gps-map-corners,
+:root:not(.dark) .gps-history-title > span {
+  color: #0284c7;
+}
+:root:not(.dark) .gps-secondary-control {
+  color: #1a2530;
+}

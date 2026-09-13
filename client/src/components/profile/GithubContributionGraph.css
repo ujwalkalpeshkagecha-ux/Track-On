@@ -293,3 +293,13 @@
     flex: 1;
   }
 }
+
+/* Dark (espresso) theme: the contribution title sits on the dark page surface
+   (needs light text), while the footer link sits on the beige card (needs a
+   readable dark-blue). Light/navy theme is unaffected. */
+.dark .gh-contribution-title { color: #efe4d2; }
+.dark .gh-learn-link { color: #0284c7; }
+/* Light (navy) theme: the title sits on the dark navy surface (needs light text),
+   the footer link on a white card (needs a readable dark-blue). */
+:root:not(.dark) .gh-contribution-title { color: #eaf1f8; }
+:root:not(.dark) .gh-learn-link { color: #0284c7; }

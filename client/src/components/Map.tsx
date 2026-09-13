@@ -640,7 +640,7 @@ export function MapView({
                     onClick={() => changeTile(style)}
                     className={cn(
                       "px-2 py-1 text-[9px] font-mono uppercase tracking-wider rounded transition-all cursor-pointer",
-                      tileStyle === style ? "bg-[#c9ad7e] text-[#ece1cc] font-bold" : "text-[#9eab9c] hover:text-white"
+                      tileStyle === style ? "bg-[#c9ad7e] text-[#2a1c10] font-bold" : "text-[#9eab9c] hover:text-white"
                     )}
                   >
                     {style}
@@ -666,17 +666,17 @@ export function MapView({
             type="button"
             onClick={handleLocateMe}
             disabled={isLocating}
-            className="flex items-center gap-2 bg-[#c9ad7e] hover:bg-[#d8ff6b] active:scale-95 text-[#ece1cc] font-bold font-mono text-xs px-4 py-2.5 rounded-md shadow-[0_0_24px_rgba(231,208,166,0.5)] transition-all cursor-pointer disabled:opacity-60"
+            className="flex items-center gap-2 bg-[#c9ad7e] hover:bg-[#d8ff6b] active:scale-95 text-[#2a1c10] font-bold font-mono text-xs px-4 py-2.5 rounded-md shadow-[0_0_24px_rgba(231,208,166,0.5)] transition-all cursor-pointer disabled:opacity-60"
             title="Check and pinpoint your exact GPS location on map"
           >
             {isLocating ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin text-[#ece1cc]" />
+                <Loader2 className="w-4 h-4 animate-spin text-[#2a1c10]" />
                 <span>Locating GPS...</span>
               </>
             ) : (
               <>
-                <Crosshair className="w-4 h-4 text-[#ece1cc]" />
+                <Crosshair className="w-4 h-4 text-[#2a1c10]" />
                 <span>Check My Location</span>
               </>
             )}

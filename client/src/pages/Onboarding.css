@@ -240,7 +240,18 @@ html.dark .onboarding-shell {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 16px;
   outline: none;
+  /* The onboarding card is always light; force light native controls so the
+     date picker's calendar/clear/cancel buttons stay dark and visible. */
+  color-scheme: light;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+/* Make the date field's calendar icon clearly visible (dark) on the light card. */
+.ob-field input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.75;
+  cursor: pointer;
+}
+.ob-field input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
 }
 .ob-field input:focus {
   border-color: var(--accent-2);

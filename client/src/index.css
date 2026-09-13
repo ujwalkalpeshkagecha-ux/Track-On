@@ -597,6 +597,25 @@ body :is(h1,h2,h3,h4,h5,h6,.workflow-brand,.header-wordmark,.brand-row strong),b
 :root:not(.dark) .workflow-intro h2,
 :root:not(.dark) .profile-heading h1,
 :root:not(.dark) .topbar-greeting h1 { color: #eaf1f8 !important; }
+/* Headings inside the dark app top-bar (e.g. Body Map) sit on the navy surface,
+   not a light card, so keep them light instead of the global near-black heading. */
+:root:not(.dark) .dashboard-main .topbar h1 { color: #eaf1f8 !important; }
+:root:not(.dark) .dashboard-main .topbar .eyebrow { color: #c9ad7e !important; }
+
+/* A heading explicitly marked `text-white` is meant to sit on a dark surface, so
+   keep it light in light mode too — otherwise the global near-black heading color
+   would hide it on the app's dark espresso cards. */
+:root:not(.dark) :is(h1, h2, h3, h4, h5, h6).text-white { color: #eef3f8 !important; }
+
+/* Light-mode accent legibility: the sky-blue and gold accents are tuned for dark
+   surfaces and wash out on the theme's light cards. Darken them so small labels
+   and values stay readable on cream/white panels. */
+:root:not(.dark) .text-\[\#38bdf8\] { color: #0284c7 !important; }
+:root:not(.dark) .text-\[\#c9ad7e\] { color: #8a6a3f !important; }
+/* ...but keep the bright accents where the text still sits on a dark espresso
+   tile that persists in light mode (so those don't go dark-on-dark). */
+:root:not(.dark) :is(.bg-\[\#1c140c\], .bg-\[\#1e130c\], .bg-\[\#1a1109\], .bg-black\/20, .bg-black\/30, .bg-black\/40, .bg-black\/50) .text-\[\#38bdf8\] { color: #38bdf8 !important; }
+:root:not(.dark) :is(.bg-\[\#1c140c\], .bg-\[\#1e130c\], .bg-\[\#1a1109\], .bg-black\/20, .bg-black\/30, .bg-black\/40, .bg-black\/50) .text-\[\#c9ad7e\] { color: #c9ad7e !important; }
 :root:not(.dark) .workflow-intro p,
 :root:not(.dark) .workflow-intro .eyebrow,
 :root:not(.dark) .profile-heading p { color: #9fb0c2 !important; }
@@ -923,7 +942,8 @@ body :is(h1,h2,h3,h4,h5,h6,.workflow-brand,.header-wordmark,.brand-row strong),b
 }
 
 :root:not(.dark) .gh-contribution-title {
-  color: #060b11 !important;
+  /* Title sits on the dark navy surface (not the light box), so it must be light. */
+  color: #eaf1f8 !important;
 }
 
 /* 9. SETTINGS & BIOMETRIC CALIBRATION (/settings) */
@@ -1033,6 +1053,20 @@ body :is(h1,h2,h3,h4,h5,h6,.workflow-brand,.header-wordmark,.brand-row strong),b
 :root:not(.dark) .tier-card-desc {
   color: #1a2530 !important;
 }
+
+/* Dark (espresso + beige) theme: these Settings controls were authored assuming
+   dark cards, but this theme uses beige cards and dark tiles, so the inherited
+   text ended up invisible. Restore theme-correct colors. */
+.dark .tier-card-title { color: #1a120b !important; }        /* dark text on beige card */
+.dark .tier-card-desc { color: #5a4838 !important; }         /* muted dark on beige card */
+.dark .sex-control button { color: #efe4d2 !important; }     /* light text on dark tile */
+.dark .sex-control button.selected { color: #0a192f !important; } /* dark on selected accent */
+.dark .rail-note,
+.dark .rail-note p,
+.dark .rail-note b,
+.dark .support-privacy-note,
+.dark .support-privacy-note p,
+.dark .support-privacy-note b { color: #efe4d2 !important; } /* light text on dark tip tiles */
 
 :root:not(.dark) .activity-choice {
   background: #ffffff !important;
@@ -1973,7 +2007,7 @@ body :is(h1,h2,h3,h4,h5,h6,.workflow-brand,.header-wordmark,.brand-row strong),b
 }
 
 .dark .denom-val {
-  color: #1a120b !important;
+  color: #a6917d !important;
 }
 
 .dark .denom-label {
