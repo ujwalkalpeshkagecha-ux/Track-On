@@ -75,6 +75,7 @@ export default function Landing() {
   const [quoteIndex, setQuoteIndex] = useState(0);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [resetMode, setResetMode] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const googleBtnRef = useRef<HTMLDivElement | null>(null);
 
@@ -285,6 +286,30 @@ export default function Landing() {
       return;
     }
 
+    // Password-recovery path (local accounts): set the new password hash and sign
+    // the athlete back in, preserving their existing profile and logged data.
+    if (resetMode) {
+      setIsSubmitting(true);
+      try {
+        const credKey = getScopedKey("fittrack_cred_hash", cleanEmail);
+        const newHash = await hashPassword(password);
+        localStorage.setItem(credKey, newHash);
+        localStorage.setItem("fittrack_auth_state", "authenticated");
+        localStorage.setItem("fittrack_user_email", cleanEmail);
+        setupOnboardingForUser(cleanEmail, false);
+        applyDefaultDarkMode();
+        setResetMode(false);
+        setAuthModalOpen(false);
+        toast.success("Password updated. Welcome back!");
+        proceedAfterAuth(cleanEmail);
+      } catch (err: any) {
+        toast.error(err?.message || "Could not reset your password. Please try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
+      return;
+    }
+
     const cleanName = sanitizeText(name) || "Athlete";
     const cleanFocus = sanitizeText(focus) || "Strength and fitness goals";
     setIsSubmitting(true);
@@ -377,6 +402,34 @@ export default function Landing() {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // Forgot-password entry point. Supabase accounts get an emailed reset link;
+  // local accounts switch to an inline "set a new password" mode.
+  const handleForgotPassword = async () => {
+    const cleanEmail = sanitizeEmail(email);
+    if (!cleanEmail) {
+      toast.error("Enter your email above first, then tap Forgot password.");
+      return;
+    }
+    const supabase = getSupabaseClient();
+    if (supabase) {
+      try {
+        const { error } = await supabase.auth.resetPasswordForEmail(cleanEmail);
+        if (error) {
+          toast.error(error.message || "Could not send the reset email.");
+          return;
+        }
+        toast.success("Password reset link sent. Check your email.");
+      } catch (err: any) {
+        toast.error(err?.message || "Could not send the reset email.");
+      }
+      return;
+    }
+    // Local fallback: let the athlete set a new password; logged data is kept.
+    setPassword("");
+    setResetMode(true);
+    toast.info("Set a new password below to regain access — your logged data stays safe.");
   };
 
   const handleQuickDemo = () => {
@@ -585,10 +638,12 @@ export default function Landing() {
         <DialogContent className="auth-dialog-card sm:max-w-[460px]">
           <DialogHeader>
             <DialogTitle className="text-xl font-bold uppercase tracking-wider text-[#eef5eb] font-['Chakra_Petch']">
-              {authMode === "signin" ? "Sign In" : "Create Account"}
+              {resetMode ? "Reset Password" : authMode === "signin" ? "Sign In" : "Create Account"}
             </DialogTitle>
             <DialogDescription className="text-xs text-[#8a9b89] font-['Space_Mono']">
-              {authMode === "signin"
+              {resetMode
+                ? "Choose a new password for your account. Your logged data stays safe."
+                : authMode === "signin"
                 ? "Sign in to access your workout logs, nutrition targets, and 3D anatomy workspace."
                 : "Create your athlete profile and start tracking your fitness journey today."}
             </DialogDescription>
@@ -598,14 +653,20 @@ export default function Landing() {
             <button
               type="button"
               className={`auth-tab-button ${authMode === "signin" ? "active" : ""}`}
-              onClick={() => setAuthMode("signin")}
+              onClick={() => {
+                setResetMode(false);
+                setAuthMode("signin");
+              }}
             >
               Sign In
             </button>
             <button
               type="button"
               className={`auth-tab-button ${authMode === "signup" ? "active" : ""}`}
-              onClick={() => setAuthMode("signup")}
+              onClick={() => {
+                setResetMode(false);
+                setAuthMode("signup");
+              }}
             >
               Create Account
             </button>
@@ -677,17 +738,38 @@ export default function Landing() {
               </div>
 
               <div className="auth-input-group">
-                <label>Password</label>
+                <label>{resetMode ? "New Password" : "Password"}</label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter password"
+                  placeholder={resetMode ? "Enter a new password" : "Enter password"}
                   required
                 />
+                {authMode === "signin" && !resetMode && (
+                  <button
+                    type="button"
+                    onClick={handleForgotPassword}
+                    className="mt-1.5 self-end text-[11px] font-['Space_Mono'] text-[#8a9b89] hover:text-[#c9ad7e] underline underline-offset-2 transition-colors"
+                  >
+                    Forgot password?
+                  </button>
+                )}
+                {resetMode && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setResetMode(false);
+                      setPassword("");
+                    }}
+                    className="mt-1.5 self-end text-[11px] font-['Space_Mono'] text-[#8a9b89] hover:text-[#c9ad7e] underline underline-offset-2 transition-colors"
+                  >
+                    ← Back to sign in
+                  </button>
+                )}
               </div>
 
-              {authMode === "signup" && (
+              {authMode === "signup" && !resetMode && (
                 <div className="auth-input-group">
                   <label>Primary Fitness Goal</label>
                   <input
@@ -700,8 +782,14 @@ export default function Landing() {
               )}
 
               <button type="submit" className="auth-submit-btn" disabled={isSubmitting}>
-                {authMode === "signin" ? <LogIn size={16} /> : <UserCheck size={16} />}
-                {isSubmitting ? "Verifying..." : (authMode === "signin" ? "Sign In to Dashboard" : "Create Your Account")}
+                {resetMode ? <KeyRound size={16} /> : authMode === "signin" ? <LogIn size={16} /> : <UserCheck size={16} />}
+                {isSubmitting
+                  ? "Verifying..."
+                  : resetMode
+                  ? "Set New Password"
+                  : authMode === "signin"
+                  ? "Sign In to Dashboard"
+                  : "Create Your Account"}
               </button>
             </form>
           </div>

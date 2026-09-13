@@ -2,7 +2,7 @@
    Collects age (via DOB), sex, height, weight, activity and goal, computes
    Mifflin-St Jeor BMR/TDEE + goal-adjusted macro targets, and saves them to the
    same calibration store the rest of the app reads. */
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -26,6 +26,7 @@ import {
   getCalibrationSettings,
   saveCalibrationSettings,
   markProfileConfigured,
+  getScopedKey,
   type CalibrationSettings,
 } from "@/lib/user-store";
 import "./Onboarding.css";
@@ -68,15 +69,39 @@ export default function Onboarding() {
   const baseProfile = useMemo(() => getAthleteProfile(), []);
   const baseCalibration = useMemo(() => getCalibrationSettings(), []);
 
-  const [step, setStep] = useState(0);
+  // Resume a half-finished questionnaire after a refresh (scoped per athlete).
+  const draftKey = getScopedKey("fittrack_onboarding_draft");
+  const savedDraft = useMemo<Record<string, any> | null>(() => {
+    try {
+      const raw = localStorage.getItem(draftKey);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const [step, setStep] = useState<number>(savedDraft?.step ?? 0);
   const [dir, setDir] = useState(1);
-  const [name, setName] = useState(baseProfile.name && baseProfile.name !== "Athlete" ? baseProfile.name : "");
-  const [sex, setSex] = useState<Sex>(baseCalibration.sex || "male");
-  const [dob, setDob] = useState("");
-  const [heightCm, setHeightCm] = useState<string>(String(baseCalibration.heightCm || 175));
-  const [weightKg, setWeightKg] = useState<string>(String(baseCalibration.weightKg || 70));
-  const [activity, setActivity] = useState<ActivityLevel | "">("");
-  const [goal, setGoal] = useState<Goal | "">("");
+  const [name, setName] = useState<string>(
+    savedDraft?.name ?? (baseProfile.name && baseProfile.name !== "Athlete" ? baseProfile.name : ""),
+  );
+  const [sex, setSex] = useState<Sex>(savedDraft?.sex ?? baseCalibration.sex ?? "male");
+  const [dob, setDob] = useState<string>(savedDraft?.dob ?? "");
+  const [heightCm, setHeightCm] = useState<string>(savedDraft?.heightCm ?? String(baseCalibration.heightCm || 175));
+  const [weightKg, setWeightKg] = useState<string>(savedDraft?.weightKg ?? String(baseCalibration.weightKg || 70));
+  const [activity, setActivity] = useState<ActivityLevel | "">(savedDraft?.activity ?? "");
+  const [goal, setGoal] = useState<Goal | "">(savedDraft?.goal ?? "");
+
+  // Persist progress on every change so a refresh mid-flow doesn't lose it.
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        draftKey,
+        JSON.stringify({ step, name, sex, dob, heightCm, weightKg, activity, goal }),
+      );
+    } catch {}
+  }, [draftKey, step, name, sex, dob, heightCm, weightKg, activity, goal]);
 
   const age = ageFromDob(dob);
   const h = Number(heightCm);
@@ -151,6 +176,9 @@ export default function Onboarding() {
     saveCalibrationSettings(settings);
     saveAthleteProfile({ ...baseProfile, name: name.trim() || baseProfile.name, focus: label });
     markProfileConfigured(getActiveUserEmail());
+    try {
+      localStorage.removeItem(draftKey);
+    } catch {}
     toast.success(`You're all set, ${(name.trim() || "Athlete").split(" ")[0]}! Your plan is ready.`);
     setLocation("/overview");
   };

@@ -301,6 +301,8 @@ html.dark .landing-container {
   text-transform: uppercase;
   margin: 0 0 22px;
   color: var(--text-strong);
+  /* Lift the title off the dark hero photo so it stays readable in both themes. */
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.45);
   animation: rise-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -312,7 +314,9 @@ html.dark .landing-container {
   -webkit-text-fill-color: transparent;
   display: inline-block;
   animation: sheen 6s linear infinite;
-  filter: drop-shadow(0 6px 20px var(--glow));
+  /* Dark drop-shadow keeps the gradient glyphs legible over the photo (text-shadow
+     can't render on transparent-filled gradient text). */
+  filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.5)) drop-shadow(0 6px 20px var(--glow));
 }
 
 @keyframes sheen {

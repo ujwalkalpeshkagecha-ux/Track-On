@@ -74,6 +74,17 @@ export default function Settings() {
   const [profileOpen, setProfileOpen] = useState(false);
   const [isLocating, setIsLocating] = useState(false);
 
+  // Warn before leaving/reloading the tab with unsaved calibration changes.
+  useEffect(() => {
+    if (saved) return;
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [saved]);
+
   useEffect(() => {
     // Auto-detect and sync real device location on mount
     autoSyncAthleteLocation().then((detected) => {

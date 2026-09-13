@@ -8,6 +8,19 @@ import App from "./App";
 import { startLogin } from "./const";
 import "./index.css";
 
+// Global crash safety net: capture uncaught errors and unhandled promise
+// rejections so production failures are recorded instead of vanishing. The
+// React tree still has its own ErrorBoundary for render errors; this catches
+// everything outside React (async handlers, event listeners, timers).
+if (typeof window !== "undefined") {
+  window.addEventListener("error", (event) => {
+    console.error("[Uncaught Error]", event.error ?? event.message);
+  });
+  window.addEventListener("unhandledrejection", (event) => {
+    console.error("[Unhandled Promise Rejection]", event.reason);
+  });
+}
+
 const queryClient = new QueryClient();
 
 const redirectToLoginIfUnauthorized = (error: unknown) => {

@@ -7,6 +7,7 @@ import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider, useTheme } from "./contexts/ThemeContext";
 import { AnimatedBackground } from "./components/AnimatedBackground";
+import { NetworkStatusBanner } from "./components/NetworkStatusBanner";
 import { EchoAssistant } from "./components/ai/EchoAssistant";
 import { RexiOnboardingModal } from "./components/onboarding/RexiOnboardingModal";
 import { RexiGuidedTour } from "./components/onboarding/RexiGuidedTour";
@@ -129,6 +130,7 @@ function App() {
       <ThemeProvider defaultTheme="dark" switchable>
         <TooltipProvider>
           <AnimatedBackground />
+          <NetworkStatusBanner />
           <Toaster />
           <Router />
           <GlobalRexi />

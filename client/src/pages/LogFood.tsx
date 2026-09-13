@@ -1,5 +1,5 @@
 /* FitTrack: Minimalist, Ultra-Clean Smart Nutrition Lab */
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { 
   Check, 
   ChevronRight, 
@@ -219,7 +219,16 @@ export default function LogFood() {
   }, [pantryQuery]);
 
   // --- LOGGING ACTIONS ---
+  // Guard against accidental duplicate logs from a fast double-tap: ignore a
+  // second identical call fired within 800ms of the last one.
+  const lastLogRef = useRef<{ key: string; at: number }>({ key: "", at: 0 });
   const logItem = (name: string, kcal: number, p: number, c: number, f: number, serving: string, hindi?: string) => {
+    const now = Date.now();
+    const key = `${name}|${kcal}|${selectedSlot}`;
+    if (lastLogRef.current.key === key && now - lastLogRef.current.at < 800) {
+      return;
+    }
+    lastLogRef.current = { key, at: now };
     const entry: LoggedEntry = {
       id: `${Date.now()}-${Math.random()}`,
       name,
@@ -751,6 +760,7 @@ export default function LogFood() {
                         <span className="text-[10px] font-mono text-[#8b9c8a]">{item.unit}</span>
                         <button
                           type="button"
+                          aria-label="Remove ingredient"
                           onClick={() => setActiveIngredients((prev) => prev.filter((_, i) => i !== idx))}
                           className="text-[#5a6b58] hover:text-rose-400"
                         >
@@ -1014,6 +1024,7 @@ function CleanTimelineCard({
                 </div>
                 <button
                   type="button"
+                  aria-label={`Remove ${entry.name} from today's log`}
                   onClick={() => onDelete(entry.id)}
                   className="p-1 text-[#5a6b58] hover:text-rose-400"
                 >

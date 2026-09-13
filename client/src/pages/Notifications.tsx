@@ -242,6 +242,10 @@ export default function Notifications() {
               </div>
             </div>
 
+            <p className="mt-3 text-[11px] leading-relaxed font-mono text-[#8b9c8a]">
+              These are in-app reminders — they alert you while FitTrack is open in your browser.
+            </p>
+
             {/* Active signals */}
             {grouped.new.length > 0 && (
               <div className="mt-4 space-y-2">
